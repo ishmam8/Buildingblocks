@@ -24,7 +24,7 @@ class App extends Component {
                 <Switch>
                     <Route path="/" exact component={Landing}/>
                     <Route path="/choice" render={() => <Choice profiles={this.state.profiles} />}/>
-                    <Route path="/login" render={() => <LoginWithEmail profiles={this.state.profiles} />}/>
+                    <Route path="/login" render={() => <LoginWithEmail profiles={this.state.profiles}/>}/>
                     <Route path="/signup" component={SignupWithEmail}/>
                     <Route path="/theChat" component={Chat}/>
                     <Route path="/join" component={Join}/>
