@@ -1,17 +1,22 @@
 import React, { Component } from "react";
 import "./css/Dashboard.css";
 import logo from "../images/minlogo.png";
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 
 export default function DashboardHeader() {
+  const dispatch = useDispatch();
 
   function logout() {
     console.log("Test");
-    localStorage.setItem("loggedIn", "false");
-    localStorage.setItem("chatRoom", "false");
-    localStorage.setItem("lastUser", null);
+
+    dispatch({type: "CHANGE_ISLOGGEDIN", isLoggedIn: false});
+    dispatch({type: "CHANGE_CHATROOM", chatroom: false});
+    dispatch({type: "CHANGE_LASTUSER", lastUser: null});
+    // localStorage.setItem("loggedIn", "false");
+    // localStorage.setItem("chatRoom", "false");
+    // localStorage.setItem("lastUser", null);
     window.location.reload();
   };
 

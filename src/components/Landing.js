@@ -15,6 +15,7 @@ import { useSelector } from 'react-redux';
 
 export default function Landing() {
     const [holder, setHolder] = useState(2);
+    const profile = useSelector(state => state.profile);
 
     function logout(e){
         console.log("Test");
@@ -52,7 +53,7 @@ export default function Landing() {
         return (
             <Redirect to={{
                 pathname: '/dashboard',
-                state: this.state.profile
+                state: profile,
             }} />
         )
         /*

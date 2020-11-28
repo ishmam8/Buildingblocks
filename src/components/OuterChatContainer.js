@@ -5,20 +5,22 @@ import DashboardHeaderChat from "./DashboardHeaderChat";
 import Chat from "./Chat";
 import "./css/ChatRoom.css";
 import TextContainer from "./TextContainer";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 export default function OuterChatContainer(props) {
     const username = useSelector(state => state.username);
     const email = useSelector(state => state.email);
     const avi = useSelector(state => state.avi);
+    const chatroom = useSelector(state => state.chatroom);
+    const dispatch = useDispatch();
 
     function logout(e) {
-        localStorage.setItem("loggedIn", "false");
-        localStorage.setItem("chatroom", "none");
+        dispatch({type: "CHANGE_LOGGEDIN", loggedIn: false});
+        dispatch({type: "CHANGE_CHATROOM", chatroom: "none"});
         window.location.reload();
     };
 
-    if (localStorage.getItem("chatRoom") === "false") {
+    if (chatroom === false) {
         return (
             <Redirect to={{
                 pathname: '/dashboard',
@@ -31,7 +33,7 @@ export default function OuterChatContainer(props) {
                 <SidebarChat />
                 <div className="outerContainer">
                     <br />
-                    <Chat className="chatRoom" theName={username} theRoom={localStorage.getItem("chatRoom")}
+                    <Chat className="chatRoom" theName={username} theRoom={chatroom}
                         theEmail={email} theAvi={avi} />
                 </div>
             </div>

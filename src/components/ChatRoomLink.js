@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import "./css/Sidebar.css";
+import { useDispatch } from "react-redux";
 
 export default function ChatRoomLink(props) {
     const [clicked, setClicked] = useState(false);
+    const dispatch = useDispatch();
 
     function joinChat() {
-        localStorage.setItem("chatRoom", props.roomName);
+        dispatch({type: "CHANGE_CHATROOM", chatroom: props.roomName});
+        // localStorage.setItem("chatRoom", props.roomName);
         window.location.reload();
     };
 

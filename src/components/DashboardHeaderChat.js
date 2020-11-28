@@ -2,15 +2,17 @@ import React, { Component } from "react";
 import "./css/Dashboard.css";
 import "./css/Chat.css";
 import logo from "../images/minlogo.png";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 
 export default function DashboardHeaderChat(props) {
   const avi = useSelector(state => state.avi);
-  
+  const lastUser = useSelector(state => state.lastUser);
+  const dispatch = useDispatch();
+
   function logout(){
     console.log("Test");
-    localStorage.setItem("loggedIn", "false");
+    dispatch({type:"CHANGE_LOGGEDIN", loggedIn: false});
     window.location.reload();
   };
 
@@ -27,7 +29,7 @@ export default function DashboardHeaderChat(props) {
       <button className="logoutDashboard" onClick={logout}>
         Logout
                 </button>
-      <p className="chatRoomName">{localStorage.getItem("chatRoom")}</p>
+      <p className="chatRoomName">{lastUser}</p>
     </div>
   );
 }
