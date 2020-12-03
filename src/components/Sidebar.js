@@ -14,7 +14,7 @@ class ChatRoom {
 
 let socket;
 
-const SideBar = (props) => {
+export default function SideBar(props){
   const academics = new ChatRoom("Academics");
   const timeManagement = new ChatRoom("Time Management");
   const mentalHealth = new ChatRoom("Mental Health");
@@ -75,5 +75,3 @@ const SideBar = (props) => {
     </div>
   );
 }
-
-export default SideBar;

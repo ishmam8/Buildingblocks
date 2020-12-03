@@ -1,41 +1,42 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import SidebarChat from "./SidebarChat";
-import {Redirect} from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 import DashboardHeaderChat from "./DashboardHeaderChat";
 import Chat from "./Chat";
 import "./css/ChatRoom.css";
 import TextContainer from "./TextContainer";
+import { useSelector, useDispatch } from "react-redux";
 
-export default class OuterChatContainer extends Component {
-    constructor(props) {
-        super(props);
-    }
+export default function OuterChatContainer(props) {
+    const username = useSelector(state => state.username);
+    const email = useSelector(state => state.email);
+    const avi = useSelector(state => state.avi);
+    const chatroom = useSelector(state => state.chatroom);
+    const dispatch = useDispatch();
 
-    logout = (e) => {
-        localStorage.setItem("loggedIn", "false");
-        localStorage.setItem("chatroom", "none");
+    function logout(e) {
+        dispatch({type: "CHANGE_LOGGEDIN", loggedIn: false});
+        dispatch({type: "CHANGE_CHATROOM", chatroom: "none"});
         window.location.reload();
     };
 
-    render() {
-        if (localStorage.getItem("chatRoom") === "false") {
-            return (
-                <Redirect to={{
-                    pathname: '/dashboard',
-                }}/>
-            )
-        } else {
-            return (
-                <div className="outoutContainer">
-                    <DashboardHeaderChat />
-                    <SidebarChat />
-                    <div className="outerContainer">
-                        <br />
-                        <Chat className="chatRoom" theName={localStorage.getItem("username")} theRoom={localStorage.getItem("chatRoom")} 
-                        theEmail={localStorage.getItem("email")} theAvi={localStorage.getItem("avi")} />
-                    </div>
+    if (chatroom === false) {
+        return (
+            <Redirect to={{
+                pathname: '/dashboard',
+            }} />
+        )
+    } else {
+        return (
+            <div className="outoutContainer">
+                <DashboardHeaderChat />
+                <SidebarChat />
+                <div className="outerContainer">
+                    <br />
+                    <Chat className="chatRoom" theName={username} theRoom={chatroom}
+                        theEmail={email} theAvi={avi} />
                 </div>
-            )
-        }
+            </div>
+        )
     }
 }
