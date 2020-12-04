@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 export default function Dashboard(props) {
   const [showPopUp, setShowPopUp] = useState(false);
-  const isLoggedIn = useSelector(state => state.isLoggedIn);
+  const loggedIn = useSelector(state => state.loggedIn);
   const dispatch = useDispatch();
   const chatroom = useSelector(state => state.chatroom);
 
@@ -29,7 +29,7 @@ export default function Dashboard(props) {
     window.location.reload();
   };
 
-  if (isLoggedIn === false) {
+  if (!loggedIn) {
     return (
       <Redirect
         to={{
