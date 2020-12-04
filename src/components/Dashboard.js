@@ -37,7 +37,7 @@ export default function Dashboard(props) {
         }}
       />
     );
-  } else if (chatroom === null || chatroom === false) {
+  } else if (!chatroom) {
     return (
       <div className="dashboard">
         <DashboardHeader logout={logout} />

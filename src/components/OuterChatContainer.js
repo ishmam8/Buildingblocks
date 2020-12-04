@@ -20,14 +20,11 @@ export default function OuterChatContainer(props) {
         window.location.reload();
     };
 
-    if (chatroom === false) {
-        return (
+        return ( !chatroom ? (
             <Redirect to={{
                 pathname: '/dashboard',
             }} />
-        )
-    } else {
-        return (
+        ) : (
             <div className="outoutContainer">
                 <DashboardHeaderChat />
                 <SidebarChat />
@@ -38,5 +35,5 @@ export default function OuterChatContainer(props) {
                 </div>
             </div>
         )
-    }
+        )
 }

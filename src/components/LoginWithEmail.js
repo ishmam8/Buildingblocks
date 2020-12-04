@@ -14,18 +14,7 @@ export default function LoginWithEmail(){
     const [loggedIn, setLoggedIn] = useState(false);
     const [profile, setProfile] = useState({});
     const isLoggedIn = useSelector(state => state.loggedIn);
-    // function constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         email: '',
-    //         password: '',
-    //         loggedIn: false,
-    //         profile: {}
-    //     };
-    //     this.onChangeEmail = this.onChangeEmail.bind(this);
-    //     this.onChangePassword = this.onChangePassword.bind(this);
-    //     this.onSubmit = this.onSubmit.bind(this);
-    // }
+  
 
     function onSubmit(e) {
         e.preventDefault();
@@ -48,18 +37,13 @@ export default function LoginWithEmail(){
                     dispatch({ type: "CHANGE_ID", _id: res.data._id });
                     dispatch({ type: "CHANGE_BIO", bio: res.data.bio });
                     dispatch({ type: "CHANGE_AVI", avi: res.data.avi });
-                    // localStorage.setItem('loggedIn', true);
-                    // localStorage.setItem('username', res.data.username);
-                    // localStorage.setItem('email', res.data.email);
-                    // localStorage.setItem("_id", res.data._id);
-                    // localStorage.setItem("bio", res.data.bio);
                     setLoggedIn(true);
                     setProfile(res.data);
                 }
             });
     }
 
-    if (loggedIn === null || loggedIn === false) {
+    if (!loggedIn) {
         return (
             <div className="logInWithEmaill">
                 <div className="rectangle">

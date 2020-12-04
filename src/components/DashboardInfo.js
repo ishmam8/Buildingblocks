@@ -22,9 +22,10 @@ export default function DashboardInfo() {
         });
     };
 
-    if (editProfile === false) {
-        return (
-            <div>
+    
+        return ( 
+             (!editProfile) ? (
+                <div>
                 <div className="dashboard-info">
                     <button type="button"
                         className="editProfile"
@@ -74,13 +75,12 @@ export default function DashboardInfo() {
                     </table>
                 </div>
             </div>
-        )
-    } else {
-        return (
-            <Redirect to={{
-                pathname: '/editProfile',
-            }} />
-        )
-    }
+            )
 
+                 : (
+                <Redirect to={{
+                    pathname: '/editProfile',
+                }} />
+            )
+        )
 }
