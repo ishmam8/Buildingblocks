@@ -10,7 +10,6 @@ import plant from "../images/plant.svg"
 import background from "../images/landingpagebg.png"
 import { Redirect } from 'react-router-dom'
 import logo from "../images/bblogo.png"
-import ChildComponent from "./ChildComponent";
 import { useSelector } from 'react-redux';
 
 export default function Landing() {
