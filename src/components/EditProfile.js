@@ -3,6 +3,7 @@ import "./css/Dashboard.css";
 import axios from "axios";
 import DashboardHeaderEdit from "./DashboardHeaderEdit";
 import { useSelector, useDispatch } from "react-redux";
+import EditUsername from "./EditUsername";
 
 export default function EditProfile() {
   const [avis, setAvis] = useState([]);
@@ -46,18 +47,14 @@ export default function EditProfile() {
   return (
     <div>
       <DashboardHeaderEdit />
+      
       <div className="avatars">
         <div className="editsFrame">
           <p className="changeLabelInstructions">
             What would you like to modify?
           </p>
           <br />
-          <div className="modifySelection">
-            <b>Change Username</b>
-            <br />
-            <br />
-            Your name that will be shown to others on BuildingBlocks
-          </div>
+           <EditUsername />
           <br />
           <div className="modifySelection">
             <b>Change Email</b>
