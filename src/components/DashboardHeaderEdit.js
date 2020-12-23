@@ -8,11 +8,9 @@ export default function DashboardHeaderEdit(props) {
   const avi = useSelector(state => state.avi);
 
   function logout() {
-    console.log("Test");
     dispatch({type: "CHANGE_LOGGEDIN", loggedIn: false});
-    // localStorage.setItem("loggedIn", "false");
-    localStorage.setItem("chatRoom", "false");
-    localStorage.setItem("lastUser", null);
+    dispatch({type: "CHANGE_CHATROOM", chatroom: false});
+    dispatch({type: "CHANGE_LASTUSER", lastUser: null});
     window.location.reload();
   }
 

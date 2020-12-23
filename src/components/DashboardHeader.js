@@ -14,9 +14,7 @@ export default function DashboardHeader() {
     dispatch({type: "CHANGE_ISLOGGEDIN", isLoggedIn: false});
     dispatch({type: "CHANGE_CHATROOM", chatroom: false});
     dispatch({type: "CHANGE_LASTUSER", lastUser: null});
-    // localStorage.setItem("loggedIn", "false");
-    // localStorage.setItem("chatRoom", "false");
-    // localStorage.setItem("lastUser", null);
+
     window.location.reload();
   };
 

@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 export default function Dashboard(props) {
   const [showPopUp, setShowPopUp] = useState(false);
-  const isLoggedIn = useSelector(state => state.isLoggedIn);
+  const loggedIn = useSelector(state => state.loggedIn);
   const dispatch = useDispatch();
   const chatroom = useSelector(state => state.chatroom);
 
@@ -18,18 +18,11 @@ export default function Dashboard(props) {
     dispatch({type: "CHANGE_EMAIL", email: null});
     dispatch({type: "CHANGE_AVI", avi: null});
     dispatch({type: "CHANGE_TYPE", myType: null});
-    dispatch({type: "CHANGE_LOGGEDIN", isLoggedIn: false});
-
-    // localStorage.setItem('loggedIn', null);
-    // localStorage.setItem('username', null);
-    // localStorage.setItem('email', null);
-    // localStorage.setItem('avi', null);
-    // localStorage.setItem('type', null);
-    // localStorage.setItem("loggedIn", "false");
+    dispatch({type: "CHANGE_LOGGEDIN", loggedIn: false});
     window.location.reload();
   };
 
-  if (isLoggedIn === false) {
+  if (!loggedIn) {
     return (
       <Redirect
         to={{
@@ -37,7 +30,7 @@ export default function Dashboard(props) {
         }}
       />
     );
-  } else if (chatroom === null || chatroom === false) {
+  } else if (!chatroom) {
     return (
       <div className="dashboard">
         <DashboardHeader logout={logout} />

@@ -7,7 +7,7 @@ import { useSelector, useDispatch } from "react-redux";
 
 export default function DashboardHeaderChat(props) {
   const avi = useSelector(state => state.avi);
-  const lastUser = useSelector(state => state.lastUser);
+  const chatroom = useSelector(state => state.chatroom);
   const dispatch = useDispatch();
 
   function logout(){
@@ -29,7 +29,7 @@ export default function DashboardHeaderChat(props) {
       <button className="logoutDashboard" onClick={logout}>
         Logout
                 </button>
-      <p className="chatRoomName">{lastUser}</p>
+      <p className="chatRoomName">{chatroom}</p>
     </div>
   );
 }

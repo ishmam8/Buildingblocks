@@ -58,6 +58,16 @@ const Reducer = (state = initState, action) => {
         ...state,
         lastUser: action.lastUser,
       };
+    case "CHANGE_USER_ALL":
+      return {
+        ...state,
+        username: action.user.username,
+        email: action.user.email,
+        _id: action.user._id,
+        bio: action.user.bio,
+        avi: action.user.avi,
+        loggedIn: action.user.loggedIn,
+      };
     // you can have as many case statements as you need
 
     default:

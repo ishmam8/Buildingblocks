@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import "./css/Sidebar.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 export default function ChatRoomLink(props) {
     const [clicked, setClicked] = useState(false);
     const dispatch = useDispatch();
+    const chatroom = useSelector(state => state.chatroom);
 
     function joinChat() {
         dispatch({type: "CHANGE_CHATROOM", chatroom: props.roomName});
@@ -13,15 +14,12 @@ export default function ChatRoomLink(props) {
     };
 
     function handleClick(){
-        if (clicked) {
-            setClicked(false);
-        } else {
-            setClicked(true);
-        }
+        setClicked(!clicked);
+
     };
 
     { console.log(props) }
-    if (clicked === false) {
+    if (!clicked) {
         return (
             <div className="chat-room-link" onClick={handleClick}>
                 {props.roomName}
@@ -58,7 +56,7 @@ export default function ChatRoomLink(props) {
                     <div className="chat-users-panel">{chatRoomUsers}</div>
                 </div>
             )
-        } else if (localStorage.getItem("chatRoom" === props.roomName)) {
+        } else if (chatroom === props.roomName) {
             return (
                 <div className="chat-room-link-clicked" onClick={handleClick}>
                     {props.roomName}
