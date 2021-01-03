@@ -4,6 +4,9 @@ import axios from "axios";
 import DashboardHeaderEdit from "./DashboardHeaderEdit";
 import { useSelector, useDispatch } from "react-redux";
 import EditUsername from "./EditUsername";
+import EditEmail from "./EditEmail";
+import EditPassword from "./EditPassword";
+import EditBio from "./EditBio";
 
 export default function EditProfile() {
   const [avis, setAvis] = useState([]);
@@ -56,26 +59,11 @@ export default function EditProfile() {
           <br />
            <EditUsername />
           <br />
-          <div className="modifySelection">
-            <b>Change Email</b>
-            <br />
-            <br />
-            The email associated with your BuildingBlocks account
-          </div>
+           <EditEmail />
           <br />
-          <div className="modifySelection">
-            <b>Change Password</b>
-            <br />
-            <br />
-            The password you use to log-in to your BuildingBlocks account
-          </div>
+           <EditPassword />
           <br />
-          <div className="modifySelection">
-            <b>Change Bio</b>
-            <br />
-            <br />A summary of yourself that will help others get to know you on
-            BuildingBlocks
-          </div>
+          <EditBio />
         </div>
       </div>
     </div>
