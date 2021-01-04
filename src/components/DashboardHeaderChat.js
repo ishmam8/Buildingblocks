@@ -4,23 +4,25 @@ import "./css/Chat.css";
 import logo from "../images/minlogo.png";
 import { useSelector, useDispatch } from "react-redux";
 
-
 export default function DashboardHeaderChat(props) {
-  const avi = useSelector(state => state.avi);
-  const chatroom = useSelector(state => state.chatroom);
+  const avi = useSelector((state) => state.avi);
+  const chatroom = useSelector((state) => state.chatroom);
   const dispatch = useDispatch();
 
-  function logout(){
+  function logout() {
     console.log("Test");
-    dispatch({type:"CHANGE_LOGGEDIN", loggedIn: false});
+    dispatch({ type: "CHANGE_LOGGEDIN", loggedIn: false });
     window.location.reload();
-  };
+  }
+
+  function returnToDashboard() {
+    dispatch({ type: "CHANGE_CHATROOM", chatroom: false });
+    window.location.reload();
+  }
 
   return (
     <div className="dashboard-header">
-      <img src={logo}
-        className="minlogo"
-      />
+      <img src={logo} className="minlogo" onClick={returnToDashboard} />
       <img
         alt="User Avatar"
         className="header-avi"
@@ -28,7 +30,7 @@ export default function DashboardHeaderChat(props) {
       />
       <button className="logoutDashboard" onClick={logout}>
         Logout
-                </button>
+      </button>
       <p className="chatRoomName">{chatroom}</p>
     </div>
   );
