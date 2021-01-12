@@ -1,8 +1,34 @@
 import React from 'react'
 import { Button, Header, Image, Modal } from 'semantic-ui-react'
+import { Input } from 'semantic-ui-react'
+import { useSelector, useDispatch } from 'react-redux'
+import axios from "axios"
 
 function EditEmail() {
   const [open, setOpen] = React.useState(false)
+  const [email, setEmail] = React.useState("")
+  const userid = useSelector(state => state._id)
+  const dispatch = useDispatch()
+
+  function onSubmit(e) {
+    e.preventDefault();
+
+    const newEmail = {
+      email: email,
+    };
+
+    setEmail("");
+    
+    axios.post("http://localhost:5000/users/update/"+userid, newEmail).then((res) => {
+      if (res.data === "User updated!") {
+        console.log(res.data);
+        dispatch({type: "CHANGE_EMAIL", email: email})
+      } else {
+        // useAlert("Sorry, can you please try again?");
+        console.log(res.data);
+      }
+    });
+  }
 
   return (
     <Modal
@@ -10,34 +36,37 @@ function EditEmail() {
       onOpen={() => setOpen(true)}
       open={open}
       trigger={ <div className="modifySelection">
-        <b>Change Email</b>
-        <br />
-        <br />
-        The email associated with your BuildingBlocks account
-      </div>
-      }
+      <b>Change Email</b>
+      <br />
+      <br />
+      The email associated with your BuildingBlocks account
+    </div>}
     >
-      <Modal.Header>Select a Photo</Modal.Header>
-      <Modal.Content image>
-        <Image size='medium' src='/images/avatar/large/rachel.png' wrapped />
+      <Modal.Header>Change email</Modal.Header>
+      <Modal.Content>
         <Modal.Description>
-          <Header>Default Profile Image</Header>
-          <p>
-            We've found the following gravatar image associated with your e-mail
-            address.
-          </p>
-          <p>Is it okay to use this photo?</p>
+          {/* <Header>Enter new email</Header> */}
+          <form onSubmit={onSubmit}>
+            <input 
+               type="text" 
+               placeholder="New Email"
+               name = "Email"
+               required
+               onChange={(e) => setEmail(e.target.value)}
+               value={email}
+               /> 
+          </form>
         </Modal.Description>
       </Modal.Content>
       <Modal.Actions>
         <Button color='black' onClick={() => setOpen(false)}>
-          Nope
+          Return
         </Button>
         <Button
-          content="Yep, that's me"
+          content="Save"
           labelPosition='right'
           icon='checkmark'
-          onClick={() => setOpen(false)}
+          onClick={onSubmit}
           positive
         />
       </Modal.Actions>
@@ -46,3 +75,4 @@ function EditEmail() {
 }
 
 export default EditEmail
+

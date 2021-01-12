@@ -48,13 +48,18 @@ router.route("/login").post(async (req, res) => {
 router.route("/update/:id").post((req, res) => {
     User.findById(req.params.id)
         .then((user) => {
-            user.username = req.body.username;
-            user.password = req.body.password;
-            user.email = req.body.email;
-            user.avi = Number(req.body.avi);
-            user.chatrooms = req.body.chatrooms;
-            user.bio = req.body.bio;
-
+          if(req.body.username) { user.username= req.body.username; }
+          if(req.body.password) { user.password= req.body.password; }
+          if(req.body.email) { user.email= req.body.email; }
+          if(req.body.avi) { user.avi= req.body.avi; }
+          if(req.body.chatrooms) { user.chatrooms= req.body.chatrooms; }
+          if(req.body.bio) { user.bio= req.body.bio; }
+            // user.username = req.body.username;
+            // user.password = req.body.password;
+            // user.email = req.body.email;
+            // user.avi = Number(req.body.avi);
+            // user.chatrooms = req.body.chatrooms;
+            // user.bio = req.body.bio;
             user
                 .save()
                 .then(() => res.json("User updated!"))
