@@ -2,6 +2,7 @@ const Bcrypt = require("bcryptjs");
 const router = require("express").Router();
 let { User, userSchema, Chatroom, Message } = require("../models/users.model");
 const Mongoose = require("mongoose");
+const { useRef } = require("react");
 
 router.route("/").get((req, res) => {
   User.find()
@@ -45,11 +46,20 @@ router.route("/login").post(async (req, res) => {
   });
 });
 
-router.route("/update/:id").post((req, res) => {
+router.route("/update/:id").post(async (req, res) => {
+    const salt = 10;
     User.findById(req.params.id)
-        .then((user) => {
+        .then(async (user) => {
           if(req.body.username) { user.username= req.body.username; }
-          if(req.body.password) { user.password= req.body.password; }
+          if(req.body.password) {
+            await Bcrypt.compare(req.body.password, user.password, async (err, result) => {
+              if (err){
+                res.status(400).json("Error: Invalid Current Password");
+              }
+              user.password= await Bcrypt.hash(req.body.password, salt);
+            });
+            user.password= await Bcrypt.hash(req.body.password, salt);
+          }
           if(req.body.email) { user.email= req.body.email; }
           if(req.body.avi) { user.avi= req.body.avi; }
           if(req.body.chatrooms) { user.chatrooms= req.body.chatrooms; }
@@ -62,7 +72,7 @@ router.route("/update/:id").post((req, res) => {
             // user.bio = req.body.bio;
             user
                 .save()
-                .then(() => res.json("User updated!"))
+                .then(() => res.json(user))
                 .catch((err) => res.status(400).json("Error: " + err));
         })
         .catch((err) => res.status(400).json("Error: " + err));
