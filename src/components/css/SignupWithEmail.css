@@ -122,7 +122,7 @@
     width: 26vw;
     height: 0px;
     right: 10%;
-    top: 23%;
+    top: 24%;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
@@ -164,7 +164,7 @@ input {
     width: 26vw;
     height: 0px;
     right: 10%;
-
+    top: 51%;
     border: 1px solid #000000;
     transform: rotate(0.19deg);
 }
@@ -242,7 +242,7 @@ input {
 .App-name-login {
     float:left;
     font-weight: 500;
-    font-size:80%;
+    font-size:110% !important;
     margin-left:20px;
     margin-top:20px;
 }
