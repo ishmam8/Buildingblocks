@@ -9,7 +9,7 @@ export default function DashboardHeaderEdit(props) {
 
   function logout() {
     dispatch({type: "CHANGE_LOGGEDIN", loggedIn: false});
-    dispatch({type: "CHANGE_CHATROOM", chatroom: false});
+    dispatch({type: "CHANGE_CHATROOMNAME", chatroomName: ""});
     dispatch({type: "CHANGE_LASTUSER", lastUser: null});
     window.location.reload();
   }

@@ -12,7 +12,7 @@ export default function DashboardHeader() {
     console.log("Test");
 
     dispatch({type: "CHANGE_ISLOGGEDIN", isLoggedIn: false});
-    dispatch({type: "CHANGE_CHATROOM", chatroom: false});
+    dispatch({type: "CHANGE_CHATROOMNAME", chatroomName: ""});
     dispatch({type: "CHANGE_LASTUSER", lastUser: null});
 
     window.location.reload();

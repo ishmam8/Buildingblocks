@@ -5,7 +5,8 @@ const initState = {
   _id: "",
   bio: "",
   avi: "",
-  chatroom: null,
+  chatroomName: "",
+  chatroomId: "",
   lastUser: null,
 };
 
@@ -47,10 +48,16 @@ const Reducer = (state = initState, action) => {
         avi: action.avi,
       };
 
-    case "CHANGE_CHATROOM":
+    case "CHANGE_CHATROOMNAME":
       return {
         ...state,
-        chatroom: action.chatroom,
+        chatroomName: action.chatroomName,
+      };
+
+    case "CHANGE_CHATROOMID":
+      return {
+        ...state,
+        chatroomId: action.chatroomId,
       };
 
     case "CHANGE_LASTUSER":

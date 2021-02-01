@@ -2,7 +2,7 @@ import React from 'react';
 
 const TextContainer = ({ users }) => {
     const usersArray = Array.from(users);
-    console.log(usersArray);
+    // console.log(usersArray);
     return (
         <div className="textContainer">
             <h1 className="activeList">Currently Active Users</h1>

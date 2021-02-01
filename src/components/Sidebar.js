@@ -63,7 +63,7 @@ export default function SideBar(props){
   let chatRoomsComponents = [];
   if (typeof chatRooms !== "undefined" && chatRooms !== null) {
     chatRoomsComponents = chatRooms.map((room, i) =>
-      <ChatRoomLink roomName={room.name} users={room.users} key={i} />
+      <ChatRoomLink chatroom={room} key={i} />
     );
   }
 

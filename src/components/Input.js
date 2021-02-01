@@ -6,7 +6,7 @@ export default function Input({ message, setMessage, sendMessage }) {
 
   function disconnect(){
       dispatch({type: "CHANGE_LASTUSER", lastUser: null});
-      dispatch({type: "CHANGE_CHATROOM", chatroom: false});
+      dispatch({type: "CHANGE_CHATROOMNAME", chatroomName: ""});
     window.location.reload();
   }
 

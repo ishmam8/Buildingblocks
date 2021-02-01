@@ -80,9 +80,8 @@ router.route("/getuser/:id").get((req, res) => {
 //      then added to the users list of chatrooms
 
 router.route("/createchatroom/:id").post((req, res) => {
+  const chatroomToAdd = req.body.chatroomToAdd;
   User.findById(req.params.id).then((user) => {
-    const chatroomToAdd = req.body.chatroomToAdd;
-    console.log(chatroomToAdd);
     const name = chatroomToAdd.name;
     const users = [user._id];
     const admin = user._id;
@@ -113,7 +112,8 @@ router.route("/createchatroom/:id").post((req, res) => {
           .catch((err) => res.status(400).json("Error: " + err));
       })
       .catch((err) => res.status(400).json("Error: " + err));
-  });
+  })
+  .catch((err) => res.status(400).json("Error: " + err));
 });
 
 // Adds given message to chatroom specified in the params
@@ -142,9 +142,10 @@ router.route("/addmessage/:chatroomid").post((req, res) => {
 });
 
 router.route("/getchatroom/:id").get((req, res) => {
+  console.log("Hello World!");
   Chatroom.findById(req.params.id)
     .then((chatroom) => res.json(chatroom))
-    .catch((err) => res.status(400).json("Error: " + err));
+    .catch((err) => res.status(400).json("Hello"));
 });
 
 router.route('/update/:id').post((req, res) => {

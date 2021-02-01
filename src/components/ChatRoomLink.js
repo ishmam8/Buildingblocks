@@ -8,7 +8,8 @@ export default function ChatRoomLink(props) {
     const chatroom = useSelector(state => state.chatroom);
 
     function joinChat() {
-        dispatch({type: "CHANGE_CHATROOM", chatroom: props.roomName});
+        dispatch({type: "CHANGE_CHATROOMNAME", chatroomName: props.chatroom.name});
+        dispatch({type: "CHANGE_CHATROOMID", chatroomId: props.chatroom.id});
         // localStorage.setItem("chatRoom", props.roomName);
         window.location.reload();
     };
@@ -18,28 +19,28 @@ export default function ChatRoomLink(props) {
 
     };
 
-    { console.log(props) }
+    // { console.log(props) }
     if (!clicked) {
         return (
             <div className="chat-room-link" onClick={handleClick}>
-                {props.roomName}
+                {props.chatroom.name}
                 <button className="chat-join-button" onClick={joinChat}>JOIN</button>
             </div>
         );
     } else {
-        let chatRoomUsers = props.users.map((user, i) => {
+        let chatRoomUsers = props.chatroom.users.map((user, i) => {
             if (i !== 2) {
                 return (<div key={i} className="chat-room-link-user">{user.name}</div>)
             } else {
                 return (<div className="chat-room-link-user">{user.name} +
-                    {props.users.length - 3} others</div>)
+                    {props.chatroom.users.length - 3} others</div>)
             }
         });
         if (chatRoomUsers.length === 0) {
             return (
                 <div className="chat-room-link-clicked" onClick={handleClick}>
-                    {console.log(props.roomName)}
-                    {props.roomName}
+                    {/* {console.log(props.roomName)} */}
+                    {props.chatroom.name}
                     <button className="chat-join-button">JOIN</button>
                     <br />
                     <div className="chat-users-panel">
@@ -50,7 +51,7 @@ export default function ChatRoomLink(props) {
         } else if (chatRoomUsers.length < 3) {
             return (
                 <div className="chat-room-link-clicked" onClick={handleClick}>
-                    {props.roomName}
+                    {props.chatroom.name}
                     <button className="chat-join-button">JOIN</button>
                     <br />
                     <div className="chat-users-panel">{chatRoomUsers}</div>
@@ -59,7 +60,7 @@ export default function ChatRoomLink(props) {
         } else if (chatroom === props.roomName) {
             return (
                 <div className="chat-room-link-clicked" onClick={handleClick}>
-                    {props.roomName}
+                    {props.chatroom.name}
                     <button className="chat-join-button">DISCONNECT</button>
                     <br />
                     <div className="chat-users-panel">{chatRoomUsers[0]}</div>
@@ -70,7 +71,7 @@ export default function ChatRoomLink(props) {
         } else {
             return (
                 <div className="chat-room-link-clicked" onClick={handleClick}>
-                    {props.roomName}
+                    {props.chatroom.name}
                     <button className="chat-join-button">JOIN</button>
                     <br />
                     <div className="chat-users-panel">{chatRoomUsers[0]}</div>
