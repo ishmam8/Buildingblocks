@@ -1,6 +1,8 @@
 const Bcrypt = require("bcryptjs");
 const router = require("express").Router();
-let { User, userSchema, Chatroom, Message } = require("../models/users.model");
+const User = require("../models/users.model");
+const Message = require("../models/messages.model");
+const Chatroom = require("../models/chatrooms.model");
 const Mongoose = require("mongoose");
 
 router.route("/").get((req, res) => {
@@ -142,8 +144,7 @@ router.route("/addmessage/:chatroomid").post((req, res) => {
 });
 
 router.route("/getchatroom/:id").get((req, res) => {
-  console.log("Hello World!");
-  Chatroom.findById(req.params.id)
+  Chatroom.findById(req.params.id).populate("messages")
     .then((chatroom) => res.json(chatroom))
     .catch((err) => res.status(400).json("Hello"));
 });

@@ -4,7 +4,9 @@ const mongoose = require('mongoose');
 const socketio = require('socket.io');
 
 const { addUser, removeUser, getUser, getUsersInRoom, getUserNamesInRoom } = require('./chatUsers');
-const { User, Chatroom, Message } = require("./models/users.model");
+const User = require("./models/users.model");
+const Message = require("./models/messages.model");
+const Chatroom = require("./models/chatrooms.model")
 
 
 require('dotenv').config();
@@ -80,6 +82,8 @@ io.on('connection', (socket) => {
 
         const newMessage = new Message({
             user: userDB,
+            username: userDB.username,
+            userAvi: userDB.avi,
             text: message,
         })
         await newMessage.save();

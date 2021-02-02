@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 import Input from "./Input";
 import Messages from "./Messages";
-import Message from './Message';
-import './css/Chat.css';
-import TextContainer from './TextContainer';
+import Message from "./Message";
+import "./css/Chat.css";
+import TextContainer from "./TextContainer";
 import axios from "axios";
 
 let socket;
@@ -15,25 +15,33 @@ const Chat = ({ theName, theRoomName, theRoomId, theEmail, theAvi }) => {
   const [roomId, setRoomId] = useState(theRoomId);
   const [email, setEmail] = useState(theEmail);
   const [avi, setAvi] = useState(theAvi);
-  const [users, setUsers] = useState('');
+  const [users, setUsers] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const ENDPOINT = "localhost:5000";
 
   useEffect(() => {
-    console.log("localhost:5000/users/getchatroom/" + roomId);
-    axios.get("http://localhost:5000/users/getchatroom/" + roomId)
-      .then(res => {
-        res.data.messages.map(message =>{
-          message.user.name = message.user.username;
-          setMessages(prevMessages => [...prevMessages, <Message message={{text: message.text, user: message.user}} name={name} />]);
-        })
+    axios
+      .get("http://localhost:5000/users/getchatroom/" + roomId)
+      .then((res) => {
+        console.log(res.data);
+        res.data.messages.map((m) => {
+          setMessages((prevMessages) => [
+            ...prevMessages,
+            <Message
+              message={{
+                text: m.text,
+                user: { name: m.username, avi: m.userAvi },
+              }}
+              name={name}
+            />,
+          ]);
+        });
       })
-      .catch(err => {
-
+      .catch((err) => {
         console.log(err);
       });
-  },[]);
+  }, []);
 
   useEffect(() => {
     socket = io(ENDPOINT);
@@ -44,7 +52,7 @@ const Chat = ({ theName, theRoomName, theRoomId, theEmail, theAvi }) => {
       socket.emit("disconnect");
       socket.off();
     };
-  }, [ENDPOINT, name, roomName, roomId, email, avi]); 
+  }, [ENDPOINT, name, roomName, roomId, email, avi]);
 
   useEffect(() => {
     socket.on("message", (message) => {
@@ -67,7 +75,7 @@ const Chat = ({ theName, theRoomName, theRoomId, theEmail, theAvi }) => {
 
   return (
     <div className="outerContainer">
-      <TextContainer users={ users }/>
+      <TextContainer users={users} />
       <div className="container">
         <Messages messages={messages} />
         <Input
