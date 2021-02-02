@@ -86,7 +86,7 @@
     width: 26vw;
     height: 0px;
     right: 10%;
-    top: 38%;
+    top: 25%;
     border: 0.5vw solid #000000;
     transform: rotate(0.19deg);
 }
@@ -201,7 +201,7 @@ input {
 .App-name-login {
     float:left;
     font-weight: 500;
-    font-size:80%;
+    font-size:110% !important;
     margin-left:20px;
     margin-top:20px;
 }

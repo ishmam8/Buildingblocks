@@ -12,7 +12,9 @@
 .sidebar-title {
     color: #E9A800;
     font-weight:500;
-    margin-left:15px;
+    margin-top:15px !important; 
+    margin-left:15px; 
+    margin-bottom:0px;
 }
 
 .chat-room-panel {

@@ -36,7 +36,7 @@ export default function Landing() {
                 </div>
                 <div className="introGraphic">
                     <div className="slogan">
-                        Connect to <br /> your campus <br />
+                        Connect to <br /> <br /> <br /> your campus <br /> <br />
                         <div className="slogansub">Online peer mentoring for university students</div>
                         <a href="./signup">
                             <button className="getStarted">
