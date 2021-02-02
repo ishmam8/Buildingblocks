@@ -3,20 +3,8 @@ import "./css/Dashboard.css";
 import logo from "../images/minlogo.png";
 import { useSelector, useDispatch } from 'react-redux';
 
-
-
-export default function DashboardHeader() {
-  const dispatch = useDispatch();
-
-  function logout() {
-    console.log("Test");
-
-    dispatch({type: "CHANGE_ISLOGGEDIN", isLoggedIn: false});
-    dispatch({type: "CHANGE_CHATROOMNAME", chatroomName: ""});
-    dispatch({type: "CHANGE_LASTUSER", lastUser: null});
-
-    window.location.reload();
-  };
+export default function DashboardHeader(props) {
+  const logout = props.logout;
 
   const avi = useSelector(state => state.avi);
   return (
