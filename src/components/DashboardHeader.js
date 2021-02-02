@@ -5,18 +5,8 @@ import { useSelector, useDispatch } from 'react-redux';
 
 
 
-export default function DashboardHeader() {
-  const dispatch = useDispatch();
-
-  function logout() {
-    console.log("Test");
-
-    dispatch({type: "CHANGE_ISLOGGEDIN", isLoggedIn: false});
-    dispatch({type: "CHANGE_CHATROOM", chatroom: false});
-    dispatch({type: "CHANGE_LASTUSER", lastUser: null});
-
-    window.location.reload();
-  };
+export default function DashboardHeader(props) {
+  const logout = props.logout;
 
   const avi = useSelector(state => state.avi);
   return (
