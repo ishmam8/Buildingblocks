@@ -32,6 +32,9 @@ connection.once('open', () => {
 const usersRouter = require('./routes/users');
 app.use('/users', usersRouter);
 
+const chatroomRouter = require('./routes/chatroom');
+app.use('/chatroom', chatroomRouter);
+
 //To run server, change directory to backend, then type nodemon server to run the server
 
 const server = app.listen(port, () => {

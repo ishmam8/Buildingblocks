@@ -22,7 +22,7 @@ const Chat = ({ theName, theRoomName, theRoomId, theEmail, theAvi }) => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/users/getchatroom/" + roomId)
+      .get("http://localhost:5000/chatroom/getchatroom/" + roomId)
       .then((res) => {
         console.log(res.data);
         res.data.messages.map((m) => {
