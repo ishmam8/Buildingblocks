@@ -72,7 +72,7 @@ router.route("/getchatroom/:id").get((req, res) => {
   Chatroom.findById(req.params.id)
     .populate("messages")
     .then((chatroom) => res.json(chatroom))
-    .catch((err) => res.status(400).json("Hello"));
+    .catch((err) => res.status(400).json("Error: " + err));
 });
 
 router.route("/update/:id").post((req, res) => {
