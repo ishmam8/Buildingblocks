@@ -23,7 +23,7 @@ export default function DashboardHeaderChat(props) {
 
   return (
     <div className="dashboard-header">
-      <img src={logo} className="minlogo" onClick={returnToDashboard} />
+      <img src={logo} className="minlogo" />
       <img
         alt="User Avatar"
         className="header-avi"
