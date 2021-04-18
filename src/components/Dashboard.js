@@ -10,7 +10,7 @@ export default function Dashboard(props) {
   const [showPopUp, setShowPopUp] = useState(false);
   const loggedIn = useSelector(state => state.loggedIn);
   const dispatch = useDispatch();
-  const chatroom = useSelector(state => state.chatroom);
+  const chatroomName = useSelector(state => state.chatroomName);
 
   function logout() {
     console.log("Test");
@@ -32,7 +32,7 @@ export default function Dashboard(props) {
         }}
       />
     );
-  } else if (!chatroom) {
+  } else if (!chatroomName) {
     return (
       <div className="dashboard">
         <DashboardHeader logout={logout} />

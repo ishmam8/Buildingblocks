@@ -15,27 +15,5 @@ const userSchema = new Schema({
 }, {
   timestamps: true,
 });
-
-const messageSchema = new Schema({
-  user: userSchema,
-  text: { type: String },
-  created_at: { type: Date, default: Date.now }
-});
-
-const chatroomSchema = new Schema({
-  name: {type: String, unique: false},
-  users: [String],
-  admin: {type: String},
-  mentors: [String],
-  messages: [messageSchema]
-});
-
-
  
-const User = mongoose.model('User', userSchema);
-const Chatroom = mongoose.model('Chatroom', chatroomSchema);
-const Message = mongoose.model('Message', messageSchema);
-
-
-
-module.exports = { User, Chatroom, Message };
+module.exports = mongoose.model('user', userSchema);

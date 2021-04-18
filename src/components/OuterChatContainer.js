@@ -11,10 +11,18 @@ export default function OuterChatContainer(props) {
   const username = useSelector((state) => state.username);
   const email = useSelector((state) => state.email);
   const avi = useSelector((state) => state.avi);
-  const chatroom = useSelector((state) => state.chatroom);
+  const chatroomName = useSelector((state) => state.chatroomName);
+  const chatroomId = useSelector((state) => state.chatroomId);
   const dispatch = useDispatch();
 
-  return !chatroom ? (
+  function logout(e) {
+    dispatch({ type: "CHANGE_LOGGEDIN", loggedIn: false });
+    dispatch({ type: "CHANGE_CHATROOMNAME", chatroomNAME: "" });
+    dispatch({ type: "CHANGE_CHATROOMID", chatroomId: "" });
+    window.location.reload();
+  }
+
+  return !chatroomName ? (
     <Redirect
       to={{
         pathname: "/dashboard",
@@ -29,7 +37,8 @@ export default function OuterChatContainer(props) {
         <Chat
           className="chatRoom"
           theName={username}
-          theRoom={chatroom}
+          theRoomName={chatroomName}
+          theRoomId={chatroomId}
           theEmail={email}
           theAvi={avi}
         />

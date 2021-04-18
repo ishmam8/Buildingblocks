@@ -17,9 +17,7 @@ export default function DashboardInfo() {
     };
 
     function _editProfile(){
-        this.setState({
-            editProfile: true,
-        });
+       setEditProfile(true);
     };
 
     
