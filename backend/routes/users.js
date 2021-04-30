@@ -2,6 +2,7 @@ const Bcrypt = require("bcryptjs");
 const router = require("express").Router();
 const User = require("../models/users.model");
 const jwt = require("jsonwebtoken"); // for hashing and sigining the tokens
+const authenticateToken = require("../middleware/auth");
 // const Message = require("../models/messages.model");
 // const Chatroom = require("../models/chatrooms.model");
 // const Mongoose = require("mongoose");
@@ -49,6 +50,7 @@ router.route("/login").post(async (req, res) => {
   try {
     const isMatch = await Bcrypt.compare(req.body.password, user.password);
     if (!isMatch) {
+      console.log(user);
       return res.status(400).json({ msg: "Invalid Credentials" });
     }
 
@@ -60,7 +62,7 @@ router.route("/login").post(async (req, res) => {
   }
 });
 
-router.route("/update/:id").post(async (req, res) => {
+router.route("/update/:id").post(authenticateToken, async (req, res) => {
   const salt = 10;
   User.findById(req.params.id)
     .then(async (user) => {

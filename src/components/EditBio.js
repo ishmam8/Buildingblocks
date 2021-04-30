@@ -3,6 +3,9 @@ import { Button, Header, Image, Modal } from 'semantic-ui-react'
 import { Input } from 'semantic-ui-react'
 import { useSelector, useDispatch } from 'react-redux'
 import axios from "axios"
+import Cookies from 'universal-cookie'
+
+const cookies = new Cookies();
 
 function EditBio() {
   const [open, setOpen] = React.useState(false)
@@ -12,14 +15,21 @@ function EditBio() {
 
   function onSubmit(e) {
     e.preventDefault();
-
+    const token = cookies.get('token');
+    
     const newBio = {
       bio: bio,
     };
 
+    const authToken = {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    }
+
     setBio("");
     
-    axios.post("http://localhost:5000/users/update/"+userid, newBio).then((res) => {
+    axios.post("http://localhost:5000/users/update/"+userid, newBio, authToken).then((res) => {
       if (res.data === "User updated!") {
         console.log(res.data);
         dispatch({type: "CHANGE_BIO", bio: bio})
@@ -48,13 +58,13 @@ function EditBio() {
           {/* <Header>Enter new username</Header> */}
           <form onSubmit={onSubmit}>
             <input 
-               type="text" 
-               placeholder="New bio"
-               name = "bio"
-               required
-               onChange={(e) => setBio(e.target.value)}
-               value={bio}
-               /> 
+              type="text" 
+              placeholder="New bio"
+              name = "bio"
+              required
+              onChange={(e) => setBio(e.target.value)}
+              value={bio}
+            /> 
           </form>
         </Modal.Description>
       </Modal.Content>

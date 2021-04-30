@@ -6,6 +6,7 @@ import { useAlert } from "react-alert";
 import { useDispatch } from "react-redux";
 import Login from "./Login";
 import { useSelector } from "react-redux";
+import Cookies from 'universal-cookie';
 
 export default function LoginWithEmail() {
   const dispatch = useDispatch();
@@ -14,6 +15,8 @@ export default function LoginWithEmail() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [profile, setProfile] = useState({});
   const isLoggedIn = useSelector((state) => state.loggedIn);
+
+  const cookies = new Cookies();
 
   function onSubmit(e) {
     e.preventDefault();
@@ -42,7 +45,8 @@ export default function LoginWithEmail() {
               avi: res.data.user.avi,
             },
           });
-          localStorage.setItem("token", res.data.token);
+          cookies.set('token', res.data.token, { path: '/' });
+          // localStorage.setItem("token", res.data.token);
           setLoggedIn(true);
           setProfile(res.data);
         }
