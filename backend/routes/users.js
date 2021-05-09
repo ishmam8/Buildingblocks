@@ -3,10 +3,22 @@ const router = require("express").Router();
 const User = require("../models/users.model");
 const jwt = require("jsonwebtoken"); // for hashing and sigining the tokens
 const authenticateToken = require("../middleware/auth");
+const cors = require('cors');
+const express = require('express');
+const app = express()
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+const corsOptions = {
+  credentials: true,
+  origin: 'http://localhost:3000'
+};
+
+
 // const Message = require("../models/messages.model");
 // const Chatroom = require("../models/chatrooms.model");
 // const Mongoose = require("mongoose");
 // const { useRef } = require("react");
+app.use(cors(corsOptions));
 
 router.route("/").get((req, res) => {
   User.find()
@@ -39,12 +51,14 @@ router.route("/add").post(async (req, res) => {
 });
 
 async function generateAccessToken(user) {
-  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 360000});
+  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15s'});
 }
 
 router.route("/login").post(async (req, res) => {
+  console.log("login");
   const user = await User.findOne({ email: req.body.email });
   if (user === null) {
+    console.log("user not found");
     return res.status(400).send("Cannot find user");
   }
   try {
@@ -56,11 +70,41 @@ router.route("/login").post(async (req, res) => {
 
     const payload = { user: { id: user.id } };
     const token = await generateAccessToken(payload);
-    res.json({token, user});
+    const refreshToken = jwt.sign(user,process.env.REFRESH_TOKEN_SECRET);
+    console.log(token);
+    res.cookie('refreshtoken',refreshToken,{ sameSite:'strict',
+      path: '/',
+      httpOnly: true });
+    res.cookie('token',token,{ sameSite:'strict',
+      path: '/',
+      httpOnly: true });
+    res.json({user});
   } catch {
+    console.log("exception")
     res.status(500).send();
   }
 });
+
+// router.route("/logout").post(async (req, res) => {
+//   const user = await User.findOne({ email: req.body.email });
+//   if (user === null) {
+//     return res.status(400).send("Cannot find user");
+//   }
+//   try {
+//     const isMatch = await Bcrypt.compare(req.body.password, user.password);
+//     if (!isMatch) {
+//       console.log(user);
+//       return res.status(400).json({ msg: "Invalid Credentials" });
+//     }
+
+//     const payload = { user: { id: user.id } };
+//     const token = await generateAccessToken(payload);
+//     res.cookie('refreshtoken',token,{ httpOnly: true });
+//     res.json({token});
+//   } catch {
+//     res.status(500).send();
+//   }
+// });
 
 router.route("/update/:id").post(authenticateToken, async (req, res) => {
   const salt = 10;
@@ -94,6 +138,7 @@ router.route("/update/:id").post(authenticateToken, async (req, res) => {
       if (req.body.bio) {
         user.bio = req.body.bio;
       }
+      console.log("info saved");
       // user.username = req.body.username;
       // user.password = req.body.password;
       // user.email = req.body.email;

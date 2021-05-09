@@ -15,20 +15,24 @@ export default function LoginWithEmail() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [profile, setProfile] = useState({});
   const isLoggedIn = useSelector((state) => state.loggedIn);
-
+  axios.defaults.withCredentials = true;
   const cookies = new Cookies();
+  const instance = axios.create({
+    withCredentials: true
+  })
 
   function onSubmit(e) {
     e.preventDefault();
     const userCredentials = {
       email: email,
-      password: password,
+      password: password
     };
     setEmail("");
     setPassword("");
 
-    axios
-      .post("http://localhost:5000/users/login", userCredentials)
+  
+    instance
+      .post("http://localhost:5000/users/login", userCredentials, { withCredentials: true })
       .then((res) => {
         if (res.data === "invalid password") {
           // useAlert("Sorry can you please check your credentials and try again?");
@@ -45,7 +49,7 @@ export default function LoginWithEmail() {
               avi: res.data.user.avi,
             },
           });
-          cookies.set('token', res.data.token, { path: '/' });
+          //cookies.set('token', res.data.token, { path: '/' });
           // localStorage.setItem("token", res.data.token);
           setLoggedIn(true);
           setProfile(res.data);

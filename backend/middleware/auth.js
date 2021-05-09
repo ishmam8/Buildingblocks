@@ -12,8 +12,9 @@ module.exports = function authenticateToken(req, res, next) {
   // Extracting token from the authHeader
   // We split the string from authHeader at the space after 'Bearer'
   // into an array and using the 2nd element of the array
-  const token = authHeader && authHeader.split(" ")[1];
-  if (token == null) return res.status(401).send("You don't have access");
+  const token = req.cookies.token;
+  console.log("received",token)
+  if (!token) return res.status(401).send("You don't have access");
   // Once the token's existence is checked, it can be verified
   // using JWT. jwt.verify takes the following arguments
   // 1 => token to be verified
@@ -21,7 +22,10 @@ module.exports = function authenticateToken(req, res, next) {
   // 3 => callback with error and the value that was hashed(serialized)
   // which in our code is the user object.
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-    if (err) return res.status(403).send("Expired token");
+    if (err){
+      console.log("Expired token");
+      return res.status(403).send("Expired token");
+    } 
     // If the verification passes, we set req.user equal to
     // the user returned from the token
     req.user = user;
