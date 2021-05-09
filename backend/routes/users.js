@@ -69,8 +69,9 @@ router.route("/login").post(async (req, res) => {
     }
 
     const payload = { user: { id: user.id } };
+    console.log('payload',payload);
     const token = await generateAccessToken(payload);
-    const refreshToken = jwt.sign(user,process.env.REFRESH_TOKEN_SECRET);
+    const refreshToken = jwt.sign(payload,process.env.REFRESH_TOKEN_SECRET);
     console.log(token);
     res.cookie('refreshtoken',refreshToken,{ sameSite:'strict',
       path: '/',
@@ -79,8 +80,8 @@ router.route("/login").post(async (req, res) => {
       path: '/',
       httpOnly: true });
     res.json({user});
-  } catch {
-    console.log("exception")
+  } catch(err) {
+    console.log("exception",err)
     res.status(500).send();
   }
 });
