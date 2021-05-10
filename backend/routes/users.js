@@ -13,7 +13,6 @@ const corsOptions = {
   origin: 'http://localhost:3000'
 };
 
-
 // const Message = require("../models/messages.model");
 // const Chatroom = require("../models/chatrooms.model");
 // const Mongoose = require("mongoose");
@@ -73,13 +72,11 @@ router.route("/login").post(async (req, res) => {
     const token = await generateAccessToken(payload);
     const refreshToken = jwt.sign(payload,process.env.REFRESH_TOKEN_SECRET);
     console.log(token);
+    refreshTokens.push(refreshToken);
     res.cookie('refreshtoken',refreshToken,{ sameSite:'strict',
       path: '/',
       httpOnly: true });
-    res.cookie('token',token,{ sameSite:'strict',
-      path: '/',
-      httpOnly: true });
-    res.json({user});
+    res.json({user, token});
   } catch(err) {
     console.log("exception",err)
     res.status(500).send();
@@ -169,5 +166,4 @@ router.route("/getuser/:id").get((req, res) => {
 // NEW: When a chatroom needs to be added for a user, a chatroom is
 //      instantiated and added to the database. That chatroom is
 //      then added to the users list of chatrooms
-
 module.exports = router;
