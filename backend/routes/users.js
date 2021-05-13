@@ -13,6 +13,7 @@ const corsOptions = {
   origin: 'http://localhost:3000'
 };
 
+global.refreshTokens = [];
 // const Message = require("../models/messages.model");
 // const Chatroom = require("../models/chatrooms.model");
 // const Mongoose = require("mongoose");

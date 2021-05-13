@@ -49,7 +49,7 @@ export default function LoginWithEmail() {
               avi: res.data.user.avi,
             },
           });
-          //cookies.set('token', res.data.token, { path: '/' });
+          cookies.set('token', res.data.token, { path: '/' });
           // localStorage.setItem("token", res.data.token);
           setLoggedIn(true);
           setProfile(res.data);
