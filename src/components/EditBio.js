@@ -6,17 +6,20 @@ import axios from "axios"
 import Cookies from 'universal-cookie'
 
 const cookies = new Cookies();
+const instance = axios.create({
+  withCredentials: true
+})
 
 function EditBio() {
   const [open, setOpen] = React.useState(false)
   const [bio, setBio] = React.useState("")
   const userid = useSelector(state => state._id)
+  const token = useSelector(state => state.token)
   const dispatch = useDispatch()
 
   function onSubmit(e) {
     e.preventDefault();
-    const token = cookies.get('token');
-    
+    console.log("FRONTEND AUTH", token);
     const newBio = {
       bio: bio,
     };
@@ -26,12 +29,14 @@ function EditBio() {
         'Authorization': `Bearer ${token}`
       }
     }
-
     setBio("");
     
-    axios.post("http://localhost:5000/users/update/"+userid, newBio, authToken).then((res) => {
+    instance.post("http://localhost:5000/users/update/" + userid, newBio, authToken).then((res) => {
       if (res.data === "User updated!") {
         console.log(res.data);
+        if (res.data.token) {
+          dispatch({type: "CHANGE_TOKEN", token: res.data.token})
+        }
         dispatch({type: "CHANGE_BIO", bio: bio})
       } else {
         // useAlert("Sorry, can you please try again?");

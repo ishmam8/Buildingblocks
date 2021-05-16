@@ -144,9 +144,10 @@ router.route("/update/:id").post(authenticateToken, async (req, res) => {
       // user.avi = Number(req.body.avi);
       // user.chatrooms = req.body.chatrooms;
       // user.bio = req.body.bio;
+      let token = {token: req.token};
       user
         .save()
-        .then(() => res.json(user))
+        .then(() => res.json({user, token}))
         .catch((err) => res.status(400).json("Error: " + err));
     })
     .catch((err) => res.status(400).json("Error: " + err));

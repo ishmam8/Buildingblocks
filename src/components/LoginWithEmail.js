@@ -38,6 +38,7 @@ export default function LoginWithEmail() {
           // useAlert("Sorry can you please check your credentials and try again?");
           console.log(res);
         } else {
+          console.log(res.data.token);
           dispatch({
             type: "CHANGE_USER_ALL",
             user: {
@@ -49,7 +50,11 @@ export default function LoginWithEmail() {
               avi: res.data.user.avi,
             },
           });
-          cookies.set('token', res.data.token, { path: '/' });
+          dispatch({
+            type: "CHANGE_TOKEN",
+            token: res.data.token,
+          })
+          // cookies.set('token', res.data.token, { path: '/' });
           // localStorage.setItem("token", res.data.token);
           setLoggedIn(true);
           setProfile(res.data);
