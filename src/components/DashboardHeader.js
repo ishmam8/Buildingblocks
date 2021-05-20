@@ -3,8 +3,6 @@ import "./css/Dashboard.css";
 import logo from "../images/minlogo.png";
 import { useSelector, useDispatch } from 'react-redux';
 
-
-
 export default function DashboardHeader(props) {
   const logout = props.logout;
 
