@@ -2,7 +2,9 @@ const Bcrypt = require("bcryptjs");
 const router = require("express").Router();
 const User = require("../models/users.model");
 const jwt = require("jsonwebtoken"); // for hashing and sigining the tokens
-const authenticateToken = require("../middleware/auth");
+const authJs = require("../middleware/auth.js");
+const authenticateToken = authJs.authenticateToken;
+const deleteToken = authJs.deleteToken;
 const cors = require('cors');
 const express = require('express');
 const app = express()
@@ -84,26 +86,14 @@ router.route("/login").post(async (req, res) => {
   }
 });
 
-// router.route("/logout").post(async (req, res) => {
-//   const user = await User.findOne({ email: req.body.email });
-//   if (user === null) {
-//     return res.status(400).send("Cannot find user");
-//   }
-//   try {
-//     const isMatch = await Bcrypt.compare(req.body.password, user.password);
-//     if (!isMatch) {
-//       console.log(user);
-//       return res.status(400).json({ msg: "Invalid Credentials" });
-//     }
-
-//     const payload = { user: { id: user.id } };
-//     const token = await generateAccessToken(payload);
-//     res.cookie('refreshtoken',token,{ httpOnly: true });
-//     res.json({token});
-//   } catch {
-//     res.status(500).send();
-//   }
-// });
+router.route("/logout").post(deleteToken, async (req, res) => {
+  try {
+    res.cookie('refreshtoken',null,{ httpOnly: true });
+    res.data("Successful")
+  } catch {
+    res.status(500).send();
+  }
+});
 
 router.route("/update/:id").post(authenticateToken, async (req, res) => {
   const salt = 10;
