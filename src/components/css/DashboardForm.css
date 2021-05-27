@@ -1,0 +1,31 @@
+.dashboardFormContainer{
+    background: white;
+    position: absolute;
+    width: 43rem;
+}
+
+.dashboardFormContainer{
+    top: 20.3%;
+    left: 77.5%;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+    padding-left: 1rem;
+}
+
+.dashboardFormHeader h1{
+    padding: 1rem 0;
+    font-weight: 600;
+}
+
+.dashboardFormBody{
+    padding-bottom: 1rem;
+
+}
+
+.dashboardFormPartition {
+    width: 90%;
+    height: 1px;
+    background: gray;
+    position: absolute;
+    transform: translateY(-0.7rem);
+}
