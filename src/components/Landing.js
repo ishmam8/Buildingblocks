@@ -31,8 +31,10 @@ export default function Landing() {
                         src={logo}
                         alt="Welcome to Building Blocks!"
                     />
+                    
                     <a className="loginSignin" href="./login">Login</a>
                     <a className="loginSignin" href="./signup">Sign Up</a>
+                    <a className="loginSignin" href="./aboutus">About Us</a>
                 </div>
                 <div className="introGraphic">
                     <div className="slogan">

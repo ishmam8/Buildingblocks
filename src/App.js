@@ -11,6 +11,7 @@ import Chat from './components/Chat';
 import Join from './components/Join';
 import OuterChatContainer from './components/OuterChatContainer';
 import EditProfile from "./components/EditProfile";
+import AboutUs from "./components/AboutUs";
 
 class App extends Component {
     state = {
@@ -31,6 +32,7 @@ class App extends Component {
                     <Route path="/dashboard" component={Dashboard} />
                     <Route path="/chatRoom" component={OuterChatContainer} />
                     <Route path="/editProfile" component={EditProfile} />
+                    <Route path="/aboutus" component={AboutUs} />
                 </Switch>
             </div>
         );
