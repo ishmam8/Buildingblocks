@@ -25,17 +25,16 @@
   background:0;
   border:0;
   cursor:pointer;
+  margin-left: 30px;
 }
 
 .logoutDashboard {
-  float:right;
-  margin-top:24px;
-  margin-right:10px;
   font-weight:500;
   font-size:80%;
   background:0;
   border:0;
   cursor:pointer;
+  color: #4B4B4B;
 }
 
 .logout:hover {
