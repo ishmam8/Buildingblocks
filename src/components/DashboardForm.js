@@ -12,10 +12,9 @@ const DashboardForm = (props) => {
       <div className="dashboardFormHeader">
         <h1> Mentees </h1>
       </div>
-      <div className="dashboardFormPartition"></div>
       <div className="dashboardFormBody">
         <span>
-          You don't have any mentees yet.{" "}
+          You don't have any mentees yet.{" "} <br></br>
           <a href="#" alt="link to google form" className="dashboardFormLink">
             Take the matching survey
           </a>{" "}

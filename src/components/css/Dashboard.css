@@ -4,10 +4,23 @@
 
 .dashboard {
   background: #dbdbdb;
-  height: 100vh;
-  width: auto;
-  top: 0;
-  left: 0;
+  display: flex;
+  border: 2px solid yellow;
+  flex-direction: column;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  border: 2px solid red;
+  height: 100%;
+}
+
+.cards {
+  display: flex;
+  direction: row;
+  border: 1px solid blue;
+  align-items: center;
 }
 
 .minlogo {

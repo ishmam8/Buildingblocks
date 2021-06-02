@@ -36,8 +36,6 @@ export default function Dashboard(props) {
       <div className="dashboard">
         <DashboardHeader logout={logout} />
         <Sidebar data={props} />
-        <DashboardInfo />
-        <DashboardForm />
       </div>
     );
   } else {

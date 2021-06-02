@@ -1,12 +1,8 @@
 .sidebar-body {
-    z-index: 2;
     background:#fff;
-    width:20%;
-    height:auto;
-    min-height:100%;
-    position: fixed;
     box-shadow: 6px 0px 6px rgba(0, 0, 0, 0.06);
-    margin-top: 66px;
+    width: 20%;
+    height: 100vh;
 }
 
 .sidebar-title {
