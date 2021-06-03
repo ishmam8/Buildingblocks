@@ -1,5 +1,8 @@
 const Bcrypt = require("bcryptjs");
 const router = require("express").Router();
+const csv = require('csv-parse')
+const fs = require('fs')
+const results = [];
 const User = require("../models/users.model");
 const jwt = require("jsonwebtoken"); // for hashing and sigining the tokens
 // const Message = require("../models/messages.model");
@@ -11,6 +14,15 @@ router.route("/").get((req, res) => {
   User.find()
     .then((users) => res.json(users))
     .catch((err) => res.status(400).json("Error: " + err));
+});
+
+router.route("/addusers").post((req, res) => {
+  fs.createReadStream("./batch_files/users.csv")
+  .pipe(csv())
+  .on('data', (data) => results.push(data))
+  .on('end', () => {
+    console.log(results);
+  })
 });
 
 router.route("/add").post(async (req, res) => {
