@@ -11,8 +11,11 @@ const userSchema = new Schema({
   email: {type: String, required: true, trim: true, unique: false},
   avi: { type: String },
   chatrooms: [String],
-  bio: { type: String }
-}, {
+  userRole: {type: String, enum: ['Mentor', 'Mentee']},
+  bio: { type: String },
+  club: [
+    {type: Schema.ObjectId, ref:'club'} 
+  ]}, {
   timestamps: true,
 });
  

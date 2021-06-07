@@ -2,13 +2,9 @@ const Bcrypt = require("bcryptjs");
 const router = require("express").Router();
 const csv = require('csv-parse')
 const fs = require('fs')
-const results = [];
 const User = require("../models/users.model");
+const Club = require("../models/clubs.model");
 const jwt = require("jsonwebtoken"); // for hashing and sigining the tokens
-// const Message = require("../models/messages.model");
-// const Chatroom = require("../models/chatrooms.model");
-// const Mongoose = require("mongoose");
-// const { useRef } = require("react");
 
 router.route("/").get((req, res) => {
   User.find()
@@ -16,13 +12,48 @@ router.route("/").get((req, res) => {
     .catch((err) => res.status(400).json("Error: " + err));
 });
 
-router.route("/addusers").post((req, res) => {
+router.route("/addusers").post(async (req, res) => {
+  let isClubCreated = false;
+  let club;
+  let results = [];
   fs.createReadStream("./batch_files/users.csv")
   .pipe(csv())
-  .on('data', (data) => results.push(data))
-  .on('end', () => {
-    console.log(results);
+  .on("data", (data) => {
+    results.push({
+      username: data[0], 
+      email: data[1],
+      clubName: data[2],
+      userRole: data[3]
+    })
   })
+  .on("end", () => {
+    results.shift();
+    results.forEach( async user => {
+      const salt = 10;
+      const username = user.username;
+      const password = await Bcrypt.hash("bb$betatest", salt);
+      const email = user.email;
+      const userRole = user.userRole;
+      const newUser = new User({
+        username,
+        password,
+        email,
+        userRole,
+      });
+      
+      if (!isClubCreated){
+        club = await Club.findOne({clubName: user.clubName});
+        if(!club){
+          club = new Club({clubName: user.clubName});
+          await club.save();
+        }
+        isClubCreated = true;
+      }
+      newUser.club.push(club);
+      newUser.save();
+    });
+    results = null;
+  });
 });
 
 router.route("/add").post(async (req, res) => {

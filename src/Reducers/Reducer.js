@@ -8,6 +8,10 @@ const initState = {
   chatroomName: "",
   chatroomId: "",
   lastUser: null,
+  token: null,
+  userRole: null,
+  club: []
+
 };
 
 const Reducer = (state = initState, action) => {
@@ -74,6 +78,14 @@ const Reducer = (state = initState, action) => {
         bio: action.user.bio,
         avi: action.user.avi,
         loggedIn: action.user.loggedIn,
+        club: action.user.club,
+        userRole: action.user.userRole
+      };
+    case "CHANGE_CLUB_USERROLE":
+      return {
+        ...state,
+        club: action.user.club,
+        userRole: action.user.userRole
       };
     // you can have as many case statements as you need
 
