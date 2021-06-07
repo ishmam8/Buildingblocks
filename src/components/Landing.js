@@ -34,7 +34,6 @@ import tools from "../images/icons/tools.svg";
 import handshake from "../images/icons/handshake.svg";
 
 export default function Landing() {
-  const [holder, setHolder] = useState(2);
   const profile = useSelector((state) => state.profile);
 
   function logout(e) {

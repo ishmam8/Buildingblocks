@@ -69,14 +69,6 @@
   margin-top: 20px;
 }
 
-@media only screen and (max-width: 600px) {
-  .phoneModel {
-    margin-top: 20px;
-    max-width: auto;
-    height: 400px;
-  }
-}
-
 .buttonContainer {
   display: flex;
   flex-direction: row;
@@ -178,7 +170,11 @@
 }
 
 .bottomContainer {
-  margin-top: 50px;
+  margin: 50px 0px 50px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .bottomCardContainer {
@@ -187,8 +183,9 @@
   place-items: center;
   justify-content: center;
   align-items: center;
-  column-gap: 5px;
-  row-gap: 5px;
+  column-gap: 0px;
+  row-gap: 8px;
+  width: fit-content;
 }
 
 @media only screen and (max-width: 980px) {
@@ -202,5 +199,31 @@
 
   .homeContainer-phoneModel {
     margin-bottom: 20px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .phoneModel {
+    margin-top: 20px;
+    max-width: auto;
+    height: 400px;
+  }
+}
+
+/*Responsiveness for Mobile - L*/
+@media only screen and (max-width: 600px) {
+  .phoneModel {
+    margin-top: 20px;
+    max-width: auto;
+    height: 400px;
+  }
+
+  .homeContent {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+
+  .homeContent h1 {
+    font-size: 40px;
   }
 }
