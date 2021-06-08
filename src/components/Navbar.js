@@ -20,7 +20,7 @@ function Navbar() {
           <a className="blackNavLinks" href="/">
             About Us
           </a>
-          <a className="blackNavLinks" href="/">
+          <a className="blackNavLinks" href="/team">
             Our Team
           </a>
           <a className="blackNavLinks" href="/">
