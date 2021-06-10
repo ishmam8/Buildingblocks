@@ -8,6 +8,7 @@ const initState = {
   chatroomName: "",
   chatroomId: "",
   lastUser: null,
+  token: null,
 };
 
 const Reducer = (state = initState, action) => {
@@ -64,6 +65,11 @@ const Reducer = (state = initState, action) => {
       return {
         ...state,
         lastUser: action.lastUser,
+      };
+    case "CHANGE_TOKEN":
+      return {
+        ...state,
+        token: action.token,
       };
     case "CHANGE_USER_ALL":
       return {

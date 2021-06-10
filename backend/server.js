@@ -2,6 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const socketio = require('socket.io');
+const cookieParser = require('cookie-parser');
 
 const { addUser, removeUser, getUser, getUsersInRoom, getUserNamesInRoom } = require('./chatUsers');
 const User = require("./models/users.model");
@@ -10,13 +11,17 @@ const Chatroom = require("./models/chatrooms.model")
 
 
 require('dotenv').config();
-
+const corsOptions = {
+    credentials: true,
+    origin:'http://localhost:3000'
+  };
 const app = express();
 
 //Run on port or on localhost 5000
 const port = process.env.PORT || 5000;
 
-app.use(cors());
+app.use(cors(corsOptions));
+app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}))
 
