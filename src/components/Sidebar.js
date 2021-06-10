@@ -109,12 +109,15 @@ export default function SideBar(props) {
     >
       <p className={sidebar ? "sidebar-title active" : "sidebar-title"}>
         Chatrooms
-        <button>
+        <button onClick={(e) => e.stopPropagation()}>
           <img src={messages} alt="text" />
         </button>
       </p>
       {console.log(chatRoomsComponents)}
-      <div className={sidebar ? "chat-room-panel active" : "chat-room-panel"}>
+      <div
+        className={sidebar ? "chat-room-panel active" : "chat-room-panel"}
+        onClick={(e) => e.stopPropagation()}
+      >
         {chatRoomsComponents}
       </div>
       <div

@@ -118,13 +118,16 @@
   color: #828282;
 }
 
-@media screen and (min-width: 770px) {
+@media screen and (min-width: 800px) {
   .sidebar-body {
     width: 5%;
   }
 
   .sidebar-body.active {
-    width: 22%;
+    width: 25%;
+  }
+
+  .sidebar-body:hover {
   }
 
   .toggle-container {
