@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./css/Dashboard.css";
+import "./css/DashboardHeader.css";
 import logo from "../images/minlogo.png";
 import { useSelector, useDispatch } from 'react-redux';
 
