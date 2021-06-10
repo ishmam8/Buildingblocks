@@ -6,8 +6,15 @@ import DashboardHeader from "./DashboardHeader";
 import DashboardInfo from "./DashboardInfo";
 import { useSelector, useDispatch } from "react-redux";
 import DashboardForm from "./DashboardForm";
+<<<<<<< HEAD
 
 export default function Dashboard(props) {
+=======
+import { Container } from "semantic-ui-react";
+
+export default function Dashboard(props) {
+  const [showPopUp, setShowPopUp] = useState(false);
+>>>>>>> c460ae8a0ba866f73705003e2e3cd6c37f487c16
   const loggedIn = useSelector((state) => state.loggedIn);
   const dispatch = useDispatch();
   const chatroomName = useSelector((state) => state.chatroomName);
