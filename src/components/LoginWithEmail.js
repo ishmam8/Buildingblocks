@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import "./css/LogInWithEmail.css";
 import axios from "axios";
-import { Redirect } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { useDispatch } from "react-redux";
 import Login from "./Login";
 import { useSelector } from "react-redux";
+import Navbar from "./Navbar";
+import login_graphic from "../images/login_graphic.png"
+import Navbar2 from "./Navbar2";
 
 export default function LoginWithEmail() {
   const dispatch = useDispatch();
@@ -48,49 +51,67 @@ export default function LoginWithEmail() {
       });
   }
   return !isLoggedIn ? (
+
+    
+
     <div className="logInWithEmaill">
-      <div className="rectangle">
-        <a href="/" className="App-name-login">
-          ⬅ STUDENT CONVERSATIONS NOW
-        </a>
-        <div className="welcomeBack">
-          Welcome<br></br>Back
-        </div>
+      <Navbar/>
+      <div className="login-content">
+
+      
+      
+        
+      <div className="welcome-back">
+        <div className="welcome-back-content">
+        <p className="welcome-text">Welcome Back
+        </p>
+        <img src={login_graphic} alt="login_graphic" width="70%" />
       </div>
-      <div className="rectangleRight">
-        <form onSubmit={onSubmit}>
-          <div className="emailInput">
-            <input
-              className="emailInputForm"
-              type="email"
-              placeholder="Email"
-              name="email"
-              required
-              onChange={(e) => setEmail(e.target.value)}
-              value={email}
-            />
+      </div>
+      
+      <div className="input-container">
+        <div className="email-login-input">
+
+        
+        <form  onSubmit={onSubmit}>
+          <div className="email-input-form">
+            <div className="input-field">
+              <label>Email
+              <input
+                className="email-input-box"
+                type="email"
+                name="email"
+                required
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              />
+              </label>
+            </div>
+
+            <div className="input-field">
+              <label>Password
+              <input
+                className="email-input-box"
+                type="password"
+                name="password"
+                required
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
+              </label>
+            </div>      
+            <span to="/login" className="forgot-password">Forgot your password ?</span>
+            <input type="submit" className="login-button" value="Log in" />
           </div>
-          <div className="emailLine" />
-          <div className="passwordInput">
-            <input
-              className="passwordInputForm"
-              type="password"
-              placeholder="Password"
-              name="password"
-              required
-              onChange={(e) => setPassword(e.target.value)}
-              value={password}
-            />
-          </div>
-          <div className="passwordLine" />
-          <input type="submit" className="loginButton" value="Log in" />
         </form>
-        <div className="dontHaveAnAccount">
+        <div className="no-account-email">
           Don't have an account?{" "}
           <a href="./signup">
-            <span className="sign-up-button">Sign Up</span>
+            <Link to="/signup" className="sign-up-button">Sign Up</Link>
           </a>
         </div>
+        </div>
+      </div>
       </div>
     </div>
   ) : (
