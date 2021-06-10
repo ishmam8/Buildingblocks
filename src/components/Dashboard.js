@@ -5,6 +5,7 @@ import { Redirect } from "react-router-dom";
 import DashboardHeader from "./DashboardHeader";
 import DashboardInfo from "./DashboardInfo";
 import { useSelector, useDispatch } from "react-redux";
+import DashboardForm from "./DashboardForm";
 
 export default function Dashboard(props) {
   const [showPopUp, setShowPopUp] = useState(false);
@@ -38,6 +39,7 @@ export default function Dashboard(props) {
         <Sidebar data={props} />
 
         <DashboardInfo />
+        <DashboardForm />
       </div>
     );
   } else {
