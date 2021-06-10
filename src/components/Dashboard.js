@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./css/Dashboard.css";
 import Sidebar from "./Sidebar";
 import { Redirect } from "react-router-dom";
@@ -8,10 +8,9 @@ import { useSelector, useDispatch } from "react-redux";
 import DashboardForm from "./DashboardForm";
 
 export default function Dashboard(props) {
-  const [showPopUp, setShowPopUp] = useState(false);
-  const loggedIn = useSelector(state => state.loggedIn);
+  const loggedIn = useSelector((state) => state.loggedIn);
   const dispatch = useDispatch();
-  const chatroomName = useSelector(state => state.chatroomName);
+  const chatroomName = useSelector((state) => state.chatroomName);
 
   function logout() {
     dispatch({type: "CHANGE_USERNAME", username: null});
@@ -22,7 +21,7 @@ export default function Dashboard(props) {
     dispatch({type: "CHANGE_LASTUSER", lastUser: null});
     dispatch({type: "CHANGE_LOGGEDIN", loggedIn: false});
     window.location.reload();
-  };
+  }
 
   if (!loggedIn) {
     return (
@@ -37,7 +36,6 @@ export default function Dashboard(props) {
       <div className="dashboard">
         <DashboardHeader logout={logout} />
         <Sidebar data={props} />
-
         <DashboardInfo />
         <DashboardForm />
       </div>
@@ -52,4 +50,3 @@ export default function Dashboard(props) {
     );
   }
 }
-
