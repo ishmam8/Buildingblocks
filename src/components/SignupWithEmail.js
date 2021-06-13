@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./css/SignupWithEmail.css";
 import "./css/Signup.css";
+import "../images/mentor.png";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { useAlert } from "react-alert";
@@ -49,48 +50,81 @@ export default function SignupWithEmai() {
             ⬅ STUDENT CONVERSATIONS NOW
           </a>
           <div className="niceToMeetYou">
-            Nice to<br></br>Meet You
+            Welcome to<br></br>Building Blocks
           </div>
+
+          <img src="../images/mentor.png"/>
+
         </div>
         <div className="rectangleRight">
           <form onSubmit={onSubmit}>
             <div className="nickInput">
+              <label>Name</label> <br/>
               <input
                 className="nickInputForm"
                 type="text"
-                placeholder="Nickname"
+                
                 name="Nickname"
                 required
                 onChange={(e) => setUsername(e.target.value)}
                 value={username}
               />
             </div>
-            <div className="nickLine" />
+            
             <div className="emailInput">
+              <label>Email</label>
               <input
                 className="emailInputForm"
                 type="email"
-                placeholder="Email"
+                
                 name="email"
                 required
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
               />
             </div>
-            <div className="emailLine" />
+            
             <div className="passwordInput">
+              <label>Password</label>
               <input
                 className="passInputForm"
                 type="password"
-                placeholder="Password"
+                
                 name="passcode"
                 required
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
               />
             </div>
-            <div className="passwordLine" />
-            <input type="submit" className="signupButton" value="Sign up" />
+
+            <div className="confirmPasswordInput">
+              <label>Confirm Password</label>
+              <input
+                className="passInputForm"
+                type="password"
+                
+                name="passcode"
+                required
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
+            </div>
+
+            <div className="mentorMenteeText">
+              I want to be a
+            </div>
+
+            <div className="mentorMenteeButtons">
+              <div className="mentorButton">
+                MENTOR
+              </div>
+              <div className="menteeButton">
+                MENTEE
+              </div>
+            </div>
+            
+            
+            <input type="submit" className="signupButton" value="Continue" />
           </form>
 
           <div className="alreadyHaveAnAccount">
