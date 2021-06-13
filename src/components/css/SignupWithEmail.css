@@ -216,20 +216,27 @@ input {
 
 .signupButton {
     position: absolute;
-    width: 10vw;
+    width: 6vw;
     height: 38px;
-    right: 18%;
+    right: 20%;
     top: 75%;
-    font-family: Roboto;
+    font-family: sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 1.8vw;
+    font-size: 1vw;
     color: white;
     text-align: center;
     line-height: 10%;
     background: #1970E1;
     border-radius: 50px;
-    padding: 30px;
+    border-color: #1970E1;
+    padding: 20px;
+    transition: background-color 0.25s ease-out;
+}
+
+.signupButton:hover {
+    background-color: #FFFFFF;
+    color: #1970E1;
 }
 
 .landingHeader-login {
@@ -269,6 +276,7 @@ input {
 label {
     padding: 1%;
     color: #4B4B4B;
+    font-family: sans-serif;
 }
 
 .mentorButton {
@@ -276,7 +284,7 @@ label {
     width: 13vw;
     height: 50px;
     right: 23%;
-    top: 64%;
+    top: 65%;
     color: #076DF2;
     text-align: center;
     padding: 10px;
@@ -285,6 +293,7 @@ label {
     border: 2px solid #076DF2;
     box-sizing: border-box;
     border-radius: 50px 0px 0px 50px;
+    transition: background-color 0.25s ease-out;
 }
 
 .menteeButton {
@@ -292,7 +301,7 @@ label {
     width: 13vw;
     height: 50px;
     right: 10%;
-    top: 64%;
+    top: 65%;
     color: #076DF2;
     text-align: center;
     padding: 10px;
@@ -301,12 +310,24 @@ label {
     border: 2px solid #076DF2;
     box-sizing: border-box;
     border-radius: 0px 50px 50px 0px;
+    transition: background-color 0.25s ease-out;
 }
 
 .mentorMenteeText {
     position: absolute;
     width: 13vw;
     height: 50px;
-    right: 12%;
-    top: 61%;
+    right: 13%;
+    top: 62%;
+    font-size: 1.1vw;
+}
+
+.mentorButton:hover {
+    background-color: #076DF2;
+    color: #FFFFFF;
+}
+
+.menteeButton:hover {
+    background-color: #076DF2;
+    color: #FFFFFF;
 }

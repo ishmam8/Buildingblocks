@@ -1,11 +1,19 @@
 import React from "react";
 import './css/Signup.css';
+import background from "../images/mentor.png"
 
 const Signup = props => (
     <div className="signUp">
         
         <div className="rectangleSignUp">
-            <div className = "niceToMeetYou">Nice to<br></br>Meet You</div>
+            <a href="/" className="App-name-login">
+                ⬅ STUDENT CONVERSATIONS NOW
+            </a>
+            <div className="niceToMeetYou">
+                Welcome to<br></br>Building Blocks
+            </div>
+
+            <img className="signupPicture" src={background}/>
         </div>
         <div className="rectangleRightSignUp">
             
@@ -25,7 +33,7 @@ const Signup = props => (
             </div> 
         </div>
 
-        <a href = "signupwithemail"><div className = "signUpWithEmail">Sign up with e-mail</div></a>
+        <a href = "/signupWithEmail"><div className = "signUpWithEmail">Sign up with e-mail</div></a>
             <div className = "rectangle_2_1SignUp "></div>
         
        

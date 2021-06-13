@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./css/SignupWithEmail.css";
 import "./css/Signup.css";
-import "../images/mentor.png";
+import background from "../images/mentor.png"
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { useAlert } from "react-alert";
@@ -53,7 +53,7 @@ export default function SignupWithEmai() {
             Welcome to<br></br>Building Blocks
           </div>
 
-          <img src="../images/mentor.png"/>
+          <img className="signupPicture" src={background}/>
 
         </div>
         <div className="rectangleRight">
@@ -100,7 +100,7 @@ export default function SignupWithEmai() {
             <div className="confirmPasswordInput">
               <label>Confirm Password</label>
               <input
-                className="passInputForm"
+                className="confirmPassInputForm"
                 type="password"
                 
                 name="passcode"
