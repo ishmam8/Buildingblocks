@@ -9,6 +9,8 @@
 
   transition: 300ms;
   box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.06);
+
+  z-index: 1;
 }
 
 .sidebar-body.active {

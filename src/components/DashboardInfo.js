@@ -22,12 +22,12 @@ export default function DashboardInfo() {
   }
 
   return !editProfile ? (
-      <div>
         <div className="dashboard-info">
-          <button type="button" className="editProfile" onClick={_editProfile}>
-            <img className="editImage" src={edit} height="11px" width="13px" />
-            Edit
-          </button>
+          <img
+            alt="User Avatar"
+            className="img"
+            src={require("../images/icons/" + avi + ".png")}
+          />
           <Popup
             content={<Avatars />}
             on="click"
@@ -46,11 +46,6 @@ export default function DashboardInfo() {
             }
           />
 
-          <img
-            alt="User Avatar"
-            className="img"
-            src={require("../images/icons/" + avi + ".png")}
-          />
           <table className="profile-info-table">
             <tr>
               <td className="profile-field">Username</td>
@@ -66,8 +61,11 @@ export default function DashboardInfo() {
               <td className="profile-field-entry">{bio}</td>
             </tr>
           </table>
+          
+          <button type="button" className="editProfile" onClick={_editProfile}>
+             Edit Profile
+          </button>
         </div>
-      </div>
   ) : (
     <Redirect
       to={{
