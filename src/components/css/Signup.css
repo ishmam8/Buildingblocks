@@ -11,7 +11,7 @@
 
 .rectangleSignUp {
     flex: 1;
-    background: #E9A800;
+    background: #1970E1;
 }
 
 .rectangleRightSignUp {
@@ -21,7 +21,7 @@
 
 .rectangleChoiceRightSignUp {
     flex: 1;
-    background: #E9A800;
+    background: #1970E1;
 }
 
 .niceToMeetYou {
@@ -33,7 +33,7 @@
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    font-size: 10vw;
+    font-size: 5vw;
     line-height: 130%;
     color: #FFFFFF;
 }
@@ -58,7 +58,7 @@
     height: 4.5vw;
     right: 10%;
     top: 25%;
-    border: 3px solid #E9A800;
+    border: 3px solid #1970E1;
     border-radius: 50px;
 }
 
@@ -70,7 +70,7 @@
     right: 10%;
     top: 38%;
 
-    border: 3px solid #E9A800;
+    border: 3px solid #1970E1;
     border-radius: 50px;
 }
 
@@ -82,7 +82,7 @@
     right: 10%;
     top: 64%;
 
-    border: 3px solid #E9A800;
+    border: 3px solid #1970E1;
     border-radius: 50px;
 
 }
@@ -101,7 +101,7 @@
     font-weight: bold;
     font-size: 1.5vw;
     line-height: 130%;
-    color: #E9A800;
+    color: #1970E1;
 }
 
 
@@ -116,7 +116,7 @@
     font-weight: bold;
     font-size: 1.5vw;
     line-height: 130%;
-    color: #E9A800;
+    color: #1970E1;
 }
 
 
@@ -124,12 +124,12 @@
     position: fixed;
     width: 45vw;
     height: 31px;
-    left: 66%;
+    left: 69.5%;
     top: 85%;
     font-family: Roboto;
     font-style: normal;
     font-weight: normal;
-    font-size: 1.5vw;
+    font-size: 1vw;
     line-height: 130%;
     color: #000000;
 }
@@ -146,7 +146,7 @@
     font-weight: bold;
     font-size: 1.5vw;
     line-height: 130%;
-    color: #E9A800;
+    color: #1970E1;
 }
 
 .or {
@@ -206,6 +206,7 @@
 
 .sign-in-button {
     font-weight: bold;
-    color: #E9A800;
+    font-size: 1.5vw;
+    color: #1970E1;
 }
     
