@@ -57,10 +57,9 @@
 }
 
 .social-login-container{
-    position: fixed;
     width: 100%;
-    padding: 10vh 0;
-    top: 10vh;
+    position: fixed;
+    top: 20vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -107,7 +106,7 @@
 }
 
 .no-account-social{
-    padding-top: 25vw;
+    padding-top: 28vw;
     font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: normal;
