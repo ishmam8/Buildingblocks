@@ -1,8 +1,11 @@
-import React, { useState } from "react";
-import "./css/ChatRoomLink.css";
+//Libraries
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-/* icons */
+//Style Imports
+import "./css/ChatRoomLink.css";
+
+// Icon Imports 
 import academics from "../images/dashboardIcons/academics.png";
 import substanceUse from "../images/dashboardIcons/substanceAbuse.png";
 import Nutrition from "../images/dashboardIcons/nutrition.png";
@@ -22,6 +25,9 @@ export default function ChatRoomLink(props) {
   const dispatch = useDispatch();
   const chatroom = useSelector((state) => state.chatroom);
 
+  useEffect(() => {
+    console.log(clicked);
+  });
   function joinChat() {
     dispatch({
       type: "CHANGE_CHATROOMNAME",
@@ -68,7 +74,7 @@ export default function ChatRoomLink(props) {
         );
       }
     });
-    if (chatRoomUsers.length === 0) {
+    if (chatRoomUsers.length === 0 && props.sidebarState) {
       return (
         <div className="chat-room-link-clicked" onClick={handleClick}>
           {/* {console.log(props.roomName)} */}
@@ -82,6 +88,8 @@ export default function ChatRoomLink(props) {
           </div>
         </div>
       );
+    } else if (chatRoomUsers.length === 0 && !props.sideBarState) {
+      setClicked(!clicked);
     } else if (chatRoomUsers.length < 3) {
       return (
         <div className="chat-room-link-clicked" onClick={handleClick}>

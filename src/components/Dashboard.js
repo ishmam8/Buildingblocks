@@ -1,12 +1,16 @@
+//libraries
 import React, { useState } from "react";
-import "./css/Dashboard.css";
-import Sidebar from "./Sidebar";
 import { Redirect } from "react-router-dom";
-import DashboardHeader from "./DashboardHeader";
-import DashboardInfo from "./DashboardInfo";
 import { useSelector, useDispatch } from "react-redux";
+
+//Component Imports
+import DashboardHeader from "./DashboardHeader";
+import Sidebar from "./Sidebar";
+import DashboardInfo from "./DashboardInfo";
 import DashboardForm from "./DashboardForm";
-import { Container } from "semantic-ui-react";
+
+//Style Imports
+import "./css/Dashboard.css";
 
 export default function Dashboard(props) {
   const [showPopUp, setShowPopUp] = useState(false);
@@ -38,11 +42,7 @@ export default function Dashboard(props) {
       <div className="dashboard">
         <DashboardHeader logout={logout} />
         <Sidebar data={props} />
-        {/*<div className="cards">
-          <DashboardInfo />
-          <DashboardForm />
-    </div> */}
-      </div> 
+      </div>
     );
   } else {
     return (
