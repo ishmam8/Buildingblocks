@@ -5,6 +5,7 @@ import Login from './components/Login'
 import { Route, Switch } from 'react-router-dom';
 import Choice from "./components/Choice";
 import LoginWithEmail from './components/LoginWithEmail';
+import LoginWithSocial from './components/LoginWithSocial';
 import SignupWithEmail from './components/SignupWithEmail';
 import Dashboard from './components/Dashboard';
 import Chat from './components/Chat';
@@ -24,7 +25,7 @@ class App extends Component {
                 <Switch>
                     <Route path="/" exact component={Landing}/>
                     <Route path="/choice" render={() => <Choice profiles={this.state.profiles} />}/>
-                    <Route path="/login" render={() => <LoginWithEmail profiles={this.state.profiles}/>}/>
+                    <Route path="/login" render={() => <LoginWithSocial profiles={this.state.profiles}/>}/>
                     <Route path="/signup" component={SignupWithEmail}/>
                     <Route path="/theChat" component={Chat}/>
                     <Route path="/join" component={Join}/>

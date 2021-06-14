@@ -4,7 +4,6 @@ import Avatars from './Avatars';
 import edit from "../images/edit.png";
 import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
-import 'semantic-ui-css/semantic.min.css'
 
 
 export default function DashboardInfo() {

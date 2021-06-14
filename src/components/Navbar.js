@@ -17,22 +17,22 @@ function Navbar() {
         <nav className="navbar">
             <div className="navbar-container">
 
-                <div style={{width: "20vw"}}>
-                <Link to="/">
-                <div className="navbar-logo-container">
                 
-                <picture style={{maxWidth: "100%"}}>                   
-                    <source media="(min-width: 700px)" srcset={logo}/>
-                    <img src={logo_small} alt="Logo"/>
-                </picture>
-                
-                </div>
-                </Link>
-                
-                </div>
+                <div className="navbar-extras">
+                    <div className="navbar-logo-container">
+                    <Link to="/">
+                    <picture style={{maxWidth: "100%"}}>                   
+                        <source media="(min-width: 1100px)" srcset={logo}/>
+                        <img src={logo_small} alt="Logo"/>
+                    </picture>
+                    </Link>
+                    </div>
+                    
+                    
 
-                <div className="mobile-menu-button" onClick={handleClick}>
-                    <img src={click ? close : menu} />
+                    <div className="mobile-menu-button" onClick={handleClick}>
+                        <img src={click ? close : menu} height="40%" />
+                    </div>
                 </div>
                 <div className={click ? "navbar-content active" : "navbar-content"} >
 

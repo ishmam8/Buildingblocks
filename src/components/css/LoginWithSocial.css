@@ -1,4 +1,4 @@
-.logInWithEmail {
+.loginWithSocial {
     position: fixed;
     right: 0;
     left: 0;
@@ -12,7 +12,8 @@
 .login-content{
     display: flex;
     flex-direction: row;
-    height: 100%;
+    height: 90vh;
+    top: 10vh;
 }
 
 .welcome-back{
@@ -25,7 +26,10 @@
 }
 
 .welcome-back-content{
-    padding-top: 13vh;
+    position: fixed;
+    width: 50%;
+    top: 10vh;
+    padding-top: 10vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -39,18 +43,24 @@
     font-weight: normal;
     text-align: left;
     color: white;
+    padding-bottom: 2vh;
 
 }
 
-.input-container{
+.social-input-container{
     flex: 1;
     background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.email-login-input{
+.social-login-container{
+    position: fixed;
     width: 100%;
-    height: 100%;
-    padding: 20vh 0;
+    padding: 10vh 0;
+    top: 10vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -58,7 +68,7 @@
     
 }
 
-.email-input-form{
+.social-login-form{
     height: 100%;
     width: 100%;
     display: flex;
@@ -68,22 +78,57 @@
 
 }
 
-.input-field {
+.social-login-option {
     width: 25vw;
+    height: 3vw;
+    margin-top: 4vh;
+    padding: 0.5vw 1.3vw;
+
     font-family: Roboto, sans-serif;
     font-style: normal;
-    font-weight: 350;
-    font-size: 1.5vw;
+    font-weight: 700;
+    font-size: 1.3vw;
     line-height: 150%;
     color: black;
-    padding-top: 4vh;
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    border: solid 0.25vw #1970E1;
+    border-radius: 3vw;
    
+}
+
+.social-login-option img{
+    width: 3vw;
+    height:3vw;
+}
+
+.no-account-social{
+    padding-top: 25vw;
+    font-family: Roboto, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 1.5vw;
+    line-height: 130%;
+    text-align: center;
+    /* or 23px */
+    color: #000000;
+}
+
+.sign-up-button {
+    font-weight: bold;
+    font-size: 1.7vw;
+    text-decoration: white;
+    color: #1970E1!important;
 }
 
 .email-input-box{
     
     width: 25vw;
-    height: 2.5vw;
+    height: 3.5vw;
     font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: normal;
@@ -164,23 +209,7 @@
 
 
 
-.no-account-email{
-    padding-top: 10vh;
-    font-family: Roboto, sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1.5vw;
-    line-height: 130%;
-    /* or 23px */
-    color: #000000;
-}
 
-.sign-up-button {
-    font-weight: bold;
-    font-size: 1.7vw;
-    text-decoration: white;
-    color: #1970E1!important;
-}
 
 .ellipse {
 

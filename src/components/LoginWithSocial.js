@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./css/LoginWithEmail.css";
+import "./css/LoginWithSocial.css";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
 import { useAlert } from "react-alert";
@@ -8,14 +8,16 @@ import Login from "./Login";
 import { useSelector } from "react-redux";
 import Navbar from "./Navbar";
 import login_graphic from "../images/login_graphic.png"
+import facebook from "../images/facebook_circle-512Fb.png"
+import google from "../images/new-google-favicon-512.png"
 
-export default function LoginWithEmail() {
-  const dispatch = useDispatch();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [profile, setProfile] = useState({});
-  const isLoggedIn = useSelector((state) => state.loggedIn);
+export default function LoginWithSocial() {
+    const dispatch = useDispatch();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [loggedIn, setLoggedIn] = useState(false);
+    const [profile, setProfile] = useState({});
+    const isLoggedIn = useSelector((state) => state.loggedIn);
 
   function onSubmit(e) {
     e.preventDefault();
@@ -53,13 +55,10 @@ export default function LoginWithEmail() {
 
     
 
-    <div className="logInWithEmail">
+    <div className="loginWithSocial">
       <Navbar/>
       <div className="login-content">
-
-      
-      
-        
+          
       <div className="welcome-back">
         <div className="welcome-back-content">
         <p className="welcome-text">Welcome Back
@@ -68,47 +67,37 @@ export default function LoginWithEmail() {
       </div>
       </div>
       
-      <div className="input-container">
-        <div className="email-login-input">
+      <div className="social-input-container">
+        <div className="social-login-container">
+            <div className="social-login-form">
 
-        
-        <form  onSubmit={onSubmit}>
-          <div className="email-input-form">
-            <div className="input-field">
-              <label>Email
-              <input
-                className="email-input-box"
-                type="email"
-                name="email"
-                required
-                onChange={(e) => setEmail(e.target.value)}
-                value={email}
-              />
-              </label>
+                <div className="social-login-option">
+                    <p> Log in with Google </p>
+                    <img src={google} alt="google"></img>
+                </div>
+
+                <div className="social-login-option">
+                    <p> Log in with Facebook </p>
+                    <img src={facebook} alt="facebook"></img>
+                </div>
+
+                <div style={{border: "none"}} className="social-login-option">
+                    <p style={{fontWeight: "400"}}> or </p>
+                </div>
+
+                <div className="social-login-option">
+                    <p> Log in with e-mail </p>
+                </div>
+
             </div>
 
-            <div className="input-field">
-              <label>Password
-              <input
-                className="email-input-box"
-                type="password"
-                name="password"
-                required
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-              />
-              </label>
-            </div>      
-            <span to="/login" className="forgot-password">Forgot your password ?</span>
-            <input type="submit" className="login-button" value="Log in" />
-          </div>
-        </form>
-        <div className="no-account-email">
+        </div>
+
+        <div className="no-account-social">
           Don't have an account?{" "}
-          <a href="./signup">
+          <a href="./signup" style={{textDecoration: "none"}}>
             <Link to="/signup" className="sign-up-button">Sign Up</Link>
           </a>
-        </div>
         </div>
       </div>
       </div>
