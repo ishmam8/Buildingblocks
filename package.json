@@ -10,6 +10,7 @@
     "axios": "^0.19.2",
     "bcrypt": "^5.0.0",
     "bcryptjs": "^2.4.3",
+    "create-react-context": "^0.3.0",
     "query-string": "^6.13.7",
     "react": "^16.14.0",
     "react-alert": "^7.0.2",
