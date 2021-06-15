@@ -74,7 +74,7 @@
   width: 150px;
   height: 64px;
 
-  transition: 200ms;
+  transition: 100ms;
   z-index: 0;
 }
 
@@ -98,20 +98,22 @@
 }
 
 .dropDown button {
-  visibility: hidden;
+  display: none;
 }
 
 .dropDown text {
-  visibility: hidden;
+  display: none;
 }
 
 .drop-user {
   display: flex;
   flex-direction: column;
+  align-items: center;
   margin: 10px 6px;
 }
 
 .dropDown.active text {
+  display: flex;
   visibility: visible;
   text-align: center;
   padding: 4px;
@@ -120,6 +122,9 @@
 }
 
 .dropDown.active button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   visibility: visible;
   width: 80%;
   border: 1px solid transparent;
@@ -141,10 +146,10 @@
   .dropDown {
     background-color: #fff;
     position: fixed;
-    top: 0px;
+    top: 65px;
     right: 2%;
     width: 200px;
-    height: 64px;
+    height: 0px;
   
     transition: 200ms;
     z-index: 0;
@@ -162,8 +167,8 @@
   
     height: 150px;
     width: 200px;
-    border-radius: 0 0 5px 5px;
-    border: 1px solid transparent;
+    border-radius: 5px 5px 5px 5px;
+    border: 2px solid #fff;
   
     transition: 200ms;
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.06);
