@@ -38,7 +38,10 @@ export default function DashboardHeader(props) {
       <div className={open ? "dropDown active" : "dropDown"}>
         <div className="drop-user">
           <text>{username}</text>
-          <text>{email}</text>
+          <text>
+            {email}
+            eros
+          </text>
         </div>
         <button onClick={logout}>Logout</button>
       </div>
