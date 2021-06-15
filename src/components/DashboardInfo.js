@@ -1,10 +1,15 @@
+//Libraries
 import React, { useState } from "react";
-import "./css/DashBoardInfo.css";
-import { Popup } from "semantic-ui-react";
-import Avatars from "./Avatars";
-import edit from "../images/edit.png";
 import { Redirect } from "react-router-dom";
 import { useSelector } from "react-redux";
+
+//Component Imports
+import Avatars from "./Avatars";
+
+//Style Imports
+import "./css/DashBoardInfo.css";
+import edit from "../images/edit.png";
+import { Popup } from "semantic-ui-react";
 
 export default function DashboardInfo() {
   const [editProfile, setEditProfile] = useState(false);
