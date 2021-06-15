@@ -32,8 +32,9 @@
 .chat-room-link-clicked {
   color: #e9a800;
   font-weight: bold;
-  padding: 2px 0;
   cursor: pointer;
+
+  width: 100%;
 }
 
 .chat-join-button {
@@ -44,11 +45,6 @@
   height: 40px;
   border: 1px solid transparent;
   border-radius: 6px;
-}
-
-.chat-join-button:focus {
-  outline-width: 1px;
-  outline-color: #e9a800;
 }
 
 .chat-join-button:hover {
@@ -63,7 +59,6 @@
 }
 
 .chat-room-link-user {
-  padding: 6px 0;
   color: #4f4f4f;
   font-weight: 400;
   font-size: 87%;

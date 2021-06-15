@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './css/DashBoardInfo.css';
+import "./css/DashBoardInfo.css";
 import { Popup } from "semantic-ui-react";
 import Avatars from "./Avatars";
 import edit from "../images/edit.png";
@@ -22,50 +22,31 @@ export default function DashboardInfo() {
   }
 
   return !editProfile ? (
-        <div className="dashboard-info">
-          <img
-            alt="User Avatar"
-            className="img"
-            src={require("../images/icons/" + avi + ".png")}
-          />
-          <Popup
-            content={<Avatars />}
-            on="click"
-            pinned
-            className="popup"
-            trigger={
-              <button className="edit-avi">
-                <img
-                  alt="Edit Avatar"
-                  width="15px"
-                  height="15px"
-                  src={require("../images/editavi.png")}
-                  onClick={_chooseAvi}
-                />
-              </button>
-            }
-          />
-
-          <table className="profile-info-table">
-            <tr>
-              <td className="profile-field">Username</td>
-              <td className="profile-field-entry">{username}</td>
-            </tr>
-            <tr>
-              <td className="profile-field">Email</td>
-              <td className="profile-field-entry">{email}</td>
-            </tr>
-          </table>
-          <table className="profile-info-table">
-            <tr>
-              <td className="profile-field-entry">{bio}</td>
-            </tr>
-          </table>
-          
-          <button type="button" className="editProfile" onClick={_editProfile}>
-             Edit Profile
-          </button>
+    <div className="dashboard-info">
+      <div className="info-header">
+        <img
+          alt="User Avatar"
+          src={require("../images/icons/" + avi + ".png")}
+        />
+        <div className="username-email">
+          <text>{username}</text>
+          <text className="email">{email}</text>
         </div>
+      </div>
+      <div className="info-bio">
+        <text>
+          {/*bio*/}
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Velit rhoncus
+          nulla etiam aliquet fermentum elit, purus. Turpis eu eget egestas
+          accumsan.
+        </text>
+      </div>
+      <div className="edit-profile">
+        <button type="button" onClick={_editProfile}>
+          Edit Profile
+        </button>
+      </div>
+    </div>
   ) : (
     <Redirect
       to={{
@@ -73,4 +54,26 @@ export default function DashboardInfo() {
       }}
     />
   );
+}
+
+//Popup needs to be worked on
+{
+  /* <Popup
+        content={<Avatars />}
+        on="click"
+        pinned
+        className="popup"
+        trigger={
+          <button className="edit-avi">
+            <img
+              alt="Edit Avatar"
+              width="15px"
+              height="15px"
+              src={require("../images/editavi.png")}
+              onClick={_chooseAvi}
+            />
+          </button>
+        }
+      /> 
+      */
 }

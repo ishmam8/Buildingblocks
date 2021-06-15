@@ -1,60 +1,121 @@
 .dashboard-info {
-  background: #fff;
-  margin-top: 0px;
-  margin-left: 0px;
-  width: 100%;
-  height: 184px;
   display: flex;
   flex-direction: column;
+
+  box-sizing: border-box;
+  height: 300px;
+  width: 500px;
+
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
+  border-radius: 6px;
+  background: #fff;
+
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.01em;
+  font-size: 16px;
+  line-height: 24px;
 }
 
-.editProfile {
+.info-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 1px;
+  margin-top: 6px;
 }
 
-.editProfile:hover {
+.info-header img {
+  width: 87px;
+  height: 85px;
+  margin-left: 5px;
+  padding: 2px;
 }
 
-.editProfile:focus {
-  outline: 0;
+.username-email {
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  width: 100%;
 }
 
-.editImage {
+.email {
+  font-size: 12px;
+}
+
+.info-bio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 2px;
+  margin-left: 20px;
+  padding: 10px;
+  height: 50%;
+  font-size: 14px;
+  /* overflow-y: scroll; */
+}
+
+.edit-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  padding: 2px;
+  margin-right: 6px;
+  margin-bottom: 5px;
+}
+.edit-profile button {
+  width: auto;
+  font-size: 14px;
+  line-height: 18px;
+
+  font-family: "Poppins", sans-serif;
+  color: #1970e1;
+  background-color: transparent;
+  border: none;
+  padding: 7px;
+}
+
+.edit-profile button:hover {
+  background-color: #eeeeee;
+  border-radius: 4px;
+}
+
+@media screen and (max-width: 800px) {
+  .dashboard-info {
+    width: 250px;
+    height: 140px;
+  }
+}
+
+
+
+
+
+
+/* still need to work on this styling */
+.popup {
+  z-index: 2;
+  background-color: rgba(252, 252, 252, 0.98) !important;
+  max-height: 80%;
+  max-width: 75%;
+  color: black;
+  border-radius: 12px;
+  box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.06);
+  margin-right: 2% !important;
 }
 
 .popup {
-    z-index: 2;
-    background-color:rgba(252, 252, 252, 0.98)!important;
-    max-height: 80%;
-    max-width: 75%;
-    color: black;
-    border-radius: 12px;
-    box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.06);
-    margin-right: 2%!important;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.5);
 }
-
-.popup {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    margin: auto;
-    background-color: rgba(0, 0, 0, 0.5);
-  }
-
-  .popup_inner {
-    position: absolute;
-    left: 25%;
-    right: 25%;
-    top: 25%;
-    bottom: 25%;
-    margin: auto;
-    border-radius: 20px;
-    background: white;
-  }
-  
 
 .edit-avi {
   background: #fff;
@@ -78,19 +139,3 @@
   outline-color: #e9a800;
   outline-width: 1px;
 }
-
-.img {
-  height: 10%;
-  width: 10%;
-  margin-left: 10px;
-  margin-top: 5%;
-  margin-bottom: 0;
-}
-
-.profile-info-table {
-}
-
-.profile-field {
-}
-
-.profile-field-entry {}
