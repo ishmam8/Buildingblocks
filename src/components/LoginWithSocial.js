@@ -63,7 +63,7 @@ export default function LoginWithSocial() {
         <div className="welcome-back-content">
         <p className="welcome-text">Welcome Back
         </p>
-        <img src={login_graphic} alt="login_graphic" width="70%" />
+        <img src={login_graphic} alt="login_graphic" width="60%" />
       </div>
       </div>
       

@@ -70,6 +70,7 @@
 .social-login-form{
     height: 100%;
     width: 100%;
+    padding-top: 4vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -78,9 +79,9 @@
 }
 
 .social-login-option {
-    width: 25vw;
+    width: 22vw;
     height: 3vw;
-    margin-top: 4vh;
+    margin-top: 2vh;
     padding: 0.5vw 1.3vw;
 
     font-family: Roboto, sans-serif;
@@ -95,7 +96,7 @@
     justify-content: space-between;
     align-items: center;
     
-    border: solid 0.25vw #1970E1;
+    border: solid 0.22vw #1970E1;
     border-radius: 3vw;
    
 }
@@ -106,11 +107,11 @@
 }
 
 .no-account-social{
-    padding-top: 28vw;
+    padding-top: 32vw;
     font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 1.5vw;
+    font-size: 1.2vw;
     line-height: 130%;
     text-align: center;
     /* or 23px */
@@ -119,7 +120,7 @@
 
 .sign-up-button {
     font-weight: bold;
-    font-size: 1.7vw;
+    font-size: 1.5vw;
     text-decoration: white;
     color: #1970E1!important;
 }
