@@ -9,7 +9,8 @@ import "./css/Landing.css";
 
 // Image imports
 import logo from "../images/bblogo.png";
-import phoneModel from "../images/phone.png";
+import phoneWebLanding from "../images/phoneWebLanding.svg";
+import phoneModel from "../images/phoneModel.svg";
 import choosegroup from "../images/choosegroup.png";
 import talkstudents from "../images/talkstudents.png";
 import laptop from "../images/laptop.png";
@@ -47,19 +48,14 @@ export default function Landing() {
     return (
       <>
         <Navbar />
-        <div
-          className="landingHeader"
-          // style={{
-          //   backgroundImage: `url(${header})`,
-          // }}
-        >
+        <div className="landingHeader">
           <h1>Building Blocks</h1>
           <p>A peer-mentoring app created for students, by students</p>
           <div className="buttonContainer">
             <button className="demoButton">REQUEST A DEMO</button>
             <button className="getStartedButton">GET STARTED</button>
           </div>
-          <img src={phoneModel} className="phoneModel" />
+          <img src={phoneWebLanding} className="phoneWebLanding" />
         </div>
         <div className="homeContent">
           <h1> How It Works</h1>
