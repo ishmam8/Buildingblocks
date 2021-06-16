@@ -23,6 +23,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 50px;
 }
 
 .teamContainerData {
@@ -32,6 +33,15 @@
   justify-content: center;
   column-gap: 0px;
   row-gap: 8px;
+}
+
+.pastTeamContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+  margin-top: 50px;
 }
 
 @media only screen and (max-width: 1300px) {
