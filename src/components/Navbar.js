@@ -34,41 +34,41 @@ function Navbar() {
                         <img src={click ? close : menu} height="40%" />
                     </div>
                 </div>
-                <div className={click ? "navbar-content active" : "navbar-content"} >
+                <ul className={click ? "navbar-content active" : "navbar-content"} >
 
-                    <div className="nav-item">
+                    <li className="nav-item">
                         <Link to = '/about-us' className='nav-links'>
                             About Us
                         </Link>
-                    </div>
-                    <div className="nav-item">
+                    </li>
+                    <li className="nav-item">
                         <Link to = '/our-team' className='nav-links'>
                             Our Team
                         </Link>
-                    </div>
-                    <div className="nav-item">
+                    </li>
+                    <li className="nav-item">
                         <Link to = '/updates' className='nav-links'>
                             Updates
                         </Link>
-                    </div>
-                    <div className="nav-item">
+                    </li>
+                    <li className="nav-item">
                         <Link to = '/contact' className='nav-links'>
                             Contact
                         </Link>
-                    </div>
+                    </li>
 
-                    <div className="nav-item">
+                    <li className="nav-item">
                         <Link to = '/login' className='nav-links-blue'>
                             Login
                         </Link>
-                    </div>
-                    <div className="nav-item">
+                    </li>
+                    <li className="nav-item">
                         <Link to = '/signup' className='nav-links-blue'>
                             Sign Up
                         </Link>
-                    </div>
+                    </li>
                 
-                </div>
+                </ul>
             </div>
 
         </nav>

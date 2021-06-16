@@ -55,8 +55,6 @@ export default function LoginWithSocial() {
 
     
 
-    <div className="loginWithSocial">
-      <Navbar/>
       <div className="login-content">
           
       <div className="welcome-back">
@@ -101,7 +99,6 @@ export default function LoginWithSocial() {
         </div>
       </div>
       </div>
-    </div>
   ) : (
     <Redirect
       to={{

@@ -53,8 +53,6 @@ export default function LoginWithEmail() {
 
     
 
-    <div className="logInWithEmail">
-      <Navbar/>
       <div className="login-content">
 
       
@@ -112,7 +110,6 @@ export default function LoginWithEmail() {
         </div>
       </div>
       </div>
-    </div>
   ) : (
     <Redirect
       to={{
