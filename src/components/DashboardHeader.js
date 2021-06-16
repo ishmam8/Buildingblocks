@@ -40,7 +40,6 @@ export default function DashboardHeader(props) {
           <text>{username}</text>
           <text>
             {email}
-            eros
           </text>
         </div>
         <button onClick={logout}>Logout</button>
