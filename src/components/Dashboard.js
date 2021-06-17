@@ -1,12 +1,16 @@
+//libraries
 import React, { useState } from "react";
-import "./css/Dashboard.css";
-import Sidebar from "./Sidebar";
 import { Redirect } from "react-router-dom";
-import DashboardHeader from "./DashboardHeader";
-import DashboardInfo from "./DashboardInfo";
 import { useSelector, useDispatch } from "react-redux";
+
+//Component Imports
+import DashboardHeader from "./DashboardHeader";
+import Sidebar from "./Sidebar";
+import DashboardInfo from "./DashboardInfo";
 import DashboardForm from "./DashboardForm";
-import { Container } from "semantic-ui-react";
+
+//Style Imports
+import "./css/Dashboard.css";
 
 export default function Dashboard(props) {
   const [showPopUp, setShowPopUp] = useState(false);
@@ -15,7 +19,6 @@ export default function Dashboard(props) {
   const chatroomName = useSelector((state) => state.chatroomName);
 
   function logout() {
-    console.log("Test");
     dispatch({ type: "CHANGE_USERNAME", username: null });
     dispatch({ type: "CHANGE_EMAIL", email: null });
     dispatch({ type: "CHANGE_AVI", avi: null });
@@ -39,6 +42,13 @@ export default function Dashboard(props) {
       <div className="dashboard">
         <DashboardHeader logout={logout} />
         <Sidebar data={props} />
+        <div className="cards-container">
+          <DashboardInfo />
+          <div className="cards-subcontainer">
+            <DashboardForm />
+            <DashboardForm />
+          </div>
+        </div>
       </div>
     );
   } else {
