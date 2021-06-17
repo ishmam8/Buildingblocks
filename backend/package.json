@@ -17,10 +17,12 @@
     "nodemon": "^2.0.7"
   },
   "dependencies": {
+    "password-generator": "^2.3.2",
     "csv": "^5.5.0",
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
     "jsonwebtoken": "^8.5.1",
     "node-dandelion": "^1.0.2",
-    "password-generator": "^2.3.2",
     "socket.io": "^2.4.1"
   }
 }

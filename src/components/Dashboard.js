@@ -13,7 +13,6 @@ export default function Dashboard(props) {
   const chatroomName = useSelector(state => state.chatroomName);
 
   function logout() {
-    console.log("Test");
     dispatch({type: "CHANGE_USERNAME", username: null});
     dispatch({type: "CHANGE_EMAIL", email: null});
     dispatch({type: "CHANGE_AVI", avi: null});
