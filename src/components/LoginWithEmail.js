@@ -37,13 +37,14 @@ export default function LoginWithEmail() {
             type: "CHANGE_USER_ALL",
             user: {
               loggedIn: true,
-              username: res.data.username,
-              email: res.data.email,
-              _id: res.data._id,
-              bio: res.data.bio,
-              avi: res.data.avi,
+              username: res.data.user.username,
+              email: res.data.user.email,
+              _id: res.data.user._id,
+              bio: res.data.user.bio,
+              avi: res.data.user.avi,
             },
           });
+          localStorage.setItem("token", res.data.token);
           setLoggedIn(true);
           setProfile(res.data);
         }

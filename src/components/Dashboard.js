@@ -5,24 +5,26 @@ import { Redirect } from "react-router-dom";
 import DashboardHeader from "./DashboardHeader";
 import DashboardInfo from "./DashboardInfo";
 import { useSelector, useDispatch } from "react-redux";
+import DashboardForm from "./DashboardForm";
+import { Container } from "semantic-ui-react";
 
 export default function Dashboard(props) {
   const [showPopUp, setShowPopUp] = useState(false);
-  const loggedIn = useSelector(state => state.loggedIn);
+  const loggedIn = useSelector((state) => state.loggedIn);
   const dispatch = useDispatch();
-  const chatroomName = useSelector(state => state.chatroomName);
+  const chatroomName = useSelector((state) => state.chatroomName);
 
   function logout() {
     console.log("Test");
-    dispatch({type: "CHANGE_USERNAME", username: null});
-    dispatch({type: "CHANGE_EMAIL", email: null});
-    dispatch({type: "CHANGE_AVI", avi: null});
-    dispatch({type: "CHANGE_TYPE", myType: null});
-    dispatch({type: "CHANGE_CHATROOM", chatroom: false});
-    dispatch({type: "CHANGE_LASTUSER", lastUser: null});
-    dispatch({type: "CHANGE_LOGGEDIN", loggedIn: false});
+    dispatch({ type: "CHANGE_USERNAME", username: null });
+    dispatch({ type: "CHANGE_EMAIL", email: null });
+    dispatch({ type: "CHANGE_AVI", avi: null });
+    dispatch({ type: "CHANGE_TYPE", myType: null });
+    dispatch({ type: "CHANGE_CHATROOM", chatroom: false });
+    dispatch({ type: "CHANGE_LASTUSER", lastUser: null });
+    dispatch({ type: "CHANGE_LOGGEDIN", loggedIn: false });
     window.location.reload();
-  };
+  }
 
   if (!loggedIn) {
     return (
@@ -37,8 +39,6 @@ export default function Dashboard(props) {
       <div className="dashboard">
         <DashboardHeader logout={logout} />
         <Sidebar data={props} />
-
-        <DashboardInfo />
       </div>
     );
   } else {
@@ -51,4 +51,3 @@ export default function Dashboard(props) {
     );
   }
 }
-
