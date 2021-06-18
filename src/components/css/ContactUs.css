@@ -7,6 +7,7 @@
   overflow-y: hidden;
 
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 .contact-us-container {
@@ -27,39 +28,102 @@
   font-family: "Roboto", sans-serif;
 
   font-size: 35px;
-  height: 110px;
+  height: 90px;
   width: 100%;
 }
 
 .contact-us-text {
   font-family: "Poppins", sans-serif;
   font-size: 15px;
-  line-height: 24px;
-  width: 480px;
+  line-height: 22px;
+  width: 300px;
   height: auto;
-  margin-top: 25px;
-  margin-bottom: 20px;
+  margin-top: 15px;
+  padding: 2px;
 }
 
 .contact-us-email {
   font-family: "Poppins", sans-serif;
-  font-size: 21px;
+  font-size: 18px;
   font-weight: bold;
   color: #076df2;
-  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 2px;
 }
 
 .contact-us-image {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 300px;
-  width: 360px;
+  height: 250px;
+  width: 250px;
 }
 
 .contact-us-image img {
-  height: 280px;
+  height: 230px;
 }
 
+
+/*responsiveness for wider screens */
+@media screen and (min-width: 750px) {
+  .contact-us-body {
+    height: 100vh;
+    overflow-y: hidden;
+
+    box-sizing: border-box;
+  }
+
+  .contact-us-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    height: 100%;
+  }
+
+  .contact-us-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #ffffff;
+    background-color: #398af5;
+    font-family: "Roboto", sans-serif;
+
+    font-size: 35px;
+    height: 110px;
+    width: 100%;
+  }
+
+  .contact-us-text {
+    font-family: "Poppins", sans-serif;
+    font-size: 15px;
+    line-height: 24px;
+    width: 480px;
+    height: auto;
+    margin-top: 25px;
+    margin-bottom: 20px;
+  }
+
+  .contact-us-email {
+    font-family: "Poppins", sans-serif;
+    font-size: 21px;
+    font-weight: bold;
+    color: #076df2;
+    margin-bottom: 10px;
+  }
+
+  .contact-us-image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    width: 360px;
+  }
+
+  .contact-us-image img {
+    height: 280px;
+  }
+}
 
 
