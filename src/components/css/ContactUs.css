@@ -1,36 +1,64 @@
 /*Font imports */
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
 .contact-us-body {
   height: 100vh;
   overflow-y: hidden;
+
+  box-sizing: border-box;
 }
+
 .contact-us-container {
   display: flex;
   flex-direction: column;
   align-items: center;
+
   height: 100%;
-  width: 100%;
-  border: 2px solid black;
 }
 
 .contact-us-banner {
   display: flex;
   align-items: center;
   justify-content: center;
+
   color: #ffffff;
   background-color: #398af5;
   font-family: "Roboto", sans-serif;
-  font-size: 48px;
-  line-height: 56px;
-  height: 168px;
+
+  font-size: 40px;
+  height: 100px;
   width: 100%;
 }
 
 .contact-us-text {
-  border: 1px solid green;
+  font-family: "Poppins", sans-serif;
+  font-size: 15px;
+  line-height: 24px;
+  width: 480px;
+  height: 100px;
+  margin-top: 13px;
+  padding: 1px;
 }
 
 .contact-us-email {
-  border: 1px solid purple;
+  font-family: "Poppins", sans-serif;
+  font-size: 22px;
+  font-weight: bold;
+  color: #076df2;
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.contact-us-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 300px;
+  width: 300px;
+}
+
+.contact-us-image img{
+  height: 400px;
+  width: 400px;
 }
