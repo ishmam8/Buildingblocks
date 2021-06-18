@@ -18,8 +18,7 @@ export default function ContactUs() {
           If your student group wants to use Building Blocks for your peer
           mentoring program, or you’d like to get invovled with Building Blocks,
           shoot us an email!
-          <br />
-          <br />
+          <br /> <br />
           We’ll do our best to respond in one business day.
         </div>
         <div className="contact-us-email">buildingblocksapp@gmail.com</div>
