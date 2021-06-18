@@ -4,9 +4,8 @@ import React, { useState } from "react";
 import "./css/Navbar.css";
 
 // Images import
-//import logo from "../images/logo.svg";
-import logo from "../images/laptop.png";
-//import bars from "../images/icons/menuBars.svg";
+import logo from "../images/logo.svg";
+import bars from "../images/icons/menuBars.svg";
 
 function Navbar() {
   const [showLinks, setShowLinks] = useState(false);
