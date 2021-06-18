@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 export default function SignupWithEmai() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [email, setEmail] = useState("");
   const [avi, setAvi] = useState("01");
   const [bio, setBio] = useState("");
@@ -105,8 +106,8 @@ export default function SignupWithEmai() {
                 
                 name="passcode"
                 required
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                value={confirmPassword}
               />
             </div>
 
