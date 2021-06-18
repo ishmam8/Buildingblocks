@@ -7,7 +7,7 @@
   width: 10%;
 
   position: fixed;
-  top: 65px;
+  top: 80px;
   left: 0;
 
   transition: 300ms;
@@ -154,5 +154,9 @@
   .toggle-container.active {
     background-color: #ececec;
     border-radius: 6px;
+  }
+
+  .sidebar-body {
+    top: 120px;
   }
 }

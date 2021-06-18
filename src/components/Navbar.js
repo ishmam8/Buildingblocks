@@ -1,45 +1,91 @@
-import React, { useState } from "react";
+import React, {useState} from 'react';
+import {Link} from 'react-router-dom';
+import './css/Navbar.css';
+import logo from "../images/bblogo.png"
+import logo_small from "../images/minlogo.png"
+import close from '../images/icons/close.svg';
+import menu from '../images/icons/menu.svg';
+import {useSelector} from "react-redux";
 
-//Styles import
-import "./css/Navbar.css";
+function Navbar(props) {
+    const [click, setClick] = useState(false);
+    const handleClick = () => setClick(!click)
+    const [open, setOpen] = useState(false);
 
-// Images import
-import logo from "../images/logo.svg";
-import bars from "../images/icons/menuBars.svg";
 
-function Navbar() {
-  const [showLinks, setShowLinks] = useState(false);
-  return (
-    <div className="navbarContainer">
-      <div className="navbarLeft">
-        <img className="logo" src={logo} alt="Welcome to Building Blocks!" />
-      </div>
+    const changeOpen = () => {
+        setOpen(!open);
+    };
+        return (
+            <>
+                <nav className="navbar">
+                    <div className="navbar-container">
+                        <div className="navbar-extras">
+                            <div className="navbar-logo-container">
+                                <Link to="/">
+                                    <picture style={{maxWidth: "100%"}}>
+                                        <source media="(min-width: 1000px)" srcset={logo}/>
+                                        <img style={{paddingTop: "15px"}} src={logo_small} alt="Logo"/>
+                                    </picture>
+                                </Link>
+                            </div>
 
-      <div className="navbarRight">
-        <div className="navbarLinks">
-          <a className="blackNavLinks" href="/">
-            About Us
-          </a>
-          <a className="blackNavLinks" href="/team">
-            Our Team
-          </a>
-          <a className="blackNavLinks" href="/">
-            Updates
-          </a>
-          <a className="blackNavLinks" href="/">
-            Contact
-          </a>
 
-          <a href="/login" className="blueNavLinks">
-            Login
-          </a>
-          <a href="/signup" className="blueNavLinks">
-            Sign Up{" "}
-          </a>
-        </div>
-      </div>
-    </div>
-  );
+                            <div className="mobile-menu-button" onClick={handleClick}>
+                                <img src={click ? close : menu} height="40%"/>
+                            </div>
+                        </div>
+                        <div className={click ? "navbar-wrapper active" : "navbar-wrapper"}>
+                            <ul className={click ? "navbar-content active" : "navbar-content"}>
+
+                                <li className="nav-item">
+                                    <Link to='/about-us' className='nav-links'>
+                                        About Us
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to='/our-team' className='nav-links'>
+                                        Our Team
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to='/updates' className='nav-links'>
+                                        Updates
+                                    </Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to='/contact' className='nav-links'>
+                                        Contact
+                                    </Link>
+                                </li>
+
+                                <li className="login-link">
+                                    <Link to='/login' className='nav-links-blue' onClick={changeOpen}>
+                                        Login
+                                    </Link>
+                                    <div className="dropDown-email">
+                                        <div onClick={handleClick} className="drop-login">
+                                            <Link to='/login-email' className='login-drop-links'>Email</Link>
+                                            <span className="blue-line"></span>
+                                            <Link style={{border: "none"}} to='/login-social'
+                                                  className='login-drop-links'>Social</Link>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li className="nav-item">
+                                    <Link to='/signup' className='nav-links-blue'>
+                                        Sign Up
+                                    </Link>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+
+                </nav>
+            </>
+        );
 }
 
-export default Navbar;
+
+export default Navbar

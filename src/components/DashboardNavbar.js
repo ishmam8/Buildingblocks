@@ -26,7 +26,7 @@ function DashboardNavbar(props) {
                         <div className="dashboard-navbar-logo-container">
                             <Link to="/">
                                 <picture style={{maxWidth: "100%"}}>
-                                    <source media="(min-width: 1100px)" srcset={logo}/>
+                                    <source media="(min-width: 800px)" srcset={logo}/>
                                     <img src={logo_small} alt="Logo"/>
                                 </picture>
                             </Link>
@@ -36,7 +36,7 @@ function DashboardNavbar(props) {
                             <img
                                 onClick={changeOpen}
                                 alt="User Avatar"
-                                className="navbar-image"
+                                className={open ? "navbar-image active" : "navbar-image"}
                                 //src={require("../images/icons/" + avi + ".png")}
                                 src={require("../images/team/lassooijAlex.jpeg")}
 
