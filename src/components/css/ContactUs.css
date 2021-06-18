@@ -38,7 +38,7 @@
   width: 480px;
   height: auto;
   margin-top: 25px;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 
 .contact-us-email {
@@ -57,41 +57,9 @@
   width: 360px;
 }
 
-.contact-us-image img{
+.contact-us-image img {
   height: 280px;
 }
 
 
-@media screen and (max-width: 500px) {
-  .contact-us-text {
-    font-family: "Poppins", sans-serif;
-    font-size: 13px;
-    line-height: 22px;
-    width: 300px;
-    height: auto;
-    margin-top: 25px;
-    margin-bottom: 10px;
-  }
 
-  .contact-us-email {
-    font-family: "Poppins", sans-serif;
-    font-size: 17px;
-    font-weight: bold;
-    color: #076df2;
-    margin-bottom: 6px;
-  }
-
-  .contact-us-image {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 230px;
-    width: 230px;
-  }
-
-  .contact-us-image img{
-    height: 220px;
-  }
-  
-  
-}
