@@ -11,8 +11,12 @@ const instance = axios.create({
 })
 
 function EditBio() {
+  //console.log(this.state);
+  console.log(useSelector(state => state))
   const [open, setOpen] = React.useState(false)
   const [bio, setBio] = React.useState("")
+  const [info, setInfo] = React.useState()
+
   const userid = useSelector(state => state._id)
   const token = useSelector(state => state.token)
   const dispatch = useDispatch()
@@ -22,6 +26,13 @@ function EditBio() {
     console.log("FRONTEND AUTH", token);
     const newBio = {
       bio: bio,
+      club: ["neuroscience"],
+      userRole: "Mentor",
+    };
+
+    const newInfo = {
+      club: "neuroscience",
+      userRole: "Mentor"
     };
 
     const authToken = {
@@ -38,6 +49,8 @@ function EditBio() {
           dispatch({type: "CHANGE_TOKEN", token: res.data.token})
         }
         dispatch({type: "CHANGE_BIO", bio: bio})
+        //dispatch({type: "CHANGE_CLUB_USERROLE", club: ["neuroscience"], userRole: "Mentor"})
+
       } else {
         // useAlert("Sorry, can you please try again?");
         console.log(res.data);
