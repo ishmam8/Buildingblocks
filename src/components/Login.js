@@ -1,8 +1,20 @@
 import React from "react";
+import Navbar from "./Navbar";
 import './css/Login.css';
 
 export const Login = props => {
-    return (<div className="logIn">
+    return (
+        
+        <Navbar/>
+            
+    );
+};
+
+export default Login;
+
+/*
+
+<div className="logIn">
             <div className="rectangle">
                 <div className="welcomeBack">Welcome<br></br>Back</div>
             </div>
@@ -23,7 +35,5 @@ export const Login = props => {
                 <button className="rectangle_2_2">Log in with e-mail</button>
             </a>
         </div>
-    );
-};
 
-export default Login;
+*/
