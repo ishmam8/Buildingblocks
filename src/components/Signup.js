@@ -1,6 +1,7 @@
 import React from "react";
 import './css/Signup.css';
 import background from "../images/mentor.png"
+import Navbar from "./Navbar.js"
 
 const Signup = props => (
     <div className="signUp">

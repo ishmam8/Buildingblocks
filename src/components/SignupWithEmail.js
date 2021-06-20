@@ -6,6 +6,7 @@ import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { useAlert } from "react-alert";
 import { useSelector } from "react-redux";
+import Navbar from "./Navbar.js"
 
 export default function SignupWithEmai() {
   const [username, setUsername] = useState("");
@@ -46,6 +47,7 @@ export default function SignupWithEmai() {
   return !loggedIn ? (
     <div>
       <div className="signUp">
+      
         <div className="rectangleSignUp">
           <a href="/" className="App-name-login">
             ⬅ STUDENT CONVERSATIONS NOW
