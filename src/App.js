@@ -14,6 +14,7 @@ import OuterChatContainer from "./components/OuterChatContainer";
 import EditProfile from "./components/EditProfile";
 import Navbar from './components/Navbar';
 import Team from "./components/Team";
+import AboutUs from "./components/AboutUs";
 
 class App extends Component {
     state = {
@@ -37,6 +38,7 @@ class App extends Component {
                     <Route path="/chatRoom" component={OuterChatContainer} />
                     <Route path="/editProfile" component={EditProfile} />
                     <Route path="/team" component={Team} />
+                    <Route path="/aboutus" component={AboutUs} />
                 </Switch>
             </div>
         );
