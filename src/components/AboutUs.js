@@ -13,6 +13,7 @@ import logo from "../images/bblogo.png"
 import { useSelector } from 'react-redux';
 import './css/AboutUs.css';
 import Navbar from "./Navbar"
+import Footer from "./Footer"
 
 export default function Landing() {
     const [holder, setHolder] = useState(2);
@@ -60,6 +61,7 @@ export default function Landing() {
 
                     <img className="about-us-img" src={background} alt="Welcome to Student Conversations Now" />
                 </section>
+                <Footer/>
             </div>
         )
     } else {
