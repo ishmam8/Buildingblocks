@@ -36,6 +36,7 @@ class App extends Component {
                     <Route path="/dashboard" component={Dashboard} />
                     <Route path="/chatRoom" component={OuterChatContainer} />
                     <Route path="/editProfile" component={EditProfile} />
+                    <Route path="/team" component={Team} />
                 </Switch>
             </div>
         );

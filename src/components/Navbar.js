@@ -37,22 +37,22 @@ function Navbar() {
                 <ul className={click ? "navbar-content active" : "navbar-content"} >
 
                     <li className="nav-item">
-                        <Link to = '/about-us' className='nav-links'>
+                        <Link to = '/' className='nav-links'>
                             About Us
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to = '/our-team' className='nav-links'>
+                        <Link to = '/team' className='nav-links'>
                             Our Team
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to = '/updates' className='nav-links'>
+                        <Link to = '/' className='nav-links'>
                             Updates
                         </Link>
                     </li>
                     <li className="nav-item">
-                        <Link to = '/contact' className='nav-links'>
+                        <Link to = '/' className='nav-links'>
                             Contact
                         </Link>
                     </li>

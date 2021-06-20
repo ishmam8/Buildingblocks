@@ -47,6 +47,7 @@ export default function Landing() {
   if (!loggedIn) {
     return (
       <>
+      <Navbar />
         <div className="landingHeader">
           <h1>Building Blocks</h1>
           <p>A peer-mentoring app created for students, by students</p>
