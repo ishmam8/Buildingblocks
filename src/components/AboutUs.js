@@ -12,6 +12,7 @@ import { Redirect } from 'react-router-dom'
 import logo from "../images/bblogo.png"
 import { useSelector } from 'react-redux';
 import './css/AboutUs.css';
+import Navbar from "./Navbar"
 
 export default function Landing() {
     const [holder, setHolder] = useState(2);
@@ -29,23 +30,8 @@ export default function Landing() {
             <div className="landingbody">
 
                 <section id="navbar">
-                    <div className="landingHeader">
-                        <img className="logo"
-                            src={logo}
-                            alt="Welcome to Building Blocks!"
-                        />
-                        
-                        <a className="loginSignin" href="./login">Login</a>
-                        <a className="loginSignin" href="./signup">Sign Up</a>
-                        <a className="loginSignin" href="./aboutus">About Us</a>
-                    </div>
+                    <Navbar />
                 </section>
-
-                <br/>
-                <br/>
-                <br/>
-                <br/>
-                
                 
                 <section id="content">
                     <div className="header">
