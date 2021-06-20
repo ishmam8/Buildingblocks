@@ -11,7 +11,6 @@ const initState = {
   token: null,
   userRole: null,
   club: []
-
 };
 
 const Reducer = (state = initState, action) => {

@@ -26,9 +26,7 @@ class App extends Component {
         const App = () => (
             
             <div>
-              <Navbar/>
                 <Switch>
-
                     <Route path="/" exact component={Landing}/>
                     <Route path="/choice" render={() => <Choice profiles={this.state.profiles} />}/>
                     <Route path="/login" render={() => <LoginWithEmail profiles={this.state.profiles}/>}/>
@@ -47,7 +45,11 @@ class App extends Component {
             </Switch>
         );
     }
-
+    
+state = {
+    profiles: null,
+    userInfo: null,
+  };
 }
 
 export default App;
