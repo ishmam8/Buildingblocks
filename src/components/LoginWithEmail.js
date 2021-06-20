@@ -8,6 +8,7 @@ import Login from "./Login";
 import { useSelector } from "react-redux";
 import Navbar from "./Navbar";
 import login_graphic from "../images/login_graphic.png"
+import Cookies from 'universal-cookie';
 
 export default function LoginWithEmail() {
   const dispatch = useDispatch();
@@ -16,23 +17,30 @@ export default function LoginWithEmail() {
   const [loggedIn, setLoggedIn] = useState(false);
   const [profile, setProfile] = useState({});
   const isLoggedIn = useSelector((state) => state.loggedIn);
+  axios.defaults.withCredentials = true;
+  const cookies = new Cookies();
+  const instance = axios.create({
+    withCredentials: true
+  })
 
   function onSubmit(e) {
     e.preventDefault();
     const userCredentials = {
       email: email,
-      password: password,
+      password: password
     };
     setEmail("");
     setPassword("");
 
-    axios
-      .post("http://localhost:5000/users/login", userCredentials)
+  
+    instance
+      .post("http://localhost:5000/users/login", userCredentials, { withCredentials: true })
       .then((res) => {
         if (res.data === "invalid password") {
           // useAlert("Sorry can you please check your credentials and try again?");
           console.log(res);
         } else {
+          console.log(res.data.token);
           dispatch({
             type: "CHANGE_USER_ALL",
             user: {
@@ -44,7 +52,12 @@ export default function LoginWithEmail() {
               avi: res.data.user.avi,
             },
           });
-          localStorage.setItem("token", res.data.token);
+          dispatch({
+            type: "CHANGE_TOKEN",
+            token: res.data.token,
+          })
+          // cookies.set('token', res.data.token, { path: '/' });
+          // localStorage.setItem("token", res.data.token);
           setLoggedIn(true);
           setProfile(res.data);
         }

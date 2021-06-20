@@ -2,10 +2,25 @@ const Bcrypt = require("bcryptjs");
 const router = require("express").Router();
 const User = require("../models/users.model");
 const jwt = require("jsonwebtoken"); // for hashing and sigining the tokens
+const authJs = require("../middleware/auth.js");
+const authenticateToken = authJs.authenticateToken;
+const deleteToken = authJs.deleteToken;
+const cors = require('cors');
+const express = require('express');
+const app = express()
+const cookieParser = require('cookie-parser');
+app.use(cookieParser());
+const corsOptions = {
+  credentials: true,
+  origin: 'http://localhost:3000'
+};
+
+global.refreshTokens = [];
 // const Message = require("../models/messages.model");
 // const Chatroom = require("../models/chatrooms.model");
 // const Mongoose = require("mongoose");
 // const { useRef } = require("react");
+app.use(cors(corsOptions));
 
 router.route("/").get((req, res) => {
   User.find()
@@ -38,29 +53,49 @@ router.route("/add").post(async (req, res) => {
 });
 
 async function generateAccessToken(user) {
-  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: 360000});
+  return jwt.sign(user, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15s'});
 }
 
 router.route("/login").post(async (req, res) => {
+  console.log("login");
   const user = await User.findOne({ email: req.body.email });
   if (user === null) {
+    console.log("user not found");
     return res.status(400).send("Cannot find user");
   }
   try {
     const isMatch = await Bcrypt.compare(req.body.password, user.password);
     if (!isMatch) {
+      console.log(user);
       return res.status(400).json({ msg: "Invalid Credentials" });
     }
 
     const payload = { user: { id: user.id } };
+    console.log('payload',payload);
     const token = await generateAccessToken(payload);
-    res.json({token, user});
+    const refreshToken = jwt.sign(payload,process.env.REFRESH_TOKEN_SECRET);
+    console.log(token);
+    refreshTokens.push(refreshToken);
+    res.cookie('refreshtoken',refreshToken,{ sameSite:'strict',
+      path: '/',
+      httpOnly: true });
+    res.json({user, token});
+  } catch(err) {
+    console.log("exception",err)
+    res.status(500).send();
+  }
+});
+
+router.route("/logout").post(deleteToken, async (req, res) => {
+  try {
+    res.cookie('refreshtoken',null,{ httpOnly: true });
+    res.data("Successful")
   } catch {
     res.status(500).send();
   }
 });
 
-router.route("/update/:id").post(async (req, res) => {
+router.route("/update/:id").post(authenticateToken, async (req, res) => {
   const salt = 10;
   User.findById(req.params.id)
     .then(async (user) => {
@@ -92,15 +127,17 @@ router.route("/update/:id").post(async (req, res) => {
       if (req.body.bio) {
         user.bio = req.body.bio;
       }
+      console.log("info saved");
       // user.username = req.body.username;
       // user.password = req.body.password;
       // user.email = req.body.email;
       // user.avi = Number(req.body.avi);
       // user.chatrooms = req.body.chatrooms;
       // user.bio = req.body.bio;
+      let token = {token: req.token};
       user
         .save()
-        .then(() => res.json(user))
+        .then(() => res.json({user, token}))
         .catch((err) => res.status(400).json("Error: " + err));
     })
     .catch((err) => res.status(400).json("Error: " + err));
@@ -121,5 +158,4 @@ router.route("/getuser/:id").get((req, res) => {
 // NEW: When a chatroom needs to be added for a user, a chatroom is
 //      instantiated and added to the database. That chatroom is
 //      then added to the users list of chatrooms
-
 module.exports = router;
