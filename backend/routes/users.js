@@ -24,6 +24,32 @@ global.refreshTokens = [];
 // const Mongoose = require("mongoose");
 // const { useRef } = require("react");
 app.use(cors(corsOptions));
+const nodemailer = require("nodemailer");
+const generatePassword = require('password-generator');
+const emailTransporter = (userEmail, subject, text) => {
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'buildingblocks507@gmail.com',
+      pass: 'Ranndomm123'
+    }
+  });
+
+  let mailOptions = {
+    from: 'buildingblocks507@gmail.com',
+    to: `${userEmail}`,
+    subject: subject,
+    text: text
+  };
+
+  transporter.sendMail(mailOptions)
+    .then(response => {
+      console.log("Success")
+    })
+    .catch(error => {
+      console.log("Error")
+    });
+};
 
 router.route("/").get((req, res) => {
   User.find()
@@ -36,43 +62,75 @@ router.route("/addusers").post(async (req, res) => {
   let club;
   let results = [];
   fs.createReadStream("./batch_files/users.csv")
-  .pipe(csv())
-  .on("data", (data) => {
-    results.push({
-      username: data[0], 
-      email: data[1],
-      clubName: data[2],
-      userRole: data[3]
+    .pipe(csv())
+    .on("data", (data) => {
+      results.push({
+        username: data[0],
+        email: data[1],
+        clubName: data[2],
+        userRole: data[3]
+      })
     })
-  })
-  .on("end", () => {
-    results.shift();
-    results.forEach( async user => {
-      const salt = 10;
-      const username = user.username;
-      const password = await Bcrypt.hash("bb$betatest", salt);
-      const email = user.email;
-      const userRole = user.userRole;
-      const newUser = new User({
-        username,
-        password,
-        email,
-        userRole,
-      });
-      
-      if (!isClubCreated){
-        club = await Club.findOne({clubName: user.clubName});
-        if(!club){
-          club = new Club({clubName: user.clubName});
-          await club.save();
+    .on("end", () => {
+      results.shift();
+      results.forEach(async user => {
+
+        if (!isClubCreated) {
+          club = await Club.findOne({ clubName: user.clubName });
+          if (!club) {
+            club = new Club({ clubName: user.clubName });
+            await club.save();
+          }
+          isClubCreated = true;
         }
-        isClubCreated = true;
-      }
-      newUser.club.push(club);
-      newUser.save();
+
+        const userFound = await User.findOne({ email: user.email });
+
+        if (!userFound) {
+          const salt = 10;
+          const userName = user.username;
+          const userPassword = generatePassword(16, false);
+          const hashPassword = await Bcrypt.hash(userPassword, salt);
+          const userEmail = user.email;
+          const userRole = user.userRole;
+          const userClub = [club];
+          const text = `Hello your account is now active for BuildingBlocks App. 
+          Username:${userName}
+          Password: ${userPassword}
+          **Please change your password within 24 hours**`
+          const subject = 'Change Password Reminder'
+
+          const newUser = new User({
+            username: userName,
+            password: hashPassword,
+            email: userEmail,
+            avi: null,
+            userRole: userRole,
+            bio: null,
+            club: userClub,
+          });
+
+          newUser.save();
+          emailTransporter(userEmail, subject, text);
+
+        } else {
+          const userRole = user.userRole;
+          const userName = user.username;
+          const userEmail = user.email;
+          const userClub = user.clubName;
+          const subject = 'Change Password Reminder'
+          const text = `Hi ${userName} you have been added to ${userClub} club as a ${userRole}`
+
+          userFound.club.push(club);
+          userFound.save();
+          emailTransporter(userEmail, subject, text)
+        }
+
+      });
+
+      results = null;
+
     });
-    results = null;
-  });
 });
 
 router.route("/add").post(async (req, res) => {
@@ -137,6 +195,7 @@ router.route("/logout").post(deleteToken, async (req, res) => {
   try {
     res.cookie('refreshtoken',null,{ httpOnly: true });
     res.data("Successful")
+    res.json({ token, user });
   } catch {
     res.status(500).send();
   }
