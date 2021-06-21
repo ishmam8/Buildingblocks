@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./components/css/App.css";
 import Landing from "./components/Landing";
+import Error from "./components/Error";
 import Login from "./components/Login";
 import { Route, Switch } from "react-router-dom";
 import Choice from "./components/Choice";
@@ -40,6 +41,7 @@ class App extends Component {
           <Route path="/dashboard" component={Dashboard} />
           <Route path="/chatRoom" component={OuterChatContainer} />
           <Route path="/editProfile" component={EditProfile} />
+          <Route path="*" component={Error} />
         </Switch>
       </div>
     );
