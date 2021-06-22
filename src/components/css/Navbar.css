@@ -11,6 +11,7 @@
     width: 100vw;
     max-width: 100vw;
     height: 120px;
+    margin: 0;
   }
   
 .navbar-container {
@@ -151,7 +152,7 @@
 
 
 
-@media screen and (max-width: 1000px){
+@media screen and (max-width: 1100px){
 
     .navbar{
         height: 80px;
@@ -168,10 +169,10 @@
 
     .navbar-logo-container{
         height: 80px;
-    }
-    .navbar-logo-container{
         width: 80px;
+        margin-left: 20px;
     }
+
 
     .navbar-logo-container img{
         width: 50%;
@@ -213,6 +214,7 @@
     .navbar-content.active{
         display: flex;
         flex-direction: column;
+
         margin-top: 0;
         padding: 0;
         width: 100%;
@@ -220,11 +222,12 @@
         top: 80px;
         left: 0;
         opacity: 1;
-        transition: all 0.3s ;
         z-index: 10;
         background: white;
         justify-content: center;
         align-items: center;
+
+        transition: all 0.3s ;
       }
     
     .nav-item {
@@ -236,7 +239,7 @@
     
     .mobile-menu-button{
         display: flex;
-        margin-right: 3vw;
+        margin-right: 20px;
         height: 100%;
         cursor: pointer;
         justify-content: center;
@@ -298,6 +301,7 @@
         align-items: center;
         justify-content: center;
         padding: 10px 0;
+        transition: 300ms;
     }
 
     .drop-login{
@@ -329,7 +333,7 @@
 
     .login-drop-links:hover{
         color: #1970E1;
-        font-size: 3.5vh;
+        font-size: 3.2vh;
         transition: 0.4s;
     }
 
@@ -344,13 +348,14 @@
 
     }
 
+
     .login-link:hover .dropDown-email {
         display: flex;
         background: white;
         position: fixed;
         top: unset;
         left: auto;
-        width: 220px;
+        width: 240px;
         height: 120px;
         transition: 300ms;
         align-items: center;

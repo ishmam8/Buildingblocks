@@ -24,7 +24,7 @@ function Navbar(props) {
                             <div className="navbar-logo-container">
                                 <Link to="/">
                                     <picture style={{maxWidth: "100%"}}>
-                                        <source media="(min-width: 1000px)" srcset={logo}/>
+                                        <source media="(min-width: 1100px)" srcset={logo}/>
                                         <img style={{paddingTop: "15px"}} src={logo_small} alt="Logo"/>
                                     </picture>
                                 </Link>

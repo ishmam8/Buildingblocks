@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import "./css/LoginWithSocial.css";
+import "./css/Login.css";
 import axios from "axios";
 import { Link, Redirect } from "react-router-dom";
-import { useAlert } from "react-alert";
 import { useDispatch } from "react-redux";
-import Login from "./Login";
 import { useSelector } from "react-redux";
-import Navbar from "./Navbar";
-import login_graphic from "../images/login_graphic.png"
 import facebook from "../images/facebook_circle-512Fb.png"
 import google from "../images/new-google-favicon-512.png"
+import login_graphic from "../images/login_graphic.svg"
+import login_mobile from "../images/login_mobile.svg"
 
 export default function LoginWithSocial() {
     const dispatch = useDispatch();
@@ -57,18 +55,21 @@ export default function LoginWithSocial() {
 
     
 
-      <div className="login-content-social">
+      <div className="login-content">
           
       <div className="welcome-back">
         <div className="welcome-back-content">
         <p className="welcome-text">Welcome Back
         </p>
-        <img src={login_graphic} alt="login_graphic" width="60%" />
+            <picture style={{width: "60%", alignItems: "center"}}>
+                <source style={{width: "100%"}} media="(min-width: 950px)" srcSet={login_graphic}/>
+                <img style={{width: "100%"}} src={login_mobile} alt="Logo"/>
+            </picture>
       </div>
       </div>
       
-      <div className="social-input-container">
-        <div className="social-login-container">
+      <div className="login-wrapper">
+        <div className="login-container">
             <div className="social-login-form">
 
                 <div className="social-login-option">
@@ -91,7 +92,7 @@ export default function LoginWithSocial() {
 
             </div>
 
-            <div className="no-account-social">
+            <div className="no-account">
                 Don't have an account?{" "}
                 <a href="./signup" style={{textDecoration: "none"}}>
                     <Link to="/signup" className="sign-up-button">Sign Up</Link>
