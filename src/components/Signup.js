@@ -18,16 +18,17 @@ const Signup = props => (
         </div>
         <div className="rectangleRightSignUp">
             
-            <div className = "rectangle_2SignUp">  
+            <a href="/"><div className = "rectangle_2SignUp">  
                 <div className = "signUpWithGoogle">Sign up with Google</div>
                 <div className = "newGoogleFavicon_512"/>
-            </div>
+            </div></a>
+            
             <div className = "facebookCircle_512"/>           
-            <div className = "signUpWithFacebook">Sign up with Facebook</div>
+            <a href="/"><div className = "signUpWithFacebook">Sign up with Facebook</div></a> 
             <div className = "or"> or </div>
                    
             
-            <div className = "rectangle_2_2SignUp "/>    
+            <div className = "rectangle_2_2SignUp "/>   
 
             <div className="alreadyHaveAnAccount">
                 Already have an account? <a href="./login"><span className="sign-in-button">Log In</span></a>
