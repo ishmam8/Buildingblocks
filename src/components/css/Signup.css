@@ -215,11 +215,99 @@
 .signupPicture {
     position: absolute;
     width: 25%;
-    position: absolute;
     left: 13%;
-    top: 40%;
-    
-
-    background: linear-gradient(0deg, rgba(7, 109, 242, 0) 3.68%, #6399DF 100.37%);
+    top: 40%; 
 }
+
+.customButton {
+    width: 50%;
+    border: 3px solid #1970E1;
+    border-radius: 50px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1.5vw;
+    text-align: left;
+    padding: 25px;
+    margin: 5% auto;
+    color: #000000;
+}
+
+.customGoogleButton {
+    display: block;
+    width: 100%;
+    border: 3px solid #1970E1;
+    border-radius: 50px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 1.5vw;
+    text-align: left;
+    padding: 25px;
+    margin: 5% auto;
     
+    background-color: #FFFFFF;
+}
+
+.buttonIcons {
+    float: right;
+}
+
+.vertical-center {
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.test {
+   
+    width: 47px;
+    height: 47px;
+    
+    background: url("../../images/facebook_circle-512Fb.png");
+}
+
+/* New */
+
+.main {
+    
+}
+
+#leftSide {
+    display: inline-block;
+    width: 50%;
+    background-color: #1970E1;
+}
+#rightSide {
+    display: inline-block;
+    width: 50%;
+    text-align: center;
+    background-color: #FFFFFF;
+}
+
+.welcomeText {
+    
+    text-align: center;
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 3.5vw;
+    line-height: 130%;
+    color: #FFFFFF;
+    margin-top: 10%;
+    margin-bottom: 5%;
+}
+
+.signupImg {
+    width: 60%;
+    display: block;
+    margin: 5% auto;
+}
+
+.alreadyHaveAnAccountText {
+    text-align: center;
+    font-family: sans-serif;
+    font-weight: normal;
+    font-size: 1vw;
+    color: #000000;
+}
