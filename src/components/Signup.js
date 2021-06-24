@@ -1,7 +1,12 @@
 import React from "react";
 import './css/Signup.css';
 import background from "../images/mentor.png"
+import GoogleButton from "./GoogleButton.js"
+import FacebookButton from "./FacebookButton.js"
 import Navbar from "./Navbar.js"
+import GoogleLogin from 'react-google-login'
+
+
 
 const Signup = props => (
     <div className="signUp">
@@ -18,13 +23,13 @@ const Signup = props => (
         </div>
         <div className="rectangleRightSignUp">
             
-            <a href="/"><div className = "rectangle_2SignUp">  
-                <div className = "signUpWithGoogle">Sign up with Google</div>
-                <div className = "newGoogleFavicon_512"/>
-            </div></a>
+            <div className = "rectangle_2SignUp">  
+                
+                < GoogleButton />
+            </div>
             
             <div className = "facebookCircle_512"/>           
-            <a href="/"><div className = "signUpWithFacebook">Sign up with Facebook</div></a> 
+            <div className = "signUpWithFacebook"><FacebookButton /></div>
             <div className = "or"> or </div>
                    
             
