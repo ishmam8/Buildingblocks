@@ -253,7 +253,7 @@
 
 .vertical-center {
     
-    display: flex;
+    width: 50%;
     align-items: center;
     justify-content: center;
     
@@ -274,6 +274,7 @@
 }
 
 #leftSide {
+    
     display: inline-block;
     width: 50%;
     background-color: #1970E1;
