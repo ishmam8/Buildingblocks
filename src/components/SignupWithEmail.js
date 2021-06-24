@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./css/SignupWithEmail.css";
 import "./css/Signup.css";
-import background from "../images/mentor.png"
+import background from "../images/login_graphic.png"
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 import { useAlert } from "react-alert";
