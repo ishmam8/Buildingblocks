@@ -8,6 +8,8 @@ import EditEmail from "./EditEmail";
 import EditPassword from "./EditPassword";
 import EditBio from "./EditBio";
 
+import './css/Edit.css'
+
 export default function EditProfile() {
   const [avis, setAvis] = useState([]);
   const _id = useSelector((state) => state._id);
