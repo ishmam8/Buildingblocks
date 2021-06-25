@@ -18,14 +18,7 @@ const Signup = props => (
         </section>
 
         <section id="rightSide">
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-
-            
+          
             <div className="vertical-center">
                 < GoogleButton />
             </div>
