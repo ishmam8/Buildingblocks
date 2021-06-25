@@ -151,19 +151,7 @@
 
 
 
-.or {
-    position: fixed;
-    width: 17px;
-    height: 21px;
-    left: 66%;
-    top: 55%;
-    font-family: sans-serif;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 1.5vw;
-    line-height: 21px;
-    color: #000000;
-}
+
 
 
 .facebookCircle_512 {
@@ -242,9 +230,9 @@
     font-size: 1.5vw;
     text-align: left;
     padding: 25px;
-    margin: 5% auto;
-    
+    margin: 5% 50%;
     background-color: #FFFFFF;
+    left: 50%;
 }
 
 .buttonIcons {
@@ -252,7 +240,6 @@
 }
 
 .vertical-center {
-    
     width: 50%;
     align-items: center;
     justify-content: center;
@@ -260,21 +247,14 @@
 }
 
 .test {
-   
     width: 47px;
     height: 47px;
-    
     background: url("../../images/facebook_circle-512Fb.png");
 }
 
 /* New */
 
-.main {
-    
-}
-
 #leftSide {
-    
     display: inline-block;
     width: 50%;
     background-color: #1970E1;
@@ -311,4 +291,8 @@
     font-weight: normal;
     font-size: 1vw;
     color: #000000;
+}
+
+.orText {
+    border: none;
 }

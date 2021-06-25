@@ -18,6 +18,14 @@ const Signup = props => (
         </section>
 
         <section id="rightSide">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+
+            
             <div className="vertical-center">
                 < GoogleButton />
             </div>
@@ -26,13 +34,13 @@ const Signup = props => (
                 < FacebookButton />
             </div>
 
-            <div>Or</div>
+            <div className="customButton orText">Or</div>
 
             <a href = "/signupWithEmail"><div className="customButton">Sign-up with E-mail</div></a>
 
             <div className="alreadyHaveAnAccountText">
                 Already have an account?
-                <a href="./login"><span className="sign-in-button">Log In</span></a>
+                <a href="./login"><span className="sign-in-button"> Log In</span></a>
             </div>
         </section>
     </div>
