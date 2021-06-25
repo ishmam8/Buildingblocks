@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import FacebookLogin from 'react-facebook-login'
+
 import './css/Signup.css';
-import GoogleIcon from "../images/new-google-favicon-512.png"
+import FacebookIcon from "../images/facebook_circle-512Fb.png"
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 
 export class FacebookButton extends Component {
     responseFacebook=(response)=>{
@@ -12,9 +13,12 @@ export class FacebookButton extends Component {
             <div>
                 <FacebookLogin
                 appId="530654214739999"
-                cssClass="customGoogleButton"
-                icon={<i className="test" style={{marginLeft:'5px'}}></i>}
-                textButton = "Sign-up with Facebook"  
+                render={(renderProps) => (
+                    <button className="customGoogleButton" onClick={renderProps.onClick} disabled={renderProps.disabled}>
+                      Sign-up with Facebook
+                      <img className="buttonIcons" src={FacebookIcon} />
+                    </button>
+                  )}
                 autoLoad={true}
                 fields="name,email,picture"
                 //onClick={componentClicked}
