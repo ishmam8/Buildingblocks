@@ -1,10 +1,15 @@
+//libraries
 import React, { useState, useEffect } from "react";
-import "./css/Sidebar.css";
-import ChatRoomLink from "./ChatRoomLink";
 import io from "socket.io-client";
 import { Link } from "react-router-dom";
 
-/*icons*/
+//Component Imports
+import ChatRoomLink from "./ChatRoomLink";
+
+//Style Imports
+import "./css/Sidebar.css";
+
+//Icon Imports
 import toggleSidebar from "../images/dashboardIcons/Subtract.png";
 import togSidebar from "../images/dashboardIcons/greySubtract.jpg";
 import messages from "../images/dashboardIcons/messages.png";
@@ -46,6 +51,7 @@ export default function SideBar(props) {
     substanceUse,
     nutrition,
   ]);
+
   const ENDPOINT = "localhost:5000";
 
   useEffect(() => {
@@ -88,7 +94,7 @@ export default function SideBar(props) {
     });
   }, [chatRooms]);
 
-  const [sidebar, setSidebar] = useState(true);
+  const [sidebar, setSidebar] = useState(false);
 
   let chatRoomsComponents = [];
   if (typeof chatRooms !== "undefined" && chatRooms !== null) {
@@ -99,7 +105,6 @@ export default function SideBar(props) {
 
   const showSidebar = () => {
     setSidebar(!sidebar);
-    console.log(sidebar);
   };
 
   return (
@@ -107,33 +112,30 @@ export default function SideBar(props) {
       onClick={showSidebar}
       className={sidebar ? "sidebar-body active" : "sidebar-body"}
     >
-      <p className={sidebar ? "sidebar-title active" : "sidebar-title"}>
-        Chatrooms
-        <button onClick={(e) => e.stopPropagation()}>
-          <img src={messages} alt="text" />
-        </button>
-      </p>
-      {console.log(chatRoomsComponents)}
       <div
         className={sidebar ? "chat-room-panel active" : "chat-room-panel"}
-        onClick={(e) => e.stopPropagation()}
+        
       >
+        <div className={sidebar ? "sidebar-title active" : "sidebar-title"}>
+          Chatrooms
+          <button>
+            <img src={messages} alt="text" />
+          </button>
+        </div>
         {chatRoomsComponents}
       </div>
       <div
         onClick={showSidebar}
         className={sidebar ? "toggle-container active" : "toggle-container"}
       >
-        <div className="toggle-sidebar">
-          <Link to="#">
-            {sidebar ? (
-              <img src={togSidebar} alt="toggle sidebar" />
-            ) : (
-              <img src={toggleSidebar} alt="toggle sidebar" />
-            )}
-            {sidebar ? <text>Toggle Sidebar</text> : <text></text>}
-          </Link>
-        </div>
+        <Link to="#">
+          {sidebar ? (
+            <img src={togSidebar} alt="toggle sidebar" />
+          ) : (
+            <img src={toggleSidebar} alt="toggle sidebar" />
+          )}
+          {sidebar ? <text>Toggle Sidebar</text> : <text></text>}
+        </Link>
       </div>
     </div>
   );

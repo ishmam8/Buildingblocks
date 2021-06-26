@@ -36,6 +36,7 @@ subtext: 18px
   flex-direction: row;
   border: 2px solid red;
   overflow-y: hidden;
+<<<<<<< HEAD
 }
 
 .cards {
@@ -334,3 +335,6 @@ subtext: 18px
   margin-top: 1px;
   margin-right: 1px;
 }
+=======
+}
+>>>>>>> ff8c23f (changes to sidebar)

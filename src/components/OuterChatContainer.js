@@ -7,6 +7,10 @@ import "./css/ChatRoom.css";
 import TextContainer from "./TextContainer";
 import { useSelector, useDispatch } from "react-redux";
 
+import Sidebar from "./Sidebar";
+
+import DashboardHeader from "./DashboardHeader";
+
 export default function OuterChatContainer(props) {
   const username = useSelector((state) => state.username);
   const email = useSelector((state) => state.email);
@@ -30,8 +34,8 @@ export default function OuterChatContainer(props) {
     />
   ) : (
     <div className="outoutContainer">
-      <DashboardHeaderChat />
-      <SidebarChat />
+      <DashboardHeader />
+      <Sidebar />
       <div className="outerContainer">
         <br />
         <Chat

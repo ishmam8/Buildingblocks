@@ -1,9 +1,14 @@
-import React, { useState } from "react";
-import "./css/Dashboard.css";
-import Sidebar from "./Sidebar";
+//libraries
+import React from "react";
 import { Redirect } from "react-router-dom";
-import DashboardHeader from "./DashboardHeader";
 import { useSelector, useDispatch } from "react-redux";
+
+//Component Imports
+import DashboardHeader from "./DashboardHeader";
+import Sidebar from "./Sidebar";
+
+//Style Imports
+import "./css/Dashboard.css";
 
 export default function Dashboard(props) {
   const loggedIn = useSelector((state) => state.loggedIn);
@@ -34,11 +39,7 @@ export default function Dashboard(props) {
       <div className="dashboard">
         <DashboardHeader logout={logout} />
         <Sidebar data={props} />
-        {/*<div className="cards">
-          <DashboardInfo />
-          <DashboardForm />
-    </div> */}
-      </div> 
+      </div>
     );
   } else {
     return (
