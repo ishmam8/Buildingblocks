@@ -36,7 +36,6 @@ subtext: 18px
   flex-direction: row;
   border: 2px solid red;
   overflow-y: hidden;
-<<<<<<< HEAD
 }
 
 .cards {
@@ -334,7 +333,37 @@ subtext: 18px
   float: left;
   margin-top: 1px;
   margin-right: 1px;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100vh;
+  overflow-y: hidden;
 }
-=======
+
+.cards-container {
+  display: flex;
+  flex-direction: row;
+
+  margin-top: 30px;
 }
->>>>>>> ff8c23f (changes to sidebar)
+
+.cards-subcontainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 800px) {
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 30px;
+  }
+
+  .cards-subcontainer {
+    margin-left: 0;
+  }
+}

@@ -114,7 +114,7 @@ export default function SideBar(props) {
     >
       <div
         className={sidebar ? "chat-room-panel active" : "chat-room-panel"}
-        
+        onClick={(e) => e.stopPropagation()}
       >
         <div className={sidebar ? "sidebar-title active" : "sidebar-title"}>
           Chatrooms
