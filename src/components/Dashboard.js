@@ -6,6 +6,9 @@ import { useSelector, useDispatch } from "react-redux";
 //Component Imports
 import DashboardHeader from "./DashboardHeader";
 import Sidebar from "./Sidebar";
+import DashboardInfo from "./DashboardInfo";
+import DashboardForm from "./DashboardForm";
+import DashboardNavbar from "./DashboardNavbar";
 
 //Style Imports
 import "./css/Dashboard.css";
@@ -37,7 +40,7 @@ export default function Dashboard(props) {
   } else if (!chatroomName) {
     return (
       <div className="dashboard">
-        <DashboardHeader logout={logout} />
+        <DashboardNavbar logout={logout} />
         <Sidebar data={props} />
         <div className="cards-container">
           <DashboardInfo />
