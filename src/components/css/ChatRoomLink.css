@@ -1,0 +1,81 @@
+.chat-room-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
+  color: #4f4f4f;
+  cursor: pointer;
+  padding: 0px 2px;
+
+  width: 100%;
+  height: 100%;
+}
+
+.chat-room-name {
+  display: none;
+}
+
+.chat-room-name.active {
+  display: flex;
+  margin-left: 10px;
+  padding: 0 5px;
+
+  width: 100%;
+}
+
+.chat-room-link:hover {
+  color: #e9a800;
+  font-weight: bold;
+}
+
+.chat-room-link-clicked {
+  color: #e9a800;
+  font-weight: bold;
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+.chat-join-button {
+  border: 0;
+  cursor: pointer;
+  background-color: transparent;
+  width: 70px;
+  height: 40px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+}
+
+.chat-join-button:focus {
+  outline-width: 1px;
+  outline-color: #e9a800;
+}
+
+.chat-join-button:hover {
+  background-color: #f6f5f5;
+  border: 1px solid #f6f5f5;
+  border-radius: 6px;
+}
+
+.chat-room-link img {
+  width: 22px;
+  height: 22px;
+}
+
+.chat-room-link-user {
+  padding: 6px 0;
+  color: #4f4f4f;
+  font-weight: 400;
+  font-size: 87%;
+}
+
+.chat-users-panel {
+  margin-top: 10px;
+  margin-left: 27px;
+  margin-bottom: 10px;
+}
+
+.chat-room-link-user-none {
+  font-weight: 600;
+  color: #828282;
+}

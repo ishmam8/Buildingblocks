@@ -1,115 +1,151 @@
 .sidebar-body {
   background: #fff;
-  box-shadow: 6px 0px 6px rgba(0, 0, 0, 0.06);
-  width: 21%;
   height: 100%;
+  width: 10%;
+
+  position: fixed;
+  top: 65px;
+  left: 0;
+
+  transition: 300ms;
+  box-shadow: 6px 0px 18px rgba(0, 0, 0, 0.06);
+}
+
+.sidebar-body.active {
+  left: 0px;
+  transition: 50ms;
+  width: 60%;
 }
 
 .sidebar-title {
   display: flex;
-  flex-direction: column;
-  color: #e9a800;
-  font-size: 12px;
-  font-weight: bold;
+  visibility: hidden;
+  font-size: 6px;
+
+  margin-top: 0px;
+}
+
+.sidebar-title.active {
+  display: flex;
+  visibility: visible;
+  flex-direction: row;
   align-items: center;
-  padding-top: 10px;
+  justify-content: space-between;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+  font-style: normal;
+  font-weight: bold;
+
+  color: #4b4b4b;
+  letter-spacing: 0.01em;
+  margin-left: 12px;
+  margin-bottom: 0;
+}
+
+.sidebar-title.active img {
+  width: 18px;
+  height: 18px;
+}
+
+.sidebar-title img {
+  width: 5px;
+  height: 5px;
+}
+
+.sidebar-title.active button {
+  background: transparent;
+  color: transparent;
+  text-decoration: none;
+  border: 1px solid transparent;
+  margin-right: 9px;
+  width: 40px;
+  height: 40px;
+}
+
+.sidebar-title button {
+  width: 5px;
+  height: 5px;
+}
+
+.sidebar-title button:hover {
+  background-color: #f6f5f5;
+  border: 1px solid #f6f5f5;
+  border-radius: 6px;
+  width: 40px;
+  height: 40px;
 }
 
 .chat-room-panel {
   display: flex;
   flex-direction: column;
-  font-size: 11.5px;
+  align-items: center;
+  font-size: 13px;
 }
 
-.chat-room-link {
+.chat-room-panel.active {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  font-size: 13px;
+  padding: 0 7px;
+}
+
+.toggle-container {
+  position: fixed;
+  top: 92%;
+  left: .001%;
+  background-color: transparent;
+  border: 1px solid transparent;
+}
+
+.toggle-sidebar a {
+  display: flex;
+  flex-direction: row;
   align-items: center;
-  color: #4f4f4f;
-  cursor: pointer;
-  padding: 5px;
-  text-align: center;
-  margin: 4px 2px;
+  text-decoration: none;
+  margin-top: 5px;
+  margin-left: 10px;
+}
+.toggle-sidebar img {
+  height: 14px;
+  width: 14px;
 }
 
-.chat-room-link:hover {
-  color: #e9a800;
-}
-
-.chat-room-link-clicked {
-  color: #e9a800;
-  font-weight: 500;
-  padding: 6px 0;
-  cursor: pointer;
-}
-
-.chat-join-button {
-  padding: 4px;
-  color: #e9a800;
-  background: #fff4d9;
-  border-radius: 100px;
-  border: 0;
-  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.24), 0px 0px 2px rgba(0, 0, 0, 0.12);
-  cursor: pointer;
-  margin: 3px;
-}
-
-.chat-join-button:hover {
-  color: white;
-  background: #e9a800;
-}
-
-.chat-join-button:focus {
-  outline-width: 1px;
-  outline-color: #e9a800;
-}
-
-.chat-room-link-user {
-  padding: 6px 0;
-  color: #4f4f4f;
-  font-weight: 400;
-  font-size: 87%;
-}
-
-.chat-users-panel {
-  margin-top: 10px;
-  margin-left: 27px;
-  margin-bottom: 10px;
-}
-
-.chat-room-link-user-none {
-  font-weight: 600;
+.toggle-sidebar text {
+  height: 20px;
+  width: auto;
+  margin: 4px;
   color: #828282;
 }
 
-@media screen and (min-width: 760px) {
+@media screen and (min-width: 770px) {
   .sidebar-body {
-    background: #fff;
-    box-shadow: 6px 0px 6px rgba(0, 0, 0, 0.06);
-    width: 20%;
-    height: 100%;
+    width: 5%;
   }
-  .sidebar-title {
-    display: flex;
-    flex-direction: column;
-    color: #e9a800;
-    font-size: 20px;
-    font-weight: bold;
-    align-items: flex-start;
-    margin-left: 5px;
+
+  .sidebar-body.active {
+    width: 22%;
   }
-  .chat-room-panel {
-    display: flex;
-    flex-direction: column;
-    font-size: 15px;
+
+  .toggle-container {
+    position: fixed;
+    top: 92%;
+    left: 12px;
   }
-  .chat-room-link {
-    display: flex;
-    flex-direction: row;
-    color: #4f4f4f;
-    cursor: pointer;
-    padding: 5px;
-    justify-content: space-between;
-    text-align: left;
+
+  .toggle-container.active:hover {
+    background-color: #f6f5f5;
+    border: 1px solid #f6f5f5;
+    border-radius: 6px;
+    width: 16%;
+    height: 40px;
+  }
+  
+  .toggle-container:hover {
+    background-color: #f0efef;
+    border: 1px solid #ebe8e8;
+    border-radius: 6px;
+    width: 3%;
+    height: 40px;
   }
 }
