@@ -10,9 +10,11 @@ import logo from "../images/minlogo.png";
 
 export default function DashboardHeader(props) {
   const logout = props.logout;
+  const username = useSelector((state) => state.username);
+  const email = useSelector((state) => state.email);
   const avi = useSelector((state) => state.avi);
 
-  const [open, setOpen] = useState("false");
+  const [open, setOpen] = useState(false);
 
   const changeOpen = () => {
     setOpen(!open);
@@ -24,7 +26,7 @@ export default function DashboardHeader(props) {
         <img src={logo} className="minlogo" />
         <span className="buildingBlocks">Building Blocks</span>
       </div>
-      <div className="rightSection">
+      <div className={open ? "rightSection active" : "rightSection"}>
         <button onClick={changeOpen}>
           <img
             alt="User Avatar"
@@ -34,7 +36,10 @@ export default function DashboardHeader(props) {
         </button>
       </div>
       <div className={open ? "dropDown active" : "dropDown"}>
-        <text>Username</text>
+        <div className="drop-user">
+          <text>{username}</text>
+          <text>{email}</text>
+        </div>
         <button onClick={logout}>Logout</button>
       </div>
     </div>
