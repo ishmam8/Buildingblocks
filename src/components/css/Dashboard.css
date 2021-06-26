@@ -32,12 +32,19 @@ subtext: 18px
 
 
 .content {
+  background: #E5E5E5;
   display: flex;
-  flex-direction: row;
-  border: 2px solid red;
+  flex-direction: column;
+  align-items: center;
+
+  height: 100vh;
   overflow-y: hidden;
 }
 
+.cards-container {
+  display: flex;
+  flex-direction: row;
+}
 .cards {
   background: #E5E5E5;
   display: flex;
@@ -317,15 +324,28 @@ subtext: 18px
   text-align: right;
   font-size: 65%;
   cursor: pointer;
+  margin-top: 30px;
 }
 
-.help-now:hover {
-  background: #f5b40f;
+.cards-subcontainer {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+
+  justify-content: space-between;
 }
 
-.help-now:focus {
-  outline-color: #e9a800;
-  outline-width: 1px;
+@media screen and (max-width: 800px) {
+  .cards-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 30px;
+  }
+
+  .cards-subcontainer {
+    margin-left: 0;
+  }
 }
 
 .help-now img {
