@@ -11,13 +11,13 @@ export default function Dashboard(props) {
   const chatroomName = useSelector((state) => state.chatroomName);
 
   function logout() {
-    dispatch({type: "CHANGE_USERNAME", username: null});
-    dispatch({type: "CHANGE_EMAIL", email: null});
-    dispatch({type: "CHANGE_AVI", avi: null});
-    dispatch({type: "CHANGE_TYPE", myType: null});
-    dispatch({type: "CHANGE_CHATROOM", chatroom: false});
-    dispatch({type: "CHANGE_LASTUSER", lastUser: null});
-    dispatch({type: "CHANGE_LOGGEDIN", loggedIn: false});
+    dispatch({ type: "CHANGE_USERNAME", username: null });
+    dispatch({ type: "CHANGE_EMAIL", email: null });
+    dispatch({ type: "CHANGE_AVI", avi: null });
+    dispatch({ type: "CHANGE_TYPE", myType: null });
+    dispatch({ type: "CHANGE_CHATROOM", chatroom: false });
+    dispatch({ type: "CHANGE_LASTUSER", lastUser: null });
+    dispatch({ type: "CHANGE_LOGGEDIN", loggedIn: false });
     window.location.reload();
   }
 
@@ -34,7 +34,11 @@ export default function Dashboard(props) {
       <div className="dashboard">
         <DashboardHeader logout={logout} />
         <Sidebar data={props} />
-      </div>
+        {/*<div className="cards">
+          <DashboardInfo />
+          <DashboardForm />
+    </div> */}
+      </div> 
     );
   } else {
     return (
