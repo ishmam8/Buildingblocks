@@ -27,13 +27,13 @@
 .niceToMeetYou {
     position: absolute;
     left: 0%;
-    top: 25%;
+    top: 20%;
     width: 50%;
     text-align: center;
-    font-family: Roboto;
+    font-family: sans-serif;
     font-style: normal;
     font-weight: normal;
-    font-size: 5vw;
+    font-size: 3.5vw;
     line-height: 130%;
     color: #FFFFFF;
 }
@@ -90,33 +90,32 @@
 .signUpWithGoogle {
 
     position: fixed;
-    width: 167px;
+    width: 100%;
     height: 26px;
     left: 66%;
     top: 28%;
 
-
-    font-family: Roboto;
+    font-family: sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 1.5vw;
     line-height: 130%;
-    color: #1970E1;
+    color: #000000;
 }
 
 
 .signUpWithFacebook {
     position: fixed;
-    width: 191px;
+    width: 100%;
     height: 26px;
     left: 66%;
     top: 41%;
-    font-family: Roboto;
+    font-family: sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 1.5vw;
     line-height: 130%;
-    color: #1970E1;
+    color: #000000;
 }
 
 
@@ -125,8 +124,8 @@
     width: 45vw;
     height: 31px;
     left: 69.5%;
-    top: 85%;
-    font-family: Roboto;
+    top: 90%;
+    font-family: sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 1vw;
@@ -137,17 +136,20 @@
 
 .signUpWithEmail {
     position: absolute;
-    width: 161px;
+    width: 100%;
     height: 26px;
     left: 66%;
     top: 67%;
-    font-family: Roboto;
+    font-family: sans-serif;
     font-style: normal;
     font-weight: bold;
     font-size: 1.5vw;
     line-height: 130%;
-    color: #1970E1;
+    color: #000000;
 }
+
+
+
 
 .or {
     position: fixed;
@@ -155,7 +157,7 @@
     height: 21px;
     left: 66%;
     top: 55%;
-    font-family: Roboto;
+    font-family: sans-serif;
     font-style: normal;
     font-weight: normal;
     font-size: 1.5vw;
@@ -208,5 +210,16 @@
     font-weight: bold;
     font-size: 1.5vw;
     color: #1970E1;
+}
+
+.signupPicture {
+    position: absolute;
+    width: 25%;
+    position: absolute;
+    left: 13%;
+    top: 40%;
+    
+
+    background: linear-gradient(0deg, rgba(7, 109, 242, 0) 3.68%, #6399DF 100.37%);
 }
     
