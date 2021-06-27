@@ -5,12 +5,13 @@ import Error from "./components/Error";
 import Login from "./components/Login";
 import { Route, Switch } from "react-router-dom";
 import Choice from "./components/Choice";
-import LoginWithEmail from "./components/LoginWithEmail";
-import SignupWithEmail from "./components/SignupWithEmail";
-import Dashboard from "./components/Dashboard";
-import Chat from "./components/Chat";
-import Join from "./components/Join";
-import OuterChatContainer from "./components/OuterChatContainer";
+import LoginWithEmail from './components/LoginWithEmail';
+import SignupWithEmail from './components/SignupWithEmail';
+import Signup from './components/Signup';
+import Dashboard from './components/Dashboard';
+import Chat from './components/Chat';
+import Join from './components/Join';
+import OuterChatContainer from './components/OuterChatContainer';
 import EditProfile from "./components/EditProfile";
 import Team from "./components/Team";
 import AboutUs from "./components/AboutUs";
@@ -34,7 +35,8 @@ class App extends Component {
             path="/login"
             render={() => <LoginWithEmail profiles={this.state.profiles} />}
           />
-          <Route path="/signup" component={SignupWithEmail} />
+          <Route path="/signup" component={Signup}/>
+          <Route path="/signupWithEmail" component={SignupWithEmail}/>
           <Route path="/team" component={Team} />
           <Route path="/theChat" component={Chat} />
           <Route path="/join" component={Join} />
