@@ -35,7 +35,8 @@ class App extends Component {
             path="/login"
             render={() => <LoginWithEmail profiles={this.state.profiles} />}
           />
-          <Route path="/signup" component={SignupWithEmail} />
+          <Route path="/signup" component={Signup}/>
+          <Route path="/signupWithEmail" component={SignupWithEmail}/>
           <Route path="/team" component={Team} />
           <Route path="/theChat" component={Chat} />
           <Route path="/join" component={Join} />
