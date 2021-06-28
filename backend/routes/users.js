@@ -171,7 +171,6 @@ router.route("/login").post(async (req, res) => {
   try {
     const isMatch = await Bcrypt.compare(req.body.password, user.password);
     if (!isMatch) {
-      console.log(user);
       return res.status(400).json({ msg: "Invalid Credentials" });
     }
 
@@ -214,9 +213,8 @@ router.route("/update/:id").post(authenticateToken, async (req, res) => {
           user.password,
           async (err, result) => {
             if (err) {
-              res.status(400).json("Error: Invalid Current Password");
+              return res.status(400).json("Error: Invalid Current Password");
             }
-            user.password = await Bcrypt.hash(req.body.password, salt);
           }
         );
         user.password = await Bcrypt.hash(req.body.password, salt);
@@ -243,7 +241,7 @@ router.route("/update/:id").post(authenticateToken, async (req, res) => {
       let token = {token: req.token};
       user
         .save()
-        .then(() => res.json({user, token}))
+        .then(() => res.status(200).json({user, token}))
         .catch((err) => res.status(400).json("Error: " + err));
     })
     .catch((err) => res.status(400).json("Error: " + err));

@@ -4,30 +4,43 @@ import { Input } from 'semantic-ui-react'
 import { useSelector, useDispatch } from 'react-redux'
 import axios from "axios"
 
+const instance = axios.create({
+  withCredentials: true
+})
+
 function EditEmail() {
   const [open, setOpen] = React.useState(false)
   const [email, setEmail] = React.useState("")
   const userid = useSelector(state => state._id)
+  const token = useSelector(state => state.token)
   const dispatch = useDispatch()
 
   function onSubmit(e) {
     e.preventDefault();
-
     const newEmail = {
       email: email,
     };
 
-    setEmail("");
-    
-    axios.post("http://localhost:5000/users/update/"+userid, newEmail).then((res) => {
-      if (res.data === "User updated!") {
-        console.log(res.data);
+    const authToken = {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    }
+
+    instance
+    .post("http://localhost:5000/users/update/"+userid, newEmail, authToken)
+    .then((res) => {
+      if (res.status === 200) {
+        if (res.data.token) {
+          dispatch({type: "CHANGE_TOKEN", token: res.data.token})
+        }
         dispatch({type: "CHANGE_EMAIL", email: email})
       } else {
         // useAlert("Sorry, can you please try again?");
         console.log(res.data);
       }
-    });
+    })
+    .catch(err => console.log(err));
   }
 
   return (
