@@ -12,8 +12,8 @@ import Chat from './components/Chat';
 import Join from './components/Join';
 import OuterChatContainer from "./components/OuterChatContainer";
 import EditProfile from "./components/EditProfile";
-import Navbar from './components/Navbar';
 import Team from "./components/Team";
+import MasterNavbar from "./components/MasterNavbar";
 
 class App extends Component {
     state = {
@@ -24,12 +24,13 @@ class App extends Component {
     render() {
         const App = () => (
             <div>
-              <Navbar/>
+                <MasterNavbar/>
                 <Switch>
 
                     <Route path="/" exact component={Landing}/>
                     <Route path="/choice" render={() => <Choice profiles={this.state.profiles} />}/>
-                    <Route path="/login" render={() => <LoginWithEmail profiles={this.state.profiles}/>}/>
+                    <Route path="/login-email" render={() => <LoginWithEmail profiles={this.state.profiles}/>}/>
+                    <Route path="/login-social" render={() => <LoginWithSocial profiles={this.state.profiles}/>}/>
                     <Route path="/signup" component={SignupWithEmail}/>
                     <Route path="/theChat" component={Chat}/>
                     <Route path="/join" component={Join}/>
