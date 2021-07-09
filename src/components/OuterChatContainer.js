@@ -1,13 +1,17 @@
+//libraries
 import React, { Component } from "react";
-import SidebarChat from "./SidebarChat";
 import { Redirect } from "react-router-dom";
-import DashboardHeaderChat from "./DashboardHeaderChat";
-import Chat from "./Chat";
-import "./css/ChatRoom.css";
-import TextContainer from "./TextContainer";
 import { useSelector, useDispatch } from "react-redux";
 
+//Component Imports
+import SidebarChat from "./SidebarChat";
+import DashboardHeaderChat from "./DashboardHeaderChat";
+import Chat from "./Chat";
+import TextContainer from "./TextContainer";
 import Sidebar from "./Sidebar";
+
+//Style Imports
+import "./css/ChatRoom.css";
 
 export default function OuterChatContainer(props) {
   const username = useSelector((state) => state.username);
@@ -32,8 +36,8 @@ export default function OuterChatContainer(props) {
     />
   ) : (
     <div className="outoutContainer">
-      <DashboardHeaderChat />
-      <Sidebar />
+      <DashboardHeaderChat logout={logout} />
+      <SidebarChat />
       <div className="outerContainer">
         <br />
         <Chat

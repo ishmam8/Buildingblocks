@@ -1,11 +1,16 @@
+//libraries
 import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
+import axios from "axios";
+
+//Component Imports
 import Input from "./Input";
 import Messages from "./Messages";
 import Message from "./Message";
-import "./css/Chat.css";
 import TextContainer from "./TextContainer";
-import axios from "axios";
+
+//Style Imports
+import "./css/Chat.css";
 
 let socket;
 

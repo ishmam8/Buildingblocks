@@ -1,6 +1,6 @@
 //Libraries
-import React, { Component, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 
 //Style Imports
 import "./css/DashboardHeader.css";
@@ -38,9 +38,7 @@ export default function DashboardHeader(props) {
       <div className={open ? "dropDown active" : "dropDown"}>
         <div className="drop-user">
           <text>{username}</text>
-          <text>
-            {email}
-          </text>
+          <text>{email}</text>
         </div>
         <button onClick={logout}>Logout</button>
       </div>
