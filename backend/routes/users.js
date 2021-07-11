@@ -43,12 +43,12 @@ const emailTransporter = (userEmail, subject, text) => {
   };
 
   transporter.sendMail(mailOptions)
-    .then(response => {
-      console.log("Success")
-    })
-    .catch(error => {
-      console.log("Error")
-    });
+  .then(response => {
+    console.log("Success")
+  })
+  .catch(error => {
+    console.log("Error")
+  });
 };
 
 router.route("/").get((req, res) => {
@@ -162,10 +162,8 @@ async function generateAccessToken(user) {
 }
 
 router.route("/login").post(async (req, res) => {
-  console.log("login");
   const user = await User.findOne({ email: req.body.email });
   if (user === null) {
-    console.log("user not found");
     return res.status(400).send("Cannot find user");
   }
   try {
@@ -175,10 +173,8 @@ router.route("/login").post(async (req, res) => {
     }
 
     const payload = { user: { id: user.id } };
-    console.log('payload',payload);
     const token = await generateAccessToken(payload);
     const refreshToken = jwt.sign(payload,process.env.REFRESH_TOKEN_SECRET);
-    console.log(token);
     refreshTokens.push(refreshToken);
     res.cookie('refreshtoken',refreshToken,{ sameSite:'strict',
       path: '/',
@@ -231,13 +227,6 @@ router.route("/update/:id").post(authenticateToken, async (req, res) => {
       if (req.body.bio) {
         user.bio = req.body.bio;
       }
-      console.log("info saved");
-      // user.username = req.body.username;
-      // user.password = req.body.password;
-      // user.email = req.body.email;
-      // user.avi = Number(req.body.avi);
-      // user.chatrooms = req.body.chatrooms;
-      // user.bio = req.body.bio;
       let token = {token: req.token};
       user
         .save()
