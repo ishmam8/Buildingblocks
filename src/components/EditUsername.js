@@ -4,30 +4,43 @@ import { Input } from 'semantic-ui-react'
 import { useSelector, useDispatch } from 'react-redux'
 import axios from "axios"
 
+const instance = axios.create({
+  withCredentials: true
+})
+
 function EditUsername() {
   const [open, setOpen] = React.useState(false)
   const [username, setUsername] = React.useState("")
   const userid = useSelector(state => state._id)
+  const token = useSelector(state => state.token)
   const dispatch = useDispatch()
 
   function onSubmit(e) {
     e.preventDefault();
-
     const newUsername = {
       username: username,
     };
 
-    setUsername("");
+    const authToken = {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    }
     
-    axios.post("http://localhost:5000/users/update/"+userid, newUsername).then((res) => {
-      if (res.data === "User updated!") {
-        console.log(res.data);
+    instance
+    .post("http://localhost:5000/users/update/"+userid, newUsername, authToken)
+    .then((res) => {
+      if (res.status === 200) {
+        if (res.data.token) {
+          dispatch({type: "CHANGE_TOKEN", token: res.data.token})
+        }
         dispatch({type: "CHANGE_USERNAME", username: username})
       } else {
         // useAlert("Sorry, can you please try again?");
         console.log(res.data);
       }
-    });
+    })
+    .catch(err => console.log(err));
   }
 
   return (
@@ -48,13 +61,13 @@ function EditUsername() {
           {/* <Header>Enter new username</Header> */}
           <form onSubmit={onSubmit}>
             <input 
-               type="text" 
-               placeholder="New Username"
-               name = "Username"
-               required
-               onChange={(e) => setUsername(e.target.value)}
-               value={username}
-               /> 
+              type="text" 
+              placeholder="New Username"
+              name = "Username"
+              required
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
+              /> 
           </form>
         </Modal.Description>
       </Modal.Content>

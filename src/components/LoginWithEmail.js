@@ -34,11 +34,10 @@ export default function LoginWithEmail() {
 
   
     instance
-      .post("http://localhost:5000/users/login", userCredentials, { withCredentials: true })
+      .post("http://localhost:5000/users/login", userCredentials)
       .then((res) => {
         if (res.data === "invalid password") {
           // useAlert("Sorry can you please check your credentials and try again?");
-          console.log(res);
         } else {
           console.log(res.data.token);
           dispatch({

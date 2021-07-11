@@ -3,6 +3,10 @@ import { Button, Modal, Message, Input } from 'semantic-ui-react'
 import { useSelector, useDispatch } from 'react-redux'
 import axios from "axios"
 
+const instance = axios.create({
+  withCredentials: true
+})
+
 function EditPassword() {
   const [open, setOpen] = useState(false);
   const [currentPassword, setCurrentPassword] = useState("");
@@ -13,10 +17,17 @@ function EditPassword() {
   const [showSuccess, setShowSuccess] = useState(false);
   const userid = useSelector(state => state._id);
   const dispatch = useDispatch();
+  const token = useSelector(state => state.token)
 
   function onSubmit(e) {
     e.preventDefault();
 
+    const authToken = {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    }
+    
     if (newPassword != confirmPassword) {
       setErrorMessage("Passwords do not match");
       setShowError(true);
@@ -26,31 +37,35 @@ function EditPassword() {
       const newPasswordObj = {
         password: newPassword,
       };
-
-      setCurrentPassword("");
-      setNewPassword("");
-      setConfirmPassword("");
-
-      axios.post("http://localhost:5000/users/update/" + userid, newPasswordObj)
-        .then((res) => {
-          
-          console.log(res.data);
-          dispatch({ type: "CHANGE_PASSWORD", password: res.data.password })
+      
+      // setCurrentPassword("");
+      // setNewPassword("");
+      // setConfirmPassword("");
+      
+      instance
+      .post("http://localhost:5000/users/update/" + userid, newPasswordObj, authToken)
+      .then((res) => {
+        if (res.status === 200) {
+          if (res.data.token) {
+            dispatch({type: "CHANGE_TOKEN", token: res.data.token})
+          }
+          // dispatch({ type: "CHANGE_PASSWORD", password: res.data.password })
           setShowSuccess(true);
-        })
-        .catch((err) => {
-          console.log(err);
-          if (err.response.data == "Error: Invalid Current Password") {
-            setErrorMessage("Invalid Current Password");
-            setShowError(true);
-            setShowSuccess(false);
-          }
-          else{
-            setErrorMessage("An error occured.");
-            setShowError(true);
-            setShowSuccess(false);
-          }
-        });
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+        if (err.response.data == "Error: Invalid Current Password") {
+          setErrorMessage("Invalid Current Password");
+          setShowError(true);
+          setShowSuccess(false);
+        }
+        else{
+          setErrorMessage("An error occured.");
+          setShowError(true);
+          setShowSuccess(false);
+        }
+      });
     }
   }
 
