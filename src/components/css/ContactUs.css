@@ -1,0 +1,36 @@
+/*Font imports */
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+.contact-us-body {
+  height: 100vh;
+  overflow-y: hidden;
+}
+.contact-us-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  border: 2px solid black;
+}
+
+.contact-us-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  background-color: #398af5;
+  font-family: "Roboto", sans-serif;
+  font-size: 48px;
+  line-height: 56px;
+  height: 168px;
+  width: 100%;
+}
+
+.contact-us-text {
+  border: 1px solid green;
+}
+
+.contact-us-email {
+  border: 1px solid purple;
+}

@@ -15,6 +15,7 @@ import OuterChatContainer from './components/OuterChatContainer';
 import EditProfile from "./components/EditProfile";
 import Team from "./components/Team";
 import AboutUs from "./components/AboutUs";
+import ContactUs from "./components/ContactUs";
 
 class App extends Component {
   state = {
@@ -44,6 +45,7 @@ class App extends Component {
           <Route path="/chatRoom" component={OuterChatContainer} />
           <Route path="/editProfile" component={EditProfile} />
           <Route path="/aboutus" component={AboutUs} />
+          <Route path="/contactUs" exact component={ContactUs} />
           <Route path="*" component={Error} />
         </Switch>
       </div>
