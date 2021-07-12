@@ -16,8 +16,42 @@ import EditProfile from "./components/EditProfile";
 import Team from "./components/Team";
 import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
+import MasterNavbar from "./components/MasterNavbar";
 
 class App extends Component {
+    state = {
+        profiles: null,
+        userInfo: null
+    };
+// hmm
+    render() {
+        const App = () => (
+            <div>
+                <MasterNavbar/>
+                <Switch>
+
+                    <Route path="/" exact component={Landing}/>
+                    <Route path="/choice" render={() => <Choice profiles={this.state.profiles} />}/>
+                    <Route path="/login-email" render={() => <LoginWithEmail profiles={this.state.profiles}/>}/>
+                    <Route path="/login-social" render={() => <LoginWithSocial profiles={this.state.profiles}/>}/>
+                    <Route path="/signup" component={Signup}/>
+                    <Route path="/signupWithEmail" component={SignupWithEmail}/>
+                    <Route path="/theChat" component={Chat}/>
+                    <Route path="/join" component={Join}/>
+                    <Route path="/dashboard" component={Dashboard} />
+                    <Route path="/chatRoom" component={OuterChatContainer} />
+                    <Route path="/editProfile" component={EditProfile} />
+                    <Route path="*" component={Error} />
+                </Switch>
+            </div>
+        );
+        return (
+            <Switch>
+                <App/>
+            </Switch>
+        );
+    }
+
   state = {
     profiles: null,
     userInfo: null,
