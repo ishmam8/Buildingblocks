@@ -19,6 +19,7 @@ import Team from "./components/Team";
 import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
 import MasterNavbar from "./components/MasterNavbar";
+import Navbar from "./components/Navbar";
 
 class App extends Component {
     state = {
@@ -29,7 +30,9 @@ class App extends Component {
     render() {
         const App = () => (
             <div>
-                <MasterNavbar/>
+                <section id="navbar">
+                    <MasterNavbar/>
+                </section>
                 <Switch>
 
                     <Route path="/" exact component={Landing}/>

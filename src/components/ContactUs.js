@@ -11,7 +11,6 @@ import ContactImage from "../images/contact-us-image.svg";
 export default function ContactUs() {
   return (
     <div className="contact-us-body">
-      <Navbar />
       <div className="contact-us-banner">Contact Us</div>
       <div className="contact-us-container">
         <div className="contact-us-text">
