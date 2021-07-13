@@ -12,32 +12,32 @@
     max-width: 100vw;
     height: 90px;
     margin: 0;
-  }
-  
+}
+
 .navbar-container {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 120px;;
+    height: 90px;;
     max-width: 100vw;
 }
 
 .navbar-extras{
     width: 100vw;
-    height: 120px;
+    height: 90px;
 
     display: flex;
     justify-content: space-between;
 }
 
 .navbar-logo-container{
-    height: 120px;
+    height: 90px;
     width: 180px;
     display: flex;
     justify-content: center;
     align-items: center;
     margin-left: 60px;
-    /*margin: 3.2vh 0 3vh 2vw;*/ 
+    /*margin: 3.2vh 0 3vh 2vw;*/
 }
 
 .navbar-logo-container img{
@@ -79,7 +79,7 @@
     padding: 0.5rem 1rem;
     height: 100%;
     font-weight: 500;
-    font-size: 1.3em;
+    font-size: 1.2em;
     line-height: 130%;
 }
 
@@ -87,13 +87,13 @@
     display: none;
 }
 
-.dropDown-email {
+.dropdown-navbar {
     display: flex;
     background-color: #fff;
     position: fixed;
     top: -200px;
-    width: 90px;
-    height: 120px;
+    width: 80px;
+    height: 90px;
     transition: 100ms;
     z-index: 0;
     align-items: center;
@@ -104,11 +104,12 @@
 .drop-login{
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
     border: solid 3px #1970E1;
     border-radius: 10px;
+    padding: 2px 0;
 }
 
 .login-drop-links{
@@ -116,7 +117,7 @@
     display: flex;
     align-items: center;
     text-decoration: none;
-    padding: 0.8rem 1rem;
+    padding: 0 1rem;
     height: 100%;
     font-weight: 500;
     font-size: 0.9em;
@@ -136,8 +137,8 @@
     line-height: 130%;
 }
 
-.login-link:hover .dropDown-email {
-    top: 0px;
+.login-link:hover .dropdown-navbar {
+    top: 0;
     transition: 500ms;
 }
 
@@ -168,7 +169,7 @@
     }
 
     .navbar-logo-container{
-        height: 80px;
+        height: 70px;
         width: 80px;
         margin-left: 20px;
     }
@@ -200,15 +201,15 @@
         transition: 300ms;
     }
     .navbar-content{
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-      height: 90vh;
-      left: -100%;
-      position: absolute;
-      opacity: 1;
-      transition: all 0.5s ease;
-      margin-top: 0;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        height: 90vh;
+        left: -100%;
+        position: absolute;
+        opacity: 1;
+        transition: all 0.5s ease;
+        margin-top: 0;
     }
 
     .navbar-content.active{
@@ -228,15 +229,15 @@
         align-items: center;
 
         transition: all 0.3s ;
-      }
-    
+    }
+
     .nav-item {
         height: 100%;
     }
 
-    
-    
-    
+
+
+
     .mobile-menu-button{
         display: flex;
         margin-right: 20px;
@@ -255,10 +256,10 @@
         text-align: center;
         width: 100%;
         height: 100%;
-        margin: 0; 
+        margin: 0;
         z-index: 10;
     }
-    
+
     .nav-item {
         height: 100%;
         width: 100vw;
@@ -266,7 +267,7 @@
         justify-content: center;
         align-items: center;
     }
-    
+
     .nav-links{
         color: #4B4B4B;
         display: flex;
@@ -288,16 +289,14 @@
         line-height: 130%;
     }
 
-    .dropDown-email {
+    .dropdown-navbar {
         display: flex;
         background: white;
         position: fixed;
         top: unset;
         left: -100%;
-        width: 140px;
+        width: 160px;
         height: 100px;
-        transition: 100ms;
-
         align-items: center;
         justify-content: center;
         padding: 10px 0;
@@ -349,13 +348,13 @@
     }
 
 
-    .login-link:hover .dropDown-email {
+    .login-link:hover .dropdown-navbar {
         display: flex;
         background: white;
         position: fixed;
         top: unset;
         left: auto;
-        width: 240px;
+        width: 280px;
         height: 120px;
         transition: 300ms;
         align-items: center;
@@ -378,4 +377,4 @@
 
 }
 
-  
+

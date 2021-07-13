@@ -44,7 +44,7 @@ function Navbar(props) {
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to='/our-team' className='nav-links'>
+                                    <Link to='/team' className='nav-links'>
                                         Our Team
                                     </Link>
                                 </li>
@@ -54,7 +54,7 @@ function Navbar(props) {
                                     </Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to='/contact' className='nav-links'>
+                                    <Link to='/contactUs' className='nav-links'>
                                         Contact
                                     </Link>
                                 </li>
@@ -65,10 +65,10 @@ function Navbar(props) {
                                     </Link>
                                     <div className="dropdown-navbar">
                                         <div onClick={handleClick} className="drop-login">
-                                            <Link to='/login-email' className='login-drop-links'
-                                                  style={{border: "none", paddingBottom: "5px"}}>Email</Link>
+                                            <Link to='/loginWithEmail' className='login-drop-links'
+                                                  style={{border: "none",}}>Email</Link>
                                             <span className="blue-line"></span>
-                                            <Link style={{border: "none", paddingTop: "5px"}} to='/login-social'
+                                            <Link style={{border: "none"}} to='/loginWithSocial'
                                                   className='login-drop-links' >Social</Link>
                                         </div>
                                     </div>

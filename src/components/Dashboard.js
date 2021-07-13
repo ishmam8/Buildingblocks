@@ -21,14 +21,16 @@ export default function Dashboard(props) {
     return (
       <Redirect
         to={{
-          pathname: "/login-email",
+          pathname: "/loginWithEmail",
         }}
       />
     );
   } else if (!chatroomName) {
     return (
+        <div className="dashboard-wrapper">
+
+
       <div className="dashboard">
-        <Sidebar data={props} />
         <div className="cards-container">
           <DashboardInfo />
           <div className="cards-subcontainer">
@@ -37,6 +39,8 @@ export default function Dashboard(props) {
           </div>
         </div>
       </div>
+        <Sidebar data={props} />
+    </div>
     );
   } else {
     return (

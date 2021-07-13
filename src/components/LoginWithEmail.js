@@ -9,8 +9,8 @@ import { useSelector } from "react-redux";
 import Cookies from 'universal-cookie';
 
 
-import login_graphic from "../images/login_graphic.svg"
-import login_mobile from "../images/login_mobile.svg"
+import login_graphic from "../images/login_graphic.svg";
+import login_mobile from "../images/login_mobile.svg";
 
 export default function LoginWithEmail() {
   const dispatch = useDispatch();
@@ -138,3 +138,4 @@ export default function LoginWithEmail() {
     />
   );
 }
+

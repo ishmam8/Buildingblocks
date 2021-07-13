@@ -29,7 +29,7 @@
 .welcome-back-content{
     position: fixed;
     width: 50%;
-    top: 120px;
+    top: 90px;
     padding-top: 10vh;
     display: flex;
     flex-direction: column;
@@ -101,6 +101,8 @@
     border: solid 3px #1970E1;
     border-radius: 25px;
 
+    cursor: pointer;
+
 }
 
 .social-login-option:hover {
@@ -160,7 +162,7 @@
     color: black;
 
     box-sizing: border-box;
-    border: 0.1vw solid #B7B7B7;
+    border: 3px solid #B7B7B7;
     border-radius: 5px;
 }
 
@@ -190,6 +192,7 @@
     font-weight: 500;
     font-size: 1.4vw;
     color: white;
+    padding-bottom: 10%;
     text-align: center;
     line-height: 140%;
     background: #1970E1;
@@ -402,7 +405,7 @@
         color: black;
 
         box-sizing: border-box;
-        border: 0.1vw solid #B7B7B7;
+        border: 2px solid #B7B7B7;
         border-radius: 5px;
     }
 
