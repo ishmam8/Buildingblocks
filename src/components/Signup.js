@@ -11,7 +11,6 @@ import GoogleLogin from 'react-google-login'
 
 const Signup = props => (
     <div className="main">
-        <Navbar />
         <section id="leftSide">
             <div className="welcomeText"> Welcome to<br/>Building Blocks </div>
             <img className="signupImg" src={background}/>

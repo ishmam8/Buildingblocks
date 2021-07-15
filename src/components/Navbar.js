@@ -60,7 +60,7 @@ function Navbar(props) {
                                 </li>
 
                                 <li className="login-link">
-                                    <Link to='/login' className='nav-links-blue' onClick={changeOpen}>
+                                    <Link className='nav-links-blue' onClick={changeOpen}>
                                         Login
                                     </Link>
                                     <div className="dropdown-navbar">

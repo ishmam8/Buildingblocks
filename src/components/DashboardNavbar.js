@@ -38,7 +38,7 @@ function DashboardNavbar(props) {
                                 alt="User Avatar"
                                 className="navbar-image"
                                 //src={require("../images/icons/" + avi + ".png")}
-                                src={require("../images/team/lassooijAlex.jpeg")}
+                                src={require("../images/team/current/lassooijAlex.jpeg")}
 
                             />
                     </div>
