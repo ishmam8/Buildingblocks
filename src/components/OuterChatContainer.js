@@ -40,6 +40,7 @@ export default function OuterChatContainer(props) {
       <SidebarChat />
       <div className="outerContainer">
         <br />
+
         <Chat
           className="chatRoom"
           theName={username}

@@ -44,7 +44,10 @@ export default function Dashboard(props) {
         <DashboardHeader logout={logout} />
         <Sidebar data={props} />
         <div className="cards-container">
-          <div className="cards-subcontainer"></div>
+          <DashboardInfo />
+          <div className="cards-subcontainer">
+            <DashboardForm />
+          </div>
         </div>
       </div>
     );
