@@ -21,6 +21,6 @@ export default function MasterNavbar() {
   if (!loggedIn) {
     return <Navbar />;
   } else {
-    return null;
+    return <DashboardNavbar/>;
   }
 }
