@@ -18,7 +18,6 @@ import PastMemberCard from "./PastMemberCard";
 function Team() {
   return (
     <>
-      <Navbar />
       <div className="teamHeader">
         <h1>Our Team</h1>
       </div>

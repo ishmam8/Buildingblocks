@@ -23,11 +23,11 @@ function DashboardNavbar(props) {
 
 
                     <div className="dashboard-navbar-extras">
-                        <div className="dashboard-navbar-logo-container">
+                        <div className="navbar-logo-container">
                             <Link to="/">
                                 <picture style={{maxWidth: "100%"}}>
                                     <source media="(min-width: 1100px)" srcset={logo}/>
-                                    <img src={logo_small} alt="Logo"/>
+                                    <img style={{paddingTop: "15px"}} src={logo_small} alt="Logo"/>
                                 </picture>
                             </Link>
                         </div>
@@ -38,7 +38,7 @@ function DashboardNavbar(props) {
                                 alt="User Avatar"
                                 className="navbar-image"
                                 //src={require("../images/icons/" + avi + ".png")}
-                                src={require("../images/team/lassooijAlex.jpeg")}
+                                src={require("../images/team/current/lassooijAlex.jpeg")}
 
                             />
                     </div>

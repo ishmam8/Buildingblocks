@@ -30,9 +30,6 @@ export default function Landing() {
         return (
             <div className="landingbody">
 
-                <section id="navbar">
-                    <Navbar />
-                </section>
                 
                 <section id="content">
                     <div className="header">
