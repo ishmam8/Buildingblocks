@@ -1,7 +1,7 @@
 //libraries
 import React, { useState, useEffect } from "react";
-import io from "socket.io-client";
 import { Link } from "react-router-dom";
+import io from "socket.io-client";
 
 //Component Imports
 import ChatRoomLink from "./ChatRoomLink";
@@ -75,7 +75,9 @@ export default function SideBar(props) {
         console.log(elementIndex);
       }
       if (elementIndex > -1) {
+        console.log(rooms[elementIndex]);
         rooms[elementIndex] = { ...rooms[elementIndex], users: newUsers };
+        console.log(rooms[elementIndex]);
         setChatRooms(rooms);
       }
     });
@@ -87,8 +89,10 @@ export default function SideBar(props) {
         console.log(rooms);
       }
       const theRooms = [...chatRooms];
+      console.log(theRooms);
       for (let i = 0; i < theRooms.length; i++) {
         theRooms[i] = { ...theRooms[i], users: rooms[i] };
+        console.log(theRooms);
       }
       setChatRooms(theRooms);
     });

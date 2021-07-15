@@ -1,8 +1,7 @@
 .outerContainer {
-  position: relative;
-  width: 70%;
-  min-height: 80%;
-  overflow-x: hidden !important;
+  display: flex;
+  flex-direction: column;
+  background-color: brown;
 }
 
 .chatRoom {

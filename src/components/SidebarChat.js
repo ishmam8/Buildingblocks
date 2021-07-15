@@ -1,7 +1,12 @@
+//libraries
 import React, { useState, useEffect } from "react";
-import "./css/Sidebar.css";
-import ChatRoomLink from "./ChatRoomLink";
 import io from "socket.io-client";
+
+//Component Imports
+import ChatRoomLink from "./ChatRoomLink";
+
+//Style Imports 
+import "./css/Sidebar.css";
 
 class ChatRoom {
   constructor(name, id) {
@@ -57,6 +62,7 @@ const SideBarChat = (props) => {
       // {console.log(elementIndex)};
       if (elementIndex > -1) {
         rooms[elementIndex] = { ...rooms[elementIndex], users: newUsers };
+        console.log(rooms[elementIndex])
         setChatRooms(rooms);
       }
     });
@@ -81,9 +87,9 @@ const SideBarChat = (props) => {
   }
 
   return (
-    <div className="sidebar-body">
-      <p className="sidebar-title">Chat Rooms</p>
-      <div className="chat-room-panel">{chatRoomsComponents}</div>
+    <div className="sidebar-chat-body">
+      <p className="sidebar-chat-title">Chat Rooms</p>
+      <div className="chat-room-panel-chat">{chatRoomsComponents}</div>
     </div>
   );
 };
