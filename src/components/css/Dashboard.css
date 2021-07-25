@@ -388,6 +388,39 @@
   justify-content: space-between;
 }
 
+.dashboard-header-edit {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 2rem;
+}
+
+.minlogo:hover {
+  cursor: pointer;
+}
+
+.logo-back-container {
+  display: flex;
+  align-items: center;
+}
+
+.back-button {
+  text-transform: uppercase;
+  font-size: 28px;
+  font-weight: 400;
+  padding-left: 1rem;
+}
+
+.back-button:hover {
+  cursor: pointer;
+}
+
+.avatar-logout-container {
+  display: flex;
+  align-items: center;
+}
+
 @media screen and (max-width: 800px) {
   .cards-container {
     display: flex;
