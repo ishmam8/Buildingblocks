@@ -3,7 +3,6 @@
 .dashboard-wrapper{
     position: fixed;
     display: block;
-
     height: calc(100vh - 90px);
     width: 100%;
     top: 90px;
@@ -322,6 +321,7 @@
 .cards-container {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   margin-top: 1rem;
 }
 
@@ -358,14 +358,7 @@
   align-items: center;
 }
 
-@media all and (min-width: 800px) { 
-  /* this is really messy, consider refactoring code to not use this media query */
-  .cards-container {
-    justify-content: center;
-  }
-}
-
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 720px) {
   .dashboard-wrapper{
     top: 70px;
     height: calc(100vh - 70px);
@@ -374,16 +367,13 @@
   .cards-container {
     display: flex;
     flex-direction: column;
+    justify-content: unset;
     align-items: center;
     margin-left: 1rem;
   }
 
   .dashboard-info {
     margin-bottom: 1rem;
-    max-width: 100%;
-  }
-
-  .dashboard-form {
     max-width: 100%;
   }
 

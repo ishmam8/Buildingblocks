@@ -8,7 +8,7 @@
   flex-direction: column;
   box-sizing: border-box;
   max-width: 35%;
-  max-height: 50%; /* find away around setting height */
+  height: min-content; 
   box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
   border-radius: 6px;
   background: #fff;
@@ -74,16 +74,6 @@
   background-color: #eeeeee;
   border-radius: 4px;
 }
-
-@media all and (min-width: 900px) {
-  /* very messy, refactor code to replace query */
-  .dashboard-info {
-    max-height: 35%;
-  }
-}
-
-
-
 
 /* still need to work on this styling */
 .popup {
