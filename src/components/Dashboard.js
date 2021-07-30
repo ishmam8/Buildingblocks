@@ -32,11 +32,8 @@ export default function Dashboard(props) {
 
       <div className="dashboard">
         <div className="cards-container">
-          <DashboardInfo />
-          <div className="cards-subcontainer">
-            <DashboardForm />
-            <DashboardForm />
-          </div>
+          <DashboardInfo className="dashboard-info"/>
+          <DashboardForm className="dashboard-form"/>
         </div>
       </div>
         <Sidebar data={props} />

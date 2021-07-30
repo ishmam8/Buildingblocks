@@ -1,11 +1,6 @@
 .dashboard-info {
-  position: absolute;
-  left: 20%;
-  top: 2vh;
-}
-
-.dashboard-info {
   padding: 1rem 1.4rem 0 1.4rem;
+  margin-right: 1rem;
 }
 
 .dashboard-info {
@@ -13,8 +8,9 @@
   flex-direction: column;
   box-sizing: border-box;
   max-width: 35%;
+  max-height: 50%; /* find away around setting height */
   box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.06);
-  border-radius: 10px;
+  border-radius: 6px;
   background: #fff;
   font-family: "Poppins", sans-serif;
   letter-spacing: 0.01em;
@@ -50,7 +46,7 @@
   flex-direction: column;
   justify-content: center;
   padding: 10px 10px 2rem 10px;
-  max-height: 50%;
+  max-height: 80%;
   font-size: 14px;
   /* overflow-y: scroll; */
 }
@@ -67,7 +63,6 @@
   width: auto;
   font-size: 14px;
   line-height: 18px;
-
   font-family: "Poppins", sans-serif;
   color: #1970e1;
   background-color: transparent;
@@ -80,17 +75,12 @@
   border-radius: 4px;
 }
 
-
-/* need to make mobile design */
-
-@media screen and (max-width: 800px) {
+@media all and (min-width: 900px) {
+  /* very messy, refactor code to replace query */
   .dashboard-info {
-    width: 250px;
-    height: 140px;
+    max-height: 35%;
   }
 }
-
-
 
 
 
