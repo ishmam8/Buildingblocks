@@ -359,6 +359,10 @@
 }
 
 @media screen and (max-width: 720px) {
+  .dashboard {
+    overflow-y: scroll;
+  }
+  
   .dashboard-wrapper{
     top: 70px;
     height: calc(100vh - 70px);
