@@ -1,23 +1,34 @@
+
+
+
+.avatars {
+  align-content: center;
+  margin-top: 7%;
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.editsFrame {
+  width: 50%;
+  margin-left: 28vw;
+}
+
+.changeLabelInstructions {
+  font-size: 100%;
+  font-weight: 500;
+  margin-left: 2px;
+}
+
 .modifySelection {
-    background: #ececec;
-    height: auto;
-    width: 40vw;
-    padding: 2vw;
-    cursor: pointer;
-  }
-  
-  .modifySelection:hover {
-    background: #459de2;
-    color: white;
-  }
+  background: #ececec;
+  height: auto;
+  width: 40vw;
+  padding: 2vw;
+  cursor: pointer;
+}
 
-  .changeLabelInstructions {
-    font-size: 100%;
-    font-weight: 500;
-    margin-left: 2px;
-  }
+.modifySelection:hover {
+  background: #459de2;
+  color: white;
+}
 
-  .editsFrame {
-    width: 50%;
-    margin-left: 28vw;
-  }

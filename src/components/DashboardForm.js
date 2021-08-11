@@ -7,7 +7,7 @@ export default function DashboardForm() {
       <div className="dashboardFormHeader">Mentees</div>
       <div className="dashboardFormBody">
         <span>
-          You don't have any mentees yet. <br></br>
+          You don't have any mentees yet. {" "}
           <a href="#" alt="googleForm" className="dashboardFormLink">
             Take the matching survey
           </a>{" "}

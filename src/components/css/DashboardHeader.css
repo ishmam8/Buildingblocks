@@ -1,4 +1,5 @@
-/*.dashboard-header {
+.dashboard-header {
+  position: fixed;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -54,7 +55,7 @@
 }
 
 .rightSection.active button {
-  border: 3px solid  #868686;
+  border: 3px solid #868686;
   border-radius: 50px;
   background-color: rgb(230, 230, 230);
 }
@@ -130,7 +131,7 @@
   border: 1px solid transparent;
   background-color: #e2e5e6;
   margin: 5px;
-  padding:10px;
+  padding: 10px;
   border-radius: 6px;
   font-family: "Poppins", sans-serif;
 }
@@ -141,7 +142,6 @@
   transition: 100ms;
 }
 
-
 @media screen and (min-width: 700px) {
   .dropDown {
     background-color: #fff;
@@ -150,29 +150,27 @@
     right: 2%;
     width: 200px;
     height: 0px;
-  
+
     transition: 200ms;
     z-index: 0;
   }
-  
+
   .dropDown.active {
     display: flex;
     flex-direction: column;
     align-items: center;
-  
+
     background-color: #fff;
     position: fixed;
     top: 65px;
     right: 2%;
-  
+
     height: 150px;
     width: 200px;
     border-radius: 5px 5px 5px 5px;
     border: 2px solid #fff;
-  
+
     transition: 200ms;
     box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.06);
   }
 }
-
- */
