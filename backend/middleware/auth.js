@@ -35,24 +35,21 @@ exports.authenticateToken = function(req, res, next) {
 };
 
 exports.deleteToken = function(req, res, next) {
-  console.log("from delete token");
   var refreshTokensGlobal = global.refreshTokens;
   const authHeader = req.headers.authorization;
-  console.log("AUTH HEADER------------", authHeader);
   const accessToken = authHeader && authHeader.split(" ")[1];
   const refreshToken = req.cookies.refreshtoken;
-  console.log("received", refreshToken);
-  console.log("array", global.refreshTokens);
   if (!accessToken) return res.status(401).send("Unauthorized Logout");
   jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
     if (err){
-      // TODO -> Finalize whether refreshtoken needs to be verified 
+      // TODO -> Finalize whether refreshtoken needs to be verified
+      // TODO -> Alternate storage for tokens - try https://www.npmjs.com/package/connect-mongo
       if (refreshTokensGlobal.find(token => token === refreshToken)) {
         jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
           if (err) {
             return res.status(401).send("Unauthorized Logout");
           }
-          else{
+          else {
             refreshTokensGlobal = refreshTokensGlobal.filter(token => token !== refreshToken);
           }
         })
