@@ -188,9 +188,8 @@ router.route("/login").post(async (req, res) => {
 
 router.route("/logout").post(deleteToken, async (req, res) => {
   try {
-    res.cookie('refreshtoken',null,{ httpOnly: true });
-    res.data("Successful")
-    res.json({ token, user });
+    res.cookie('refreshtoken', null, { httpOnly: true });
+    res.status(200).json({message: "Logout Successful"});
   } catch {
     res.status(500).send();
   }
