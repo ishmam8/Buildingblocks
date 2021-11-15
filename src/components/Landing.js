@@ -1,102 +1,138 @@
-import React, {Component} from "react";
+import React, { useState } from "react";
+
+import header from "../images/header.svg";
+import { Redirect, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
+//Style imports
+import "./css/Landing.css";
+
+// Image imports
+import logo from "../images/bblogo.png";
+import phoneWebLanding from "../images/phoneWebLanding.svg";
+import phoneModel from "../images/phoneModel.svg";
+import choosegroup from "../images/choosegroup.png";
+import talkstudents from "../images/talkstudents.png";
+import laptop from "../images/laptop.png";
+import check from "../images/check.png";
+import mentor from "../images/mentor.png";
+import plant from "../images/plant.svg";
+import background from "../images/landingpagebg.png";
+
+// Component imports
+import Card from "./Card";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 import InfoCard from "./InfoCard.js";
 import SubText from "./SubText";
-import choosegroup from "../images/choosegroup.png"
-import talkstudents from "../images/talkstudents.png"
-import laptop from "../images/laptop.png"
-import check from "../images/check.png"
-import mentor from "../images/mentor.png"
-import plant from "../images/plant.svg"
-import background from "../images/landingpagebg.png"
-import {Redirect} from 'react-router-dom'
-import logo from "../images/bblogo.png"
 
-export default class Landing extends Component {
+//Icon imports
+import assignmentIcon from "../images/icons/assignment.svg";
+import chatBubble from "../images/icons/chatBubble.svg";
+import checkedAssignment from "../images/icons/checkedAssignment.svg";
+import gadget from "../images/icons/gadget.svg";
+import tools from "../images/icons/tools.svg";
+import handshake from "../images/icons/handshake.svg";
 
-    constructor(props) {
-        super(props);
-        this.state = {
-            "holder": 2
-        };
-    }
+export default function Landing() {
+  const profile = useSelector((state) => state.profile);
 
-    logout = (e) =>  {
-        console.log("Test");
-        localStorage.setItem("loggedIn", "false");
-        this.setState(this.state);
-    };
+  function logout(e) {
+    console.log("Test");
+    localStorage.setItem("loggedIn", "false");
+    this.setState(this.state);
+  }
 
-    render() {
-        if (localStorage.getItem("loggedIn") === null || localStorage.getItem("loggedIn") === "false") {
-            return (
-                <div className="landingbody">
-                    <div className="landingHeader">
-                        <img className="logo"
-                             src={logo}
-                             alt="Welcome to Building Blocks!"
-                        />
-                        <a className="loginSignin" href="./login">Login</a>
-                        <a className="loginSignin" href="./signup">Sign Up</a>
-                    </div>
-                    <div className="introGraphic">
-                        <div className="slogan">
-                            Connect to <br/> your campus <br/>
-                            <div className="slogansub">Online peer mentoring for university students</div>
-                            <a href="./signup">
-                                <button className="getStarted">
-                                    Get Started
-                                </button>
-                            </a>
-                        </div>
-                        <img className="backgroundimg" src={background} alt="Welcome to Student Conversations Now"/>
-                    </div>
-                </div>
-            )
-        } else {
-            return (
-                <Redirect to={{
-                    pathname: '/dashboard',
-                    state: this.state.profile
-                }}/>
-            )
-            /*
-            return (
-                <div className="landingbody">
-                    <div className="landingHeader">
-                        <p className="App-name">STUDENT CONVERSATIONS NOW</p>
-                        <p className="welcome">Welcome, {localStorage.getItem("username")}!</p> <button className="logout" onClick={this.logout}>(Logout)</button>
-                    </div>
-                    <img className="backgroundimg" src={background} alt="Welcome to Student Conversations Now"/>
-                    <div className="landingbg">
-                        <div className="info">
-                            <p className="infotext">It's that simple</p>
-                            <InfoCard image={choosegroup}/> <InfoCard image={talkstudents}/>
-                            <br/>
-                            <SubText headertext={"Choose a group to join\n"}
-                                     subtext={"Each group talks about different subjects like " +
-                                     "mental health, physical health and academics"}/>
-                            <SubText headertext={"Talk with other students \n" +
-                            "\n"} subtext={"Each group has mentors who are trained to provide support"}/>
-                            <br/>
-                            <a href="./login">
-                                <button className="chatbutton">Let's Chat</button>
-                            </a>
-                        </div>
-                        <div className="info2">
-                            <p className="infotext">Want to become a student mentor?</p>
-                            <InfoCard image={laptop}/> <InfoCard image={mentor}/>
-                            <InfoCard image={check}/>
-                            <br/>
-                            <SubText headertext={"Complete the training"}/>
-                            <SubText headertext={"Support your peers"}/>
-                            <SubText headertext={"Collect volunteer hours"}/>
-                            <br/>
-                            <button className="mentorbutton">Get Started</button>
-                        </div>
-                    </div>
-                </div>
-                )
-                */
-        }
-    }
+  const loggedIn = useSelector((state) => state.loggedIn);
+  if (!loggedIn) {
+    return (
+      <>
+        <div className="landingHeader">
+          <h1>Building Blocks</h1>
+          <p>A peer-mentoring app created for students, by students</p>
+          <div className="buttonContainer">
+            <button className="demoButton">REQUEST A DEMO</button>
+            <button className="getStartedButton">GET STARTED</button>
+          </div>
+          <img src={phoneWebLanding} className="phoneWebLanding" />
+        </div>
+        <div className="homeContent">
+          <h1> How It Works</h1>
+          <p>
+            Building Blocks is a <b>free</b> webapp to help students transition
+            from highschool to university through online peer mentoring.
+            Building Blocks is being developed by students, for students to
+            improve student life and wellbeing.
+          </p>
+          <div className="homeContainer">
+            <div className="homeContainer-left">
+              <img src={phoneModel} className="homeContainer-phoneModel" />
+            </div>
+            <div className="homeContainer-right">
+              <Card
+                title="Apply to be a Mentor"
+                image={assignmentIcon}
+                body="Fill out an application to become a mentor. Your application will be reviewed and you’ll recieve an email in your inbox."
+              />
+
+              <Card
+                title="Match With a Peer"
+                image={checkedAssignment}
+                body="After taking a short survey, the matching algorithm matches mentors and mentees together to ensure a good fit."
+              />
+
+              <Card
+                title="Start Connecting"
+                image={chatBubble}
+                body="Use the private messaging to chat with your mentor or mentees or create chatrooms to connect with other students!"
+              />
+            </div>
+          </div>
+
+          <div className="bottomContainer">
+            <h1> Building Blocks for Student Clubs</h1>
+            <p>
+              Building Blocks can help student clubs run their peer mentoring
+              programs seamlessly. We are currently in beta testing. If you
+              would like to get involved or if your student club would like to
+              beta test the web app, <a>contact us</a>!
+            </p>
+
+            <div className="bottomCardContainer">
+              <Card
+                title="One Platform to Manage it All"
+                image={gadget}
+                body="Building Blocks organizes everything in one place. Club execs can view all their mentees’ and mentor’s information and easily send them messages."
+              />
+              <Card
+                title="Help Mentors Build Skills"
+                image={tools}
+                body="Mentor Skills Modules help mentors learn soft skills they can apply when mentoring. From how to support others with empathy to how to  give advice, we ensure mentors have the tools they need to be successful."
+              />
+              <Card
+                title="The Matching Algorithm"
+                image={checkedAssignment}
+                body="Ensure mentors and mentees are paired up successfully! The peer matching algorithm takes all the work out of assigning mentors and mentees."
+              />
+              <Card
+                title="Check on Mentors' Progress"
+                image={handshake}
+                body="Improve the mentorship experience through goal setting, check in, and reflection exercises throughout the academic term."
+              />
+            </div>
+          </div>
+        </div>
+        <Footer />
+      </>
+    );
+  } else {
+    return (
+      <Redirect
+        to={{
+          pathname: "/dashboard",
+          state: profile,
+        }}
+      />
+    );
+  }
 }

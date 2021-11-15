@@ -1,124 +1,141 @@
-import React, {Component} from "react";
-import './css/LogInWithEmail.css';
-import axios from 'axios';
-import {Redirect} from 'react-router-dom';
-import {useAlert} from 'react-alert';
+import React, { useState } from "react";
+import "./css/Login.css";
+import axios from "axios";
 
-export default class LoginWithEmail extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            email: '',
-            password: '',
-            loggedIn: false,
-            profile: {}
-        };
-        this.onChangeEmail = this.onChangeEmail.bind(this);
-        this.onChangePassword = this.onChangePassword.bind(this);
-        this.onSubmit = this.onSubmit.bind(this);
-    }
+import { Link, Redirect } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
-    componentDidMount() {
-        console.log(localStorage.getItem('loggedIn'));
-    }
-
-    onSubmit(e) {
-        e.preventDefault();
-
-        const userCredentials = {
-            email: this.state.email,
-            password: this.state.password
-        };
-        this.setState({
-            email: '',
-            password: ''
-        });
-        axios.post('http://localhost:5000/users/login', userCredentials)
-            .then(res => {
-                if (res.data === "invalid password") {
-                    useAlert("Sorry can you please check your credentials and try again?");
-                    console.log(res);
-                } else {
-                    localStorage.setItem('loggedIn', true);
-                    localStorage.setItem('username', res.data.username);
-                    localStorage.setItem('email', res.data.email);
-                    localStorage.setItem("_id", res.data._id);
-                    localStorage.setItem("bio", res.data.bio);
-                    this.setState((state, props) => {
-                        return {
-                            loggedIn: true,
-                            profile: res.data
-                        };
-                    });
-                }
-            });
-    }
-
-    onChangeEmail(e) {
-        this.setState({
-            email: e.target.value
-        });
-    }
-
-    onChangePassword(e) {
-        this.setState({
-            password: e.target.value
-        });
-    }
+import Cookies from 'universal-cookie';
 
 
-    render() {
-        if (localStorage.getItem("loggedIn") === null || localStorage.getItem("loggedIn") === "false") {
-            return (
-                <div className="logInWithEmaill">
-                    <div className="rectangle">
-                        <a href="/"
-                           className="App-name-login">
-                            ⬅ STUDENT CONVERSATIONS NOW
-                        </a>
-                        <div className="welcomeBack">
-                            Welcome<br></br>Back
-                        </div>
-                    </div>
-                    <div className="rectangleRight">
-                        <form onSubmit={this.onSubmit}>
-                            <div className="emailInput">
-                                <input className="emailInputForm"
-                                       type="email"
-                                       placeholder="Email"
-                                       name="email"
-                                       required onChange={this.onChangeEmail}
-                                       value={this.state.email}
-                                />
-                            </div>
-                            <div className="emailLine"/>
-                            <div className="passwordInput">
-                                <input className="passwordInputForm"
-                                       type="password"
-                                       placeholder="Password"
-                                       name="password"
-                                       required onChange={this.onChangePassword}
-                                       value={this.state.password}
-                                />
-                            </div>
-                            <div className="passwordLine"/>
-                            <input type="submit" className="loginButton" value="Log in"/>
-                        </form>
-                        <div className="dontHaveAnAccount">
-                            Don't have an account? <a href="./signup"><span
-                            className="sign-up-button">Sign Up</span></a>
-                        </div>
-                    </div>
-                </div>
-            )
-        } else {
-            return (
-                <Redirect to={{
-                    pathname: '/dashboard',
-                    state: this.state.profile
-                }}/>
-            )
-        }
+import login_graphic from "../images/login_graphic.svg";
+import login_mobile from "../images/login_mobile.svg";
+
+export default function LoginWithEmail() {
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [profile, setProfile] = useState({});
+  const isLoggedIn = useSelector((state) => state.loggedIn);
+  axios.defaults.withCredentials = true;
+  const cookies = new Cookies();
+  const instance = axios.create({
+    withCredentials: true
+  })
+
+  function onSubmit(e) {
+    e.preventDefault();
+    const userCredentials = {
+      email: email,
+      password: password
     };
+    setEmail("");
+    setPassword("");
+
+
+    instance
+      .post("http://localhost:5000/users/login", userCredentials, { withCredentials: true })
+      .then((res) => {
+        if (res.data === "invalid password") {
+          // useAlert("Sorry can you please check your credentials and try again?");
+          console.log(res);
+        } else {
+          console.log(res.data.token);
+          dispatch({
+            type: "CHANGE_USER_ALL",
+            user: {
+              loggedIn: true,
+              username: res.data.user.username,
+              email: res.data.user.email,
+              _id: res.data.user._id,
+              bio: res.data.user.bio,
+              avi: res.data.user.avi,
+            },
+          });
+          dispatch({
+            type: "CHANGE_TOKEN",
+            token: res.data.token,
+          })
+          // cookies.set('token', res.data.token, { path: '/' });
+          // localStorage.setItem("token", res.data.token);
+          setLoggedIn(true);
+          setProfile(res.data);
+        }
+      });
+  }
+  return !isLoggedIn ? (
+
+
+
+      <div className="login-content">
+
+
+
+
+      <div className="welcome-back">
+        <div className="welcome-back-content">
+        <p className="welcome-text">Welcome Back
+        </p>
+          <picture style={{Width: "60%", alignItems: "center"}}>
+            <source style={{width: "100%"}} media="(min-width: 950px)" srcSet={login_graphic}/>
+            <img style={{width: "100%"}} src={login_mobile} alt="Logo"/>
+          </picture>
+      </div>
+      </div>
+
+      <div className="login-wrapper">
+        <div className="login-container">
+
+
+        <form  onSubmit={onSubmit}>
+          <div className="email-input-form">
+            <div className="email-input-field">
+              <label>Email</label>
+              <input
+                className="email-input-box"
+                type="email"
+                name="email"
+                required
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              />
+
+            </div>
+
+            <div className="email-input-field">
+              <label>Password</label>
+              <input
+                className="email-input-box"
+                type="password"
+                name="password"
+                required
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+              />
+
+            </div>
+            <span to="/login" className="forgot-password">Forgot your password ?</span>
+            <input type="submit" className="login-button" value="Log in" />
+          </div>
+        </form>
+        <div className="no-account">
+          Don't have an account?{" "}
+          <a href="./signup">
+            <Link to="/signup" className="sign-up-button">Sign Up</Link>
+          </a>
+        </div>
+        </div>
+      </div>
+      </div>
+  ) : (
+    <Redirect
+      to={{
+        pathname: "/dashboard",
+        state: profile,
+      }}
+    />
+  );
 }
 

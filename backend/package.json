@@ -13,10 +13,19 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.9.7"
+    "mongoose": "^5.12.13",
+    "nodemon": "^2.0.7"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.5",
+    "csv": "^5.5.0",
+    "jsonwebtoken": "^8.5.1",
     "node-dandelion": "^1.0.2",
-    "socket.io": "^2.3.0"
+    "nodemailer": "^6.6.2",
+    "nodemon": "^2.0.7",
+    "password-generator": "^2.3.2",
+    "react": "^17.0.2",
+    "socket.io": "^2.4.1"
   }
 }

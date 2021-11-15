@@ -1,0 +1,60 @@
+/* Header */
+.header {
+    background-color: #398Af5;
+    padding: 3% 20%;
+    text-align: center;
+    color: white;
+    font-size: larger;
+    
+}
+
+h1 {
+    font-size: larger;
+}
+/* About Us Description */
+.about-us-desc {
+    width: 40%;
+    margin: 0 auto;
+    padding-top: 2rem;
+    font-size: larger;
+}
+
+/* About Us Image */
+.about-us-img {
+    width: 40%;
+    display: block;
+    margin: 2% auto;
+}
+
+@media (min-width:320px)  {
+    /* smartphones, portrait iPhone, portrait 480x320 phones (Android) */
+    .about-us-desc {
+        width: 80%;
+    }
+
+    .about-us-img {
+        width: 80%;
+    }
+}
+
+@media (min-width:801px)  {
+    /* tablet, landscape iPad, lo-res laptops ands desktops */
+    .about-us-desc {
+        width: 80%;
+    }
+
+    .about-us-img {
+        width: 80%;
+    }
+}
+
+@media (min-width:1025px) {
+    /* big landscape tablets, laptops, and desktops */
+    .about-us-desc {
+        width: 40%;
+    }
+
+    .about-us-img {
+        width: 40%;
+    }
+}

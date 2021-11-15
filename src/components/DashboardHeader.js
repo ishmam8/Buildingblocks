@@ -1,36 +1,47 @@
-import React, { Component } from "react";
-import "./css/Dashboard.css";
+//Libraries
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
+
+//Style Imports
+import "./css/DashboardHeader.css";
+
+//Logo Import
 import logo from "../images/minlogo.png";
 
+export default function DashboardHeader(props) {
+  const logout = props.logout;
+  const username = useSelector((state) => state.username);
+  const email = useSelector((state) => state.email);
+  const avi = useSelector((state) => state.avi);
 
-export default class DashboardHeader extends Component {
-  constructor(props) {
-    super(props);
-  }
+  const [open, setOpen] = useState(false);
 
-  logout = () => {
-      console.log("Test");
-      localStorage.setItem("loggedIn", "false");
-      localStorage.setItem("chatRoom", "false");
-      localStorage.setItem("lastUser", null);
-      window.location.reload();
+  const changeOpen = () => {
+    setOpen(!open);
   };
 
-  render() {
-    return (
-      <div className="dashboard-header">
-        <img src={logo}
-             className="minlogo"
-        />
-        <img
-          alt="User Avatar"
-          className="header-avi"
-          src={require("../images/icons/" + localStorage.getItem("avi") + ".png")}
-        />
-        <button className="logoutDashboard" onClick={this.logout}>
-          Logout
+  return (
+    <div className="dashboard-header">
+      <div className="leftSection">
+        <img src={logo} className="minlogo" />
+        <span className="buildingBlocks">Building Blocks</span>
+      </div>
+      <div className={open ? "rightSection active" : "rightSection"}>
+        <button onClick={changeOpen}>
+          <img
+            alt="User Avatar"
+            className="header-avi"
+            src={require("../images/icons/" + avi + ".png")}
+          />
         </button>
       </div>
-    );
-  }
+      <div className={open ? "dropDown active" : "dropDown"}>
+        <div className="drop-user">
+          <text>{username}</text>
+          <text>{email}</text>
+        </div>
+        <button onClick={logout}>Logout</button>
+      </div>
+    </div>
+  );
 }

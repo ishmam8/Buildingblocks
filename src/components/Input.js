@@ -1,26 +1,43 @@
-import React from 'react';
+import React from "react";
+import { useDispatch } from "react-redux";
 
-const disconnect = () => {
-    localStorage.setItem("lastUser", null);
-    localStorage.setItem("chatRoom", "false");
+export default function Input({ message, setMessage, sendMessage }) {
+  const dispatch = useDispatch();
+
+  function disconnect(){
+      dispatch({type: "CHANGE_LASTUSER", lastUser: null});
+      dispatch({type: "CHANGE_CHATROOMNAME", chatroomName: ""});
     window.location.reload();
-};
+  }
 
-const Input = ({ message, setMessage, sendMessage }) => (
+  return (
     <form className="form">
-        <input
-            id = "input"
-            className="input"
-            type="text"
-            placeholder="Type a message"
-            value={message}
-            onChange={(event) => setMessage(event.target.value)}
-            onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null}
-            autoComplete="off">
-        </input>
-        <button className="sendButton" onClick={(event) => sendMessage(event)} alt="Send your message">↑</button>
-        <button className="leaveButton" onClick={disconnect} alt="Leave this Chat">x</button>
+      <input
+        id="input"
+        className="input"
+        type="text"
+        placeholder="Type a message"
+        value={message}
+        onChange={(event) => setMessage(event.target.value)}
+        onKeyPress={(event) =>
+          event.key === "Enter" ? sendMessage(event) : null
+        }
+        autoComplete="off"
+      ></input>
+      <button
+        className="sendButton"
+        onClick={(event) => sendMessage(event)}
+        alt="Send your message"
+      >
+        ↑
+      </button>
+      <button
+        className="leaveButton"
+        onClick={disconnect}
+        alt="Leave this Chat"
+      >
+        x
+      </button>
     </form>
-);
-
-export default Input;
+  );
+}

@@ -1,56 +1,51 @@
-import React, { Component } from "react";
-import "./css/Dashboard.css";
-import Sidebar from "./Sidebar";
+//libraries
+import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
-import DashboardHeader from "./DashboardHeader";
+import { useSelector, useDispatch } from "react-redux";
+
+//Component Imports
+import Sidebar from "./Sidebar";
 import DashboardInfo from "./DashboardInfo";
+import DashboardForm from "./DashboardForm";
 
-export default class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showPopUp: false,
-    };
+//Style Imports
+import "./css/Dashboard.css";
+
+export default function Dashboard(props) {
+  const loggedIn = useSelector((state) => state.loggedIn);
+  const chatroomName = useSelector((state) => state.chatroomName);
+
+
+
+  if (!loggedIn) {
+    return (
+      <Redirect
+        to={{
+          pathname: "/loginWithEmail",
+        }}
+      />
+    );
+  } else if (!chatroomName) {
+    return (
+        <div className="dashboard-wrapper">
+
+
+      <div className="dashboard">
+        <div className="cards-container">
+          <DashboardInfo className="dashboard-info"/>
+          <DashboardForm className="dashboard-form"/>
+        </div>
+      </div>
+        <Sidebar data={props} />
+    </div>
+    );
+  } else {
+    return (
+      <Redirect
+        to={{
+          pathname: "/chatRoom",
+        }}
+      />
+    );
   }
-
-  logout = () => {
-    console.log("Test");
-    localStorage.setItem('loggedIn', null);
-    localStorage.setItem('username', null);
-    localStorage.setItem('email', null);
-    localStorage.setItem('avi', null);
-    localStorage.setItem('type',  null);
-    localStorage.setItem("loggedIn", "false");
-    window.location.reload();
-  };
-
-  render() {
-    if (localStorage.getItem("loggedIn") === "false") {
-      return (
-        <Redirect
-          to={{
-            pathname: "/login",
-          }}
-        />
-      );
-    } else if (localStorage.getItem("chatRoom") === null || localStorage.getItem("chatRoom") === "false") {
-        return (
-          <div className="dashboard">
-            <DashboardHeader logout={this.logout} />
-            <Sidebar data={this.props} />
-
-            <DashboardInfo />
-          </div>
-        );
-      } else {
-        return (
-          <Redirect
-            to={{
-              pathname: "/chatRoom",
-            }}
-          />
-        );
-      }
-    }
-  }
-
+}
